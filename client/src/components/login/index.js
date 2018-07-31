@@ -12,7 +12,6 @@ class Login extends Component {
 	}
 
 	handleChange = name => event => {
-		console.log('handleChange', event.target.value)
 		this.setState({
 			[name]: event.target.value,
 		})
@@ -40,6 +39,7 @@ class Login extends Component {
 								margin="normal"
 								placeholder="password"
 								fullWidth
+								inputProps={{ type: 'password' }}
 							/>
 						</form>
 					</CardContent>
