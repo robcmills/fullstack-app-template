@@ -9,6 +9,18 @@ class Login extends Component {
 	state = {
 		username: '',
 		password: '',
+		errors: {},
+	}
+
+	validate = () => {
+		this.setState({
+			errors: {
+				username: this.state.username ? null : 'Required',
+				password: this.state.password ? null : 'Required',
+			},
+		})
+		const isValid = this.state.username && this.state.password
+		return isValid
 	}
 
 	handleChange = name => event => {
@@ -17,13 +29,21 @@ class Login extends Component {
 		})
 	}
 
+	handleSubmit = () => {
+		const isValid = this.validate()
+		if (!isValid) {
+			return
+		}
+		// login action
+	}
+
 	render() {
 		const { classes } = this.props;
 		return (
 			<div className={classes.login}>
 				<Card className={classes.card}>
-					<CardContent>
-						<form className={classes.container} noValidate autoComplete="off">
+					<form>
+						<CardContent>
 							<TextField
 								id="username"
 								value={this.state.username}
@@ -31,6 +51,8 @@ class Login extends Component {
 								margin="normal"
 								placeholder="username"
 								fullWidth
+								error={!!this.state.errors.username}
+								helperText={this.state.errors.username}
 							/>
 							<TextField
 								id="password"
@@ -39,19 +61,24 @@ class Login extends Component {
 								margin="normal"
 								placeholder="password"
 								fullWidth
-								inputProps={{ type: 'password' }}
+								error={!!this.state.errors.password}
+								helperText={this.state.errors.password}
+								inputProps={{
+									type: 'password',
+								}}
 							/>
-						</form>
-					</CardContent>
-					<CardContent className={classes.actions}>
-						<Button
-							color="primary"
-							size="large"
-							variant="contained"
-						>
-							Login
-						</Button>
-					</CardContent>
+						</CardContent>
+						<CardContent className={classes.actions}>
+							<Button
+								color="primary"
+								size="large"
+								variant="contained"
+								onClick={this.handleSubmit}
+							>
+								Login
+							</Button>
+						</CardContent>
+					</form>
 				</Card>
 			</div>
 		)
