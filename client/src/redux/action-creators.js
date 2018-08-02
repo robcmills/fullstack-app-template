@@ -1,6 +1,5 @@
 import store from './store'
 
-export const actionName = payload => {
-	// example
-	store.dispatch({ type: 'ACTION_TYPE', payload })
+export const register = payload => {
+	store.dispatch({ type: 'REGISTER', payload })
 }

@@ -1,8 +1,8 @@
 module.exports = {
-	STACK: (state, payload) => {
+	REGISTER: (state, payload) => {
 		return {
 			...state,
-			// state changes based on payload
+			isRegistering: true,
 		}
 	},
 }

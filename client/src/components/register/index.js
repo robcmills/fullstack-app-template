@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
+
 import { withStyles } from '@material-ui/core/styles'
+import { register } from '../../redux/action-creators'
 
 class Register extends Component {
 	state = {
@@ -39,7 +42,7 @@ class Register extends Component {
 		if (!isValid) {
 			return
 		}
-		// register action
+		register(this.state)
 	}
 
 	render() {
