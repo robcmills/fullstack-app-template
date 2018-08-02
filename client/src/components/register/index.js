@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import _ from 'lodash'
 
+import RegisterSnackbar from './snackbar'
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
 import Button from '@material-ui/core/Button'
@@ -52,6 +53,7 @@ class Register extends Component {
 		const { classes, isRegistering } = this.props;
 		return (
 			<div className={classes.register}>
+				<RegisterSnackbar />
 				<Card className={classes.card}>
 					<form>
 						<CardContent>
