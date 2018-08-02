@@ -109,6 +109,7 @@ const styles = {
 		bottom: 0,
 		display: 'flex',
 		left: 0,
+		padding: '2em',
 		position: 'absolute',
 		right: 0,
 		top: 0,
