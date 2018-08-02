@@ -1,12 +1,12 @@
-const { createSelector } = require('reselect')
+// const { createSelector } = require('reselect')
 
-const mySelector = state => state.selectee
+const isRegisteringSelector = state => state.isRegistering
 
-const createSelectorExample = createSelector(
-	mySelector,
-	(foo) => foo + 'bar'
-)
+// const createSelectorExample = createSelector(
+// 	mySelector,
+// 	(foo) => foo + 'bar'
+// )
 
 module.exports = {
-	createSelectorExample,
+	isRegisteringSelector,
 }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import _ from 'lodash'
 
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
@@ -7,7 +8,9 @@ import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
 
 import { withStyles } from '@material-ui/core/styles'
+import sweetConnect from '../../redux/sweet-connect'
 import { register } from '../../redux/action-creators'
+import { isRegisteringSelector } from '../../redux/selectors'
 
 class Register extends Component {
 	state = {
@@ -46,7 +49,7 @@ class Register extends Component {
 	}
 
 	render() {
-		const { classes } = this.props;
+		const { classes, isRegistering } = this.props;
 		return (
 			<div className={classes.register}>
 				<Card className={classes.card}>
@@ -88,11 +91,12 @@ class Register extends Component {
 						<CardContent className={classes.actions}>
 							<Button
 								color="primary"
+								disabled={isRegistering}
+								onClick={this.handleSubmit}
 								size="large"
 								variant="contained"
-								onClick={this.handleSubmit}
 							>
-								Register
+								{isRegistering ? 'Registering...' : 'Register'}
 							</Button>
 						</CardContent>
 						<CardContent className={classes.actions}>
@@ -126,4 +130,11 @@ const styles = {
 	},
 }
 
-export default withStyles(styles)(Register)
+export default _.flowRight(
+	withStyles(styles),
+	sweetConnect({
+		selectors: {
+			isRegistering: isRegisteringSelector,
+		},
+	})
+)(Register)
