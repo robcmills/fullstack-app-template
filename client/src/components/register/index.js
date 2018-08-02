@@ -6,9 +6,10 @@ import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
 import { withStyles } from '@material-ui/core/styles'
 
-class Login extends Component {
+class Register extends Component {
 	state = {
 		username: '',
+		email: '',
 		password: '',
 		errors: {},
 	}
@@ -17,10 +18,13 @@ class Login extends Component {
 		this.setState({
 			errors: {
 				username: this.state.username ? null : 'Required',
+				email: this.state.email ? null : 'Required',
 				password: this.state.password ? null : 'Required',
 			},
 		})
-		const isValid = this.state.username && this.state.password
+		const isValid = this.state.username &&
+			this.state.email &&
+			this.state.password
 		return isValid
 	}
 
@@ -35,13 +39,13 @@ class Login extends Component {
 		if (!isValid) {
 			return
 		}
-		// login action
+		// register action
 	}
 
 	render() {
 		const { classes } = this.props;
 		return (
-			<div className={classes.login}>
+			<div className={classes.register}>
 				<Card className={classes.card}>
 					<form>
 						<CardContent>
@@ -56,6 +60,17 @@ class Login extends Component {
 								helperText={this.state.errors.username}
 							/>
 							<TextField
+								id="email"
+								value={this.state.email}
+								onChange={this.handleChange('email')}
+								margin="normal"
+								placeholder="email"
+								fullWidth
+								error={!!this.state.errors.email}
+								helperText={this.state.errors.email}
+								inputProps={{ type: 'email' }}
+							/>
+							<TextField
 								id="password"
 								value={this.state.password}
 								onChange={this.handleChange('password')}
@@ -64,9 +79,7 @@ class Login extends Component {
 								fullWidth
 								error={!!this.state.errors.password}
 								helperText={this.state.errors.password}
-								inputProps={{
-									type: 'password',
-								}}
+								inputProps={{ type: 'password' }}
 							/>
 						</CardContent>
 						<CardContent className={classes.actions}>
@@ -76,11 +89,11 @@ class Login extends Component {
 								variant="contained"
 								onClick={this.handleSubmit}
 							>
-								Login
+								Register
 							</Button>
 						</CardContent>
 						<CardContent className={classes.actions}>
-							<Button component={Link} to="/register">Register</Button>
+							<Button component={Link} to="/login">Login</Button>
 						</CardContent>
 					</form>
 				</Card>
@@ -90,7 +103,7 @@ class Login extends Component {
 }
 
 const styles = {
-	login: {
+	register: {
 		'align-items': 'center',
 		'justify-content': 'center',
 		bottom: 0,
@@ -109,4 +122,4 @@ const styles = {
 	},
 }
 
-export default withStyles(styles)(Login)
+export default withStyles(styles)(Register)
