@@ -1,5 +1,5 @@
 module.exports = {
-	REGISTER: (state, payload) => {
+	REGISTER_REQUEST: (state, payload) => {
 		return {
 			...state,
 			isRegistering: true,
