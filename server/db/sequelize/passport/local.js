@@ -19,7 +19,7 @@ module.exports = (username, password, done) =>
 					done(
 						null,
 						false,
-						{ message: 'Your username/password combination is incorrect.' }
+						{ message: 'Incorrect username or password.' }
 					)
 				}
 			}
@@ -29,6 +29,6 @@ module.exports = (username, password, done) =>
 		done(
 			null,
 			false,
-			{ message: 'Something went wrong trying to authenticate' }
+			{ message: `Authentication failed. ${err.toString()}` }
 		)
 	})
