@@ -34,7 +34,7 @@ module.exports.logout = (req, res) => {
 }
 
 module.exports.register = (req, res, next) => {
-	User.findOne({ where: { email: req.body.email } }).then((existingUser) => {
+	User.findOne({ where: { username: req.body.username } }).then((existingUser) => {
 		if (existingUser) {
 			return res.sendStatus(409)
 		}
