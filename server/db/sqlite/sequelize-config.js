@@ -2,7 +2,7 @@ module.exports = {
 	development: {
 		username: 'root',
 		password: null,
-		database: 'fullstack-app-dev',
+		database: 'fullstack_app_dev',
 		dialect: 'sqlite',
 		storage: 'data/fullstack-app-dev.sqlite3'
 	},
@@ -13,7 +13,7 @@ module.exports = {
 	production: {
 		username: process.env.RDS_USERNAME,
 		password: process.env.RDS_PASSWORD,
-		database: 'fullstack-app-prod',
+		database: 'fullstack_app_prod',
 		port: process.env.RDS_PORT,
 		host: process.env.RDS_HOSTNAME,
 		dialect: 'postgres'
