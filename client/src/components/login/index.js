@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import _ from 'lodash'
+import { Link, Redirect } from 'react-router-dom'
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
 import { withStyles } from '@material-ui/core/styles'
 import { login } from '../../redux/action-creators'
+import sweetConnect from '../../redux/sweet-connect'
+import { isLoggedInSelector } from '../../redux/selectors'
 
 class Login extends Component {
 	state = {
@@ -46,7 +49,10 @@ class Login extends Component {
 	}
 
 	render() {
-		const { classes } = this.props;
+		const { classes, isLoggedIn } = this.props;
+		if (isLoggedIn) {
+			return <Redirect to="/chat" />
+		}
 		return (
 			<div className={classes.login}>
 				<Card className={classes.card}>
@@ -119,4 +125,11 @@ const styles = {
 	},
 }
 
-export default withStyles(styles)(Login)
+export default _.flowRight(
+	withStyles(styles),
+	sweetConnect({
+		selectors: {
+			isLoggedIn: isLoggedInSelector,
+		},
+	})
+)(Login)

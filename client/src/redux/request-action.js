@@ -2,7 +2,7 @@ import store from './store'
 
 export default function requestAction({ body, method, type, url }) {
 	store.dispatch({ type: `${type}_REQUEST`, payload: body })
-	fetch(url, {
+	return fetch(url, {
 		method,
 		mode: 'cors', // no-cors, cors, *same-origin
 		cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
