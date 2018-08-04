@@ -16,16 +16,15 @@ module.exports = (sequelize, DataTypes) => {
 			}
 		}
 	}, {
-		timestamps: false,
-
-		classMethods: {
-			associate (models) {
-				Token.belongsTo(models.User, {
-					foreignKey: 'userId'
-				})
-			}
-		}
+		timestamps: false
 	})
+
+	// Class Methods
+	Token.associate = function (models) {
+		Token.belongsTo(models.User, {
+			foreignKey: 'userId'
+		})
+	}
 
 	return Token
 }

@@ -5,6 +5,7 @@ import CardContent from '@material-ui/core/CardContent'
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
 import { withStyles } from '@material-ui/core/styles'
+import { login } from '../../redux/action-creators'
 
 class Login extends Component {
 	state = {
@@ -35,7 +36,7 @@ class Login extends Component {
 		if (!isValid) {
 			return
 		}
-		// login action
+		login(this.state)
 	}
 
 	render() {

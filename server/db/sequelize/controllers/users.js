@@ -23,7 +23,7 @@ module.exports.login = (req, res, next) => {
 		// logIn()) that can be used to establish a login session
 		return req.logIn(user, (loginErr) => {
 			if (loginErr) return res.sendStatus(401)
-			return res.sendStatus(200)
+			return res.status(200).json(user)
 		})
 	})(req, res, next)
 }

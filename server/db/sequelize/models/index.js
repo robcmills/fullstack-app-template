@@ -6,21 +6,21 @@ const userModel = require('./users')
 
 const config = sequelizeConfig[ENV]
 
-const db = {}
+const Models = {}
 const dbUrl = process.env[config.use_env_variable]
 
 const sequelize = dbUrl
 	? new Sequelize(dbUrl)
 	: new Sequelize(config.database, config.username, config.password, config)
 
-db.Token = sequelize.import('Token', tokenModel)
-db.User = sequelize.import('User', userModel)
+Models.Token = sequelize.import('Token', tokenModel)
+Models.User = sequelize.import('User', userModel)
 
-Object.keys(db).forEach((key) => {
-	const model = db[key]
+Object.keys(Models).forEach((key) => {
+	const model = Models[key]
 	if (model.associate) {
-		model.associate(db)
+		model.associate(Models)
 	}
 })
 
-module.exports = { Models: db, sequelize }
+module.exports = { Models, sequelize }

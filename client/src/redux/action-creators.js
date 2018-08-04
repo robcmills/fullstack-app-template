@@ -1,12 +1,20 @@
 import store from './store'
 import requestAction from './request-action'
 
+export const login = payload => {
+	requestAction({
+		body: payload,
+		method: 'POST',
+		type: 'LOGIN',
+		url: '/api/login',
+	})
+}
 export const register = payload => {
 	requestAction({
 		body: payload,
 		method: 'POST',
 		type: 'REGISTER',
-		url: '/api/users',
+		url: '/api/register',
 	})
 }
 
