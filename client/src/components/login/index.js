@@ -8,7 +8,7 @@ import TextField from '@material-ui/core/TextField'
 import { withStyles } from '@material-ui/core/styles'
 import { login } from '../../redux/action-creators'
 import sweetConnect from '../../redux/sweet-connect'
-import { isLoggedInSelector } from '../../redux/selectors'
+import { isLoggingInSelector, isLoggedInSelector } from '../../redux/selectors'
 
 class Login extends Component {
 	state = {
@@ -49,7 +49,7 @@ class Login extends Component {
 	}
 
 	render() {
-		const { classes, isLoggedIn } = this.props;
+		const { classes, isLoggingIn, isLoggedIn } = this.props
 		if (isLoggedIn) {
 			return <Redirect to="/chat" />
 		}
@@ -59,39 +59,40 @@ class Login extends Component {
 					<form>
 						<CardContent>
 							<TextField
+								disabled={isLoggingIn}
+								error={!!this.state.errors.username}
+								fullWidth
+								helperText={this.state.errors.username}
 								id="username"
-								value={this.state.username}
+								margin="normal"
 								onChange={this.handleChange('username')}
 								onKeyPress={this.handleKeyPress}
-								margin="normal"
 								placeholder="username"
-								fullWidth
-								error={!!this.state.errors.username}
-								helperText={this.state.errors.username}
+								value={this.state.username}
 							/>
 							<TextField
+								disabled={isLoggingIn}
+								error={!!this.state.errors.password}
+								fullWidth
+								helperText={this.state.errors.password}
 								id="password"
-								value={this.state.password}
+								inputProps={{ type: 'password' }}
+								margin="normal"
 								onChange={this.handleChange('password')}
 								onKeyPress={this.handleKeyPress}
-								margin="normal"
 								placeholder="password"
-								fullWidth
-								error={!!this.state.errors.password}
-								helperText={this.state.errors.password}
-								inputProps={{
-									type: 'password',
-								}}
+								value={this.state.password}
 							/>
 						</CardContent>
 						<CardContent className={classes.actions}>
 							<Button
 								color="primary"
+								disabled={isLoggingIn}
 								size="large"
 								variant="contained"
 								onClick={this.handleSubmit}
 							>
-								Login
+								{isLoggingIn ? 'Logging in...' : 'Login'}
 							</Button>
 						</CardContent>
 						<CardContent className={classes.actions}>
@@ -129,6 +130,7 @@ export default _.flowRight(
 	withStyles(styles),
 	sweetConnect({
 		selectors: {
+			isLoggingIn: isLoggingInSelector,
 			isLoggedIn: isLoggedInSelector,
 		},
 	})

@@ -1,5 +1,6 @@
 module.exports = {
-	isLoggingIn: true,
+	isAuthenticating: true,
+	isLoggingIn: false,
 	isRegistering: false,
 	registerError: false,
 	user: null,
