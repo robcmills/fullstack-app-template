@@ -3,6 +3,8 @@
 const isRegisteringSelector = state => state.isRegistering
 const registerErrorSelector = state => state.registerError
 
+const isLoggedInSelector = state => !!state.user
+
 // const createSelectorExample = createSelector(
 // 	mySelector,
 // 	(foo) => foo + 'bar'
@@ -10,5 +12,6 @@ const registerErrorSelector = state => state.registerError
 
 module.exports = {
 	isRegisteringSelector,
+	isLoggedInSelector,
 	registerErrorSelector,
 }
