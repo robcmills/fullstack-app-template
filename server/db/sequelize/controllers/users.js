@@ -54,7 +54,7 @@ module.exports.register = (req, res, next) => {
 		return user.save().then(() => {
 			req.logIn(user, (err) => {
 				if (err) return res.sendStatus(401)
-				return res.sendStatus(200)
+				return res.status(200).json(user)
 			})
 		})
 	}).catch(err =>

@@ -35,6 +35,12 @@ class Register extends Component {
 		return isValid
 	}
 
+	handleKeyPress = event => {
+		if (event.key === 'Enter') {
+			this.handleSubmit()
+		}
+	}
+
 	handleChange = name => event => {
 		this.setState({
 			[name]: event.target.value,
@@ -61,6 +67,7 @@ class Register extends Component {
 								id="username"
 								value={this.state.username}
 								onChange={this.handleChange('username')}
+								onKeyPress={this.handleKeyPress}
 								margin="normal"
 								placeholder="username"
 								fullWidth
@@ -71,6 +78,7 @@ class Register extends Component {
 								id="email"
 								value={this.state.email}
 								onChange={this.handleChange('email')}
+								onKeyPress={this.handleKeyPress}
 								margin="normal"
 								placeholder="email"
 								fullWidth
@@ -82,6 +90,7 @@ class Register extends Component {
 								id="password"
 								value={this.state.password}
 								onChange={this.handleChange('password')}
+								onKeyPress={this.handleKeyPress}
 								margin="normal"
 								placeholder="password"
 								fullWidth

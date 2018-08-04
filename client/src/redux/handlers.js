@@ -35,6 +35,11 @@ module.exports = {
 		...state,
 		isRegistering: true,
 	}),
+	REGISTER_SUCCESS: (state, user) => ({
+		...state,
+		isRegistering: false,
+		user,
+	}),
 	REGISTER_FAILURE: (state, payload) => ({
 		...state,
 		isRegistering: false,
