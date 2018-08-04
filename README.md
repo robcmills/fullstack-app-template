@@ -21,3 +21,8 @@ Start dev client
 ```bash
 client> npm start
 ```
+
+### Users
+
+Username: admin
+Password: admin
