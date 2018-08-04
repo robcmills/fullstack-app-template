@@ -12,6 +12,12 @@ module.exports.all = (req, res) => {
 	})
 }
 
+module.exports.authenticate = (req, res, next) => {
+	return req.user
+		? res.status(200).json(req.user)
+		: res.sendStatus(401)
+}
+
 module.exports.login = (req, res, next) => {
 	// Do email and password validation for the server
 	passport.authenticate('local', (authErr, user, info) => {

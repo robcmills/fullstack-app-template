@@ -14,11 +14,11 @@ export default function requestAction({ body, method, type, url }) {
 		redirect: 'follow', // manual, *follow, error
 		referrer: 'no-referrer', // no-referrer, *client
 		body: JSON.stringify(body), // body data type must match 'Content-Type' header
-	}).then(response =>
-		response.json(),
-	).then(json =>
-		store.dispatch({ type: `${type}_SUCCESS`, payload: JSON.parse(json) })
-	).catch(error =>
+	}).then(response => {
+		return response.json()
+	}).then(json => {
+		store.dispatch({ type: `${type}_SUCCESS`, payload: json })
+	}).catch(error => {
 		store.dispatch({ type: `${type}_FAILURE`, payload: error })
-	)
+	})
 }

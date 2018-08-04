@@ -1,6 +1,14 @@
 import store from './store'
 import requestAction from './request-action'
 
+export const authenticate = () => {
+	requestAction({
+		method: 'POST',
+		type: 'AUTHENTICATE',
+		url: '/api/authenticate',
+	})
+}
+
 export const login = payload => {
 	requestAction({
 		body: payload,
