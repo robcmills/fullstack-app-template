@@ -2,7 +2,11 @@ import React, { Component } from 'react'
 
 import sweetConnect from '../../redux/sweet-connect'
 import { authenticate } from '../../redux/action-creators'
-import { isAuthenticatingSelector, isLoggedInSelector } from '../../redux/selectors'
+import {
+	isAuthenticatingSelector,
+	isLoggedInSelector,
+	userSelector
+} from '../../redux/selectors'
 
 class Auth extends Component {
 	componentDidMount() {
@@ -10,11 +14,14 @@ class Auth extends Component {
 	}
 
 	render() {
-		if (this.props.isAuthenticating) {
+		const { isAuthenticating, isLoggedIn, user } = this.props
+		if (isAuthenticating) {
 			return <div>Authenticating...</div>
 		}
-		return this.props.isLoggedIn
-			? <div>Logged in</div>
+		return isLoggedIn
+			? <div>
+				Logged in as <span style={{ fontWeight: 'bold' }}>{user.username}</span>
+			</div>
 			: <div>Logged out</div>
 	}
 }
@@ -23,5 +30,6 @@ export default sweetConnect({
 	selectors: {
 		isAuthenticating: isAuthenticatingSelector,
 		isLoggedIn: isLoggedInSelector,
+		user: userSelector,
 	},
 })(Auth)
