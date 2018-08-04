@@ -5,13 +5,19 @@ Simple full stack app template for experimentation
 
 Create dev database
 ```bash
-cd server/data
-./sqlite3 fullstack-app-dev.sqlite3
-NODE_ENV=development npx sequelize db:migrate
+server/data> ./sqlite3 fullstack-app-dev.sqlite3
+```
+Migrate db
+```bash
+server> NODE_ENV=development npx sequelize db:migrate
 ```
 
 Start dev server
-```
-NODE_ENV=development npm start
+```bash
+server> npm run dev
 ```
 
+Start dev client
+```bash
+client> npm start
+```
