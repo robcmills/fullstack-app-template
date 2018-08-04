@@ -26,3 +26,7 @@ client> npm start
 
 Username: admin
 Password: admin
+
+### Todo
+
+[ ] In register component, if user is logged in, show a message that they must log out with a button to do so

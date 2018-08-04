@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import _ from 'lodash'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 
 import RegisterSnackbar from './snackbar'
 import Card from '@material-ui/core/Card'
@@ -11,7 +11,7 @@ import TextField from '@material-ui/core/TextField'
 import { withStyles } from '@material-ui/core/styles'
 import sweetConnect from '../../redux/sweet-connect'
 import { register } from '../../redux/action-creators'
-import { isRegisteringSelector } from '../../redux/selectors'
+import { isLoggedInSelector, isRegisteringSelector } from '../../redux/selectors'
 
 class Register extends Component {
 	state = {
@@ -56,7 +56,10 @@ class Register extends Component {
 	}
 
 	render() {
-		const { classes, isRegistering } = this.props;
+		const { classes, isLoggedIn, isRegistering } = this.props;
+		if (isLoggedIn) {
+			return <Redirect to="/chat" />
+		}
 		return (
 			<div className={classes.register}>
 				<RegisterSnackbar />
@@ -145,6 +148,7 @@ export default _.flowRight(
 	withStyles(styles),
 	sweetConnect({
 		selectors: {
+			isLoggedIn: isLoggedInSelector,
 			isRegistering: isRegisteringSelector,
 		},
 	})
