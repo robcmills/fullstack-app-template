@@ -17,6 +17,15 @@ export const login = payload => {
 		url: '/api/login',
 	})
 }
+
+export const logout = () => {
+	requestAction({
+		method: 'DELETE',
+		type: 'LOGOUT',
+		url: '/api/logout',
+	})
+}
+
 export const register = payload => {
 	requestAction({
 		body: payload,

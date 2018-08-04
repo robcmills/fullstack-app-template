@@ -19,6 +19,12 @@ module.exports = {
 			// todo error
 		}
 	},
+	LOGOUT_REQUEST: (state) => {
+		return {
+			...state,
+			user: null,
+		}
+	},
 	REGISTER_REQUEST: (state, payload) => {
 		return {
 			...state,

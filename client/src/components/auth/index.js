@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import sweetConnect from '../../redux/sweet-connect'
-import { authenticate } from '../../redux/action-creators'
+import { authenticate, logout } from '../../redux/action-creators'
 import {
 	isAuthenticatingSelector,
 	isLoggedInSelector,
@@ -21,6 +21,7 @@ class Auth extends Component {
 		return isLoggedIn
 			? <div>
 				Logged in as <span style={{ fontWeight: 'bold' }}>{user.username}</span>
+				<button onClick={logout}>Log out</button>
 			</div>
 			: <div>Logged out</div>
 	}
