@@ -1,63 +1,49 @@
 module.exports = {
-	AUTHENTICATE_REQUEST: (state) => {
-		return {
-			...state,
-			isAuthenticating: true,
-		}
-	},
-	AUTHENTICATE_SUCCESS: (state, user) => {
-		return {
-			...state,
-			isAuthenticating: false,
-			user,
-		}
-	},
-	AUTHENTICATE_FAILURE: (state) => {
-		return {
-			...state,
-			isAuthenticating: false,
-			// todo error
-		}
-	},
-	LOGIN_REQUEST: (state) => {
-		return {
-			...state,
-			isLoggingIn: true,
-		}
-	},
-	LOGIN_SUCCESS: (state, user) => {
-		return {
-			...state,
-			isLoggingIn: false,
-			user,
-		}
-	},
-	LOGIN_FAILURE: (state, error) => {
-		return {
-			...state,
-			isLoggingIn: false,
-			loginError: error,
-		}
-	},
-	LOGOUT_REQUEST: (state) => {
-		return {
-			...state,
-			user: null,
-		}
-	},
-	REGISTER_REQUEST: (state, payload) => {
-		return {
-			...state,
-			isRegistering: true,
-		}
-	},
-	REGISTER_FAILURE: (state, payload) => {
-		return {
-			...state,
-			isRegistering: false,
-			registerError: true,
-		}
-	},
+	AUTHENTICATE_REQUEST: (state) => ({
+		...state,
+		isAuthenticating: true,
+	}),
+	AUTHENTICATE_SUCCESS: (state, user) => ({
+		...state,
+		isAuthenticating: false,
+		user,
+	}),
+	AUTHENTICATE_FAILURE: (state) => ({
+		...state,
+		isAuthenticating: false,
+		// todo error
+	}),
+	LOGIN_REQUEST: (state) => ({
+		...state,
+		isLoggingIn: true,
+	}),
+	LOGIN_SUCCESS: (state, user) => ({
+		...state,
+		isLoggingIn: false,
+		user,
+	}),
+	LOGIN_FAILURE: (state, error) => ({
+		...state,
+		isLoggingIn: false,
+		loginError: error.message,
+	}),
+	LOGOUT_REQUEST: (state) => ({
+		...state,
+		user: null,
+	}),
+	REGISTER_REQUEST: (state, payload) => ({
+		...state,
+		isRegistering: true,
+	}),
+	REGISTER_FAILURE: (state, payload) => ({
+		...state,
+		isRegistering: false,
+		registerError: true,
+	}),
+	CLOSE_LOGIN_SNACKBAR: (state) => ({
+		...state,
+		loginError: false,
+	}),
 	CLOSE_REGISTER_SNACKBAR: (state) => ({
 		...state,
 		registerError: false,

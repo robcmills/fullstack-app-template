@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import _ from 'lodash'
 import { Link, Redirect } from 'react-router-dom'
+
+import LoginSnackbar from './snackbar'
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
 import Button from '@material-ui/core/Button'
@@ -55,6 +57,7 @@ class Login extends Component {
 		}
 		return (
 			<div className={classes.login}>
+				<LoginSnackbar />
 				<Card className={classes.card}>
 					<form>
 						<CardContent>

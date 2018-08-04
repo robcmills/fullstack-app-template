@@ -31,6 +31,10 @@ export const register = payload =>
 		url: '/api/register',
 	})
 
+export const closeLoginSnackbar = () => {
+	store.dispatch({ type: 'CLOSE_LOGIN_SNACKBAR' })
+}
+
 export const closeRegisterSnackbar = () => {
 	store.dispatch({ type: 'CLOSE_REGISTER_SNACKBAR' })
 }

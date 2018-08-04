@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import _ from 'lodash'
+import { Link } from 'react-router-dom'
 
 import RegisterSnackbar from './snackbar'
 import Card from '@material-ui/core/Card'
