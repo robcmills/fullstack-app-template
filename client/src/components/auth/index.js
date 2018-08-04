@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import _ from 'lodash'
 
 import sweetConnect from '../../redux/sweet-connect'
 import { authenticate, logout } from '../../redux/action-creators'
@@ -7,6 +8,7 @@ import {
 	isLoggedInSelector,
 	userSelector
 } from '../../redux/selectors'
+import { withStyles } from '@material-ui/core/styles'
 
 class Auth extends Component {
 	componentDidMount() {
@@ -14,23 +16,33 @@ class Auth extends Component {
 	}
 
 	render() {
-		const { isAuthenticating, isLoggedIn, user } = this.props
+		const { isAuthenticating, classes, isLoggedIn, user } = this.props
 		if (isAuthenticating) {
-			return <div>Authenticating...</div>
+			return <div className={classes.auth}>Authenticating...</div>
 		}
 		return isLoggedIn
-			? <div>
+			? <div className={classes.auth}>
 				Logged in as <span style={{ fontWeight: 'bold' }}>{user.username}</span>
 				<button onClick={logout}>Log out</button>
 			</div>
-			: <div>Logged out</div>
+			: <div className={classes.auth}>Logged out</div>
 	}
 }
 
-export default sweetConnect({
-	selectors: {
-		isAuthenticating: isAuthenticatingSelector,
-		isLoggedIn: isLoggedInSelector,
-		user: userSelector,
+const styles = {
+	auth: {
+		'position': 'absolute',
+		'z-index': '1',
 	},
-})(Auth)
+}
+
+export default _.flowRight(
+	withStyles(styles),
+	sweetConnect({
+		selectors: {
+			isAuthenticating: isAuthenticatingSelector,
+			isLoggedIn: isLoggedInSelector,
+			user: userSelector,
+		},
+	})
+)(Auth)

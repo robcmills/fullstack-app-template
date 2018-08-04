@@ -15,7 +15,10 @@ export default function requestAction({ body, method, type, url }) {
 		referrer: 'no-referrer', // no-referrer, *client
 		body: JSON.stringify(body), // body data type must match 'Content-Type' header
 	}).then(response => {
-		return response.json()
+		if (response.ok) {
+			return response.json()
+		}
+		throw new Error('Request failed: ' + response.statusText)
 	}).then(json => {
 		store.dispatch({ type: `${type}_SUCCESS`, payload: json })
 	}).catch(error => {

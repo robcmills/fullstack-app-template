@@ -19,6 +19,26 @@ module.exports = {
 			// todo error
 		}
 	},
+	LOGIN_REQUEST: (state) => {
+		return {
+			...state,
+			isLoggingIn: true,
+		}
+	},
+	LOGIN_SUCCESS: (state, user) => {
+		return {
+			...state,
+			isLoggingIn: false,
+			user,
+		}
+	},
+	LOGIN_FAILURE: (state, error) => {
+		return {
+			...state,
+			isLoggingIn: false,
+			loginError: error,
+		}
+	},
 	LOGOUT_REQUEST: (state) => {
 		return {
 			...state,

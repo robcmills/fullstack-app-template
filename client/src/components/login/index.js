@@ -25,6 +25,12 @@ class Login extends Component {
 		return isValid
 	}
 
+	handleKeyPress = event => {
+		if (event.key === 'Enter') {
+			this.handleSubmit()
+		}
+	}
+
 	handleChange = name => event => {
 		this.setState({
 			[name]: event.target.value,
@@ -50,6 +56,7 @@ class Login extends Component {
 								id="username"
 								value={this.state.username}
 								onChange={this.handleChange('username')}
+								onKeyPress={this.handleKeyPress}
 								margin="normal"
 								placeholder="username"
 								fullWidth
@@ -60,6 +67,7 @@ class Login extends Component {
 								id="password"
 								value={this.state.password}
 								onChange={this.handleChange('password')}
+								onKeyPress={this.handleKeyPress}
 								margin="normal"
 								placeholder="password"
 								fullWidth
