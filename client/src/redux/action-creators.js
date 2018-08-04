@@ -1,12 +1,12 @@
 import store from './store'
-import asyncAction from './async-action'
+import requestAction from './request-action'
 
 export const register = payload => {
-	asyncAction({
+	requestAction({
 		body: payload,
 		method: 'POST',
 		type: 'REGISTER',
-		url: '/api/register',
+		url: '/api/users',
 	})
 }
 

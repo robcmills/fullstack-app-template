@@ -1,6 +1,6 @@
 const passport = require('passport')
 const local = require('./local')
-const google = require('./google')
+// const google = require('./google')
 const db = require('../../db')
 
 module.exports = () => {

@@ -1,6 +1,6 @@
 import store from './store'
 
-export default function asyncAction({ body, method, type, url }) {
+export default function requestAction({ body, method, type, url }) {
 	store.dispatch({ type: `${type}_REQUEST`, payload: body })
 	fetch(url, {
 		method,

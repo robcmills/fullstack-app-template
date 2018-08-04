@@ -42,6 +42,9 @@ module.exports = {
 				},
 				resetPasswordExpires: {
 					type: DataTypes.DATE
+				},
+				google: {
+					type: DataTypes.STRING
 				}
 			}
 		).then(() =>
