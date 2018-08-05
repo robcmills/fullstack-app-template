@@ -10,16 +10,25 @@ import ForumIcon from '@material-ui/icons/Forum'
 import AddIcon from '@material-ui/icons/AddCircleOutline'
 import ExpandLess from '@material-ui/icons/ExpandLess'
 import ExpandMore from '@material-ui/icons/ExpandMore'
+import CreateChannelModal from './create-channel-modal'
 
 import sweetConnect from '../../redux/sweet-connect'
 import { channelsSelector } from '../../redux/selectors'
 import { withStyles } from '@material-ui/core/styles'
 
 class ChannelsList extends React.Component {
-	state = { open: true }
+	state = { isCreateOpen: false, isExpanded: true }
 
-	handleClick = () => {
-		this.setState(state => ({ open: !state.open }))
+	toggleExpanded = () => {
+		this.setState(state => ({ isExpanded: !state.isExpanded }))
+	}
+
+	closeCreateChannelModal = () => {
+		this.setState({ isCreateOpen: false })
+	}
+
+	openCreateChannelModal = () => {
+		this.setState({ isCreateOpen: true })
 	}
 
 	render() {
@@ -27,19 +36,32 @@ class ChannelsList extends React.Component {
 
 		return (
 			<div className={classes.channels}>
+				<CreateChannelModal
+					isOpen={this.state.isCreateOpen}
+					handleClose={this.closeCreateChannelModal}
+				/>
 				<List component="nav">
-					<ListItem button onClick={this.handleClick} classes={{ root: classes.primaryColor }}>
+					<ListItem
+						button
+						onClick={this.toggleExpanded}
+						classes={{ root: classes.primaryColor }}
+					>
 						<ListItemIcon classes={{ root: classes.primaryColor }}>
 							<ForumIcon />
 						</ListItemIcon>
 						<ListItemText primary="Channels" classes={{
 							root: classes.listItemTextRoot,
 							primary: classes.primaryColor }} />
-						{this.state.open ? <ExpandLess /> : <ExpandMore />}
+						{this.state.isExpanded ? <ExpandLess /> : <ExpandMore />}
 					</ListItem>
-					<Collapse in={this.state.open} timeout="auto" unmountOnExit>
+					<Collapse in={this.state.isExpanded} timeout="auto" unmountOnExit>
 						<List component="div" disablePadding>
-							<ListItem button dense classes={{ root: classes.primaryLight }}>
+							<ListItem
+								button
+								dense
+								classes={{ root: classes.primaryLight }}
+								onClick={this.openCreateChannelModal}
+							>
 								<AddIcon />
 								<ListItemText primary="Create" classes={{ primary: classes.primaryLight }} />
 							</ListItem>
