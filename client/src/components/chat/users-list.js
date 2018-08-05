@@ -27,17 +27,19 @@ class UsersList extends React.Component {
 		return (
 			<div className={classes.users}>
 				<List component="nav">
-					<ListItem button onClick={this.handleClick}>
-						<ListItemIcon>
+					<ListItem button onClick={this.handleClick} classes={{ root: classes.primaryColor }}>
+						<ListItemIcon classes={{ root: classes.primaryColor }}>
 							<AccountCircle />
 						</ListItemIcon>
-						<ListItemText primary="Users" />
+						<ListItemText primary="Users" classes={{
+							root: classes.listItemTextRoot,
+							primary: classes.primaryColor }} />
 						{this.state.open ? <ExpandLess /> : <ExpandMore />}
 					</ListItem>
 					<Collapse in={this.state.open} timeout="auto" unmountOnExit>
 						<List component="div" disablePadding>
 							{users.map((user, index) =>
-								<ListItem button className={classes.nested} key={index}>
+								<ListItem button dense key={index}>
 									<ListItemText primary={user.username} />
 								</ListItem>
 							)}
@@ -55,8 +57,11 @@ const styles = theme => ({
 		maxWidth: 360,
 		backgroundColor: theme.palette.background.paper,
 	},
-	nested: {
-		// paddingLeft: theme.spacing.unit * 4,
+	primaryColor: {
+		color: theme.palette.primary.main,
+	},
+	listItemTextRoot: {
+		padding: 0,
 	},
 })
 

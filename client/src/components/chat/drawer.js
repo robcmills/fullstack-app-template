@@ -22,8 +22,8 @@ const ChatDrawer = ({ classes }) =>
 		}}
 	>
 		<div className={classes.toolbar} />
-		<UsersList />
 		<Divider />
+		<UsersList />
 	</Drawer>
 
 export default withStyles(styles)(ChatDrawer)
