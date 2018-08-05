@@ -6,7 +6,7 @@ import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 import Collapse from '@material-ui/core/Collapse'
-import AccountCircle from '@material-ui/icons/AccountCircle'
+import ForumIcon from '@material-ui/icons/Forum'
 import ExpandLess from '@material-ui/icons/ExpandLess'
 import ExpandMore from '@material-ui/icons/ExpandMore'
 
@@ -29,7 +29,7 @@ class ChannelsList extends React.Component {
 				<List component="nav">
 					<ListItem button onClick={this.handleClick} classes={{ root: classes.primaryColor }}>
 						<ListItemIcon classes={{ root: classes.primaryColor }}>
-							<AccountCircle />
+							<ForumIcon />
 						</ListItemIcon>
 						<ListItemText primary="Channels" classes={{
 							root: classes.listItemTextRoot,
