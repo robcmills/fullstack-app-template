@@ -1,5 +1,10 @@
 import React from 'react'
+import MenuBar from './menu-bar'
 
-const Chat = () => <h1>Chat</h1>
+const Chat = () =>
+	<div>
+		<MenuBar />
+		<h1>Chat</h1>
+	</div>
 
 export default Chat
