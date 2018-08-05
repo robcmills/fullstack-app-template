@@ -15,19 +15,6 @@ import sweetConnect from '../../redux/sweet-connect'
 import { userSelector } from '../../redux/selectors'
 import { logout } from '../../redux/action-creators'
 
-const styles = {
-	root: {
-		flexGrow: 1,
-	},
-	flex: {
-		flexGrow: 1,
-	},
-	menuButton: {
-		marginLeft: -12,
-		marginRight: 20,
-	},
-}
-
 class MenuBar extends React.Component {
 	state = {
 		anchorEl: null,
@@ -47,7 +34,7 @@ class MenuBar extends React.Component {
 		const open = Boolean(anchorEl)
 
 		return (
-			<AppBar position="static">
+			<AppBar position="absolute" className={classes.appBar}>
 				<Toolbar>
 					<IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
 						<MenuIcon />
@@ -90,6 +77,19 @@ class MenuBar extends React.Component {
 		)
 	}
 }
+
+const styles = theme => ({
+	appBar: {
+		zIndex: theme.zIndex.drawer + 1,
+	},
+	flex: {
+		flexGrow: 1,
+	},
+	menuButton: {
+		marginLeft: -12,
+		marginRight: 20,
+	},
+})
 
 export default _.flowRight(
 	withStyles(styles),
