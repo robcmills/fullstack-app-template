@@ -5,4 +5,5 @@ module.exports = {
 	loginError: false,
 	registerError: false,
 	user: null,
+	users: [],
 }

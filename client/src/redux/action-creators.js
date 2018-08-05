@@ -8,6 +8,13 @@ export const authenticate = () =>
 		url: '/api/authenticate',
 	})
 
+export const fetchUsers = () =>
+	requestAction({
+		method: 'GET',
+		type: 'FETCH_USERS',
+		url: '/api/users',
+	})
+
 export const login = payload =>
 	requestAction({
 		body: payload,

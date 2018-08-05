@@ -13,6 +13,19 @@ module.exports = {
 		isAuthenticating: false,
 		// todo error
 	}),
+	FETCH_USERS_REQUEST: (state) => ({
+		...state,
+		isFetchingUsers: true,
+	}),
+	FETCH_USERS_FAILURE: (state) => ({
+		...state,
+		isFetchingUsers: false,
+	}),
+	FETCH_USERS_SUCCESS: (state, users) => ({
+		...state,
+		isFetchingUsers: false,
+		users,
+	}),
 	LOGIN_REQUEST: (state) => ({
 		...state,
 		isLoggingIn: true,

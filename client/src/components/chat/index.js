@@ -1,14 +1,25 @@
-import React from 'react'
+import React, { Component } from 'react'
 import MenuBar from './menu-bar'
 import Drawer from './drawer'
+import { fetchUsers } from '../../redux/action-creators'
 import { withStyles } from '@material-ui/core/styles'
 
-const Chat = ({ classes }) =>
-	<div className={classes.chat}>
-		<MenuBar />
-		<Drawer />
-		<h1>Chat</h1>
-	</div>
+class Chat extends Component {
+	componentDidMount() {
+		fetchUsers()
+	}
+
+	render() {
+		const { classes } = this.props
+		return (
+			<div className={classes.chat}>
+				<MenuBar />
+				<Drawer />
+				<h1>Chat</h1>
+			</div>
+		)
+	}
+}
 
 const styles = {
 	chat: {

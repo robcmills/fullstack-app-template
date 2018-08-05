@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import _ from 'lodash'
 
 import AppBar from '@material-ui/core/AppBar'
@@ -15,7 +15,7 @@ import sweetConnect from '../../redux/sweet-connect'
 import { userSelector } from '../../redux/selectors'
 import { logout } from '../../redux/action-creators'
 
-class MenuBar extends React.Component {
+class MenuBar extends Component {
 	state = {
 		anchorEl: null,
 	}

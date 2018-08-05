@@ -9,6 +9,7 @@ const isLoggingInSelector = state => state.isLoggingIn
 const loginErrorSelector = state => state.loginError
 
 const userSelector = state => state.user
+const usersSelector = state => state.users
 
 // const createSelectorExample = createSelector(
 // 	mySelector,
@@ -22,5 +23,6 @@ module.exports = {
 	isLoggingInSelector,
 	loginErrorSelector,
 	registerErrorSelector,
-	userSelector
+	userSelector,
+	usersSelector,
 }
