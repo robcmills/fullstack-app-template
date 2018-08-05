@@ -7,6 +7,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 import Collapse from '@material-ui/core/Collapse'
 import ForumIcon from '@material-ui/icons/Forum'
+import AddIcon from '@material-ui/icons/AddCircleOutline'
 import ExpandLess from '@material-ui/icons/ExpandLess'
 import ExpandMore from '@material-ui/icons/ExpandMore'
 
@@ -38,6 +39,10 @@ class ChannelsList extends React.Component {
 					</ListItem>
 					<Collapse in={this.state.open} timeout="auto" unmountOnExit>
 						<List component="div" disablePadding>
+							<ListItem button dense classes={{ root: classes.primaryLight }}>
+								<AddIcon />
+								<ListItemText primary="Create" classes={{ primary: classes.primaryLight }} />
+							</ListItem>
 							{channels.map((channel, index) =>
 								<ListItem button dense key={index}>
 									<ListItemText primary={channel.name} />
@@ -59,6 +64,9 @@ const styles = theme => ({
 	},
 	primaryColor: {
 		color: theme.palette.primary.main,
+	},
+	primaryLight: {
+		color: theme.palette.primary.light,
 	},
 	listItemTextRoot: {
 		padding: 0,
