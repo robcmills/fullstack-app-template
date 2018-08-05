@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "NODE_ENV=development nodemon",
+    "migrate": "NODE_ENV=development npx sequelize db:migrate",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "robcmills",

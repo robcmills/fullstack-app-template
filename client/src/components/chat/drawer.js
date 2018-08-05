@@ -1,6 +1,7 @@
 import React from 'react'
 import Drawer from '@material-ui/core/Drawer'
 import Divider from '@material-ui/core/Divider'
+import ChannelsList from './channels-list'
 import UsersList from './users-list'
 import { withStyles } from '@material-ui/core/styles'
 
@@ -15,13 +16,9 @@ const styles = theme => ({
 })
 
 const ChatDrawer = ({ classes }) =>
-	<Drawer
-		variant="permanent"
-		classes={{
-			paper: classes.drawerPaper,
-		}}
-	>
+	<Drawer variant="permanent" classes={{ paper: classes.drawerPaper }}>
 		<div className={classes.toolbar} />
+		<ChannelsList />
 		<Divider />
 		<UsersList />
 	</Drawer>

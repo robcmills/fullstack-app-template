@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import MenuBar from './menu-bar'
 import Drawer from './drawer'
-import { fetchUsers } from '../../redux/action-creators'
+import { fetchChannels, fetchUsers } from '../../redux/action-creators'
 import { withStyles } from '@material-ui/core/styles'
 
 class Chat extends Component {
 	componentDidMount() {
+		fetchChannels()
 		fetchUsers()
 	}
 

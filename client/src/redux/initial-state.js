@@ -1,4 +1,5 @@
 module.exports = {
+	channels: [],
 	isAuthenticating: true,
 	isLoggingIn: false,
 	isRegistering: false,

@@ -13,6 +13,19 @@ module.exports = {
 		isAuthenticating: false,
 		// todo error
 	}),
+	FETCH_CHANNELS_REQUEST: (state) => ({
+		...state,
+		isFetchingChannels: true,
+	}),
+	FETCH_CHANNELS_FAILURE: (state) => ({
+		...state,
+		isFetchingChannels: false,
+	}),
+	FETCH_CHANNELS_SUCCESS: (state, channels) => ({
+		...state,
+		channels,
+		isFetchingChannels: false,
+	}),
 	FETCH_USERS_REQUEST: (state) => ({
 		...state,
 		isFetchingUsers: true,

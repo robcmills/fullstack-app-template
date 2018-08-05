@@ -8,6 +8,13 @@ export const authenticate = () =>
 		url: '/api/authenticate',
 	})
 
+export const fetchChannels = () =>
+	requestAction({
+		method: 'GET',
+		type: 'FETCH_CHANNELS',
+		url: '/api/channels',
+	})
+
 export const fetchUsers = () =>
 	requestAction({
 		method: 'GET',
