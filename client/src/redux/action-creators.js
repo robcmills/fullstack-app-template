@@ -8,6 +8,14 @@ export const authenticate = () =>
 		url: '/api/authenticate',
 	})
 
+export const createChannel = payload =>
+	requestAction({
+		body: payload,
+		method: 'POST',
+		type: 'CREATE_CHANNEL',
+		url: '/api/channels',
+	})
+
 export const fetchChannels = () =>
 	requestAction({
 		method: 'GET',

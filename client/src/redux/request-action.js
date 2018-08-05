@@ -21,7 +21,9 @@ export default function requestAction({ body, method, type, url }) {
 		throw new Error('Request failed: ' + response.statusText)
 	}).then(json => {
 		store.dispatch({ type: `${type}_SUCCESS`, payload: json })
+		return json
 	}).catch(error => {
 		store.dispatch({ type: `${type}_FAILURE`, payload: error })
+		return error
 	})
 }

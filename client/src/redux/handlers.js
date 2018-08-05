@@ -13,6 +13,24 @@ module.exports = {
 		isAuthenticating: false,
 		// todo error
 	}),
+
+	CREATE_CHANNEL_REQUEST: (state) => ({
+		...state,
+		createChannelError: false,
+		isCreatingChannel: true,
+	}),
+	CREATE_CHANNEL_FAILURE: (state, error) => ({
+		...state,
+		createChannelError: error.message,
+		isCreatingChannel: false,
+	}),
+	CREATE_CHANNEL_SUCCESS: (state, channel) => ({
+		...state,
+		channels: state.channels.concat(channel),
+		createChannelError: false,
+		isCreatingChannel: false,
+	}),
+
 	FETCH_CHANNELS_REQUEST: (state) => ({
 		...state,
 		isFetchingChannels: true,
@@ -26,6 +44,7 @@ module.exports = {
 		channels,
 		isFetchingChannels: false,
 	}),
+
 	FETCH_USERS_REQUEST: (state) => ({
 		...state,
 		isFetchingUsers: true,
@@ -39,6 +58,7 @@ module.exports = {
 		isFetchingUsers: false,
 		users,
 	}),
+
 	LOGIN_REQUEST: (state) => ({
 		...state,
 		isLoggingIn: true,
@@ -53,10 +73,12 @@ module.exports = {
 		isLoggingIn: false,
 		loginError: error.message,
 	}),
+
 	LOGOUT_REQUEST: (state) => ({
 		...state,
 		user: null,
 	}),
+
 	REGISTER_REQUEST: (state, payload) => ({
 		...state,
 		isRegistering: true,
@@ -71,6 +93,7 @@ module.exports = {
 		isRegistering: false,
 		registerError: true,
 	}),
+
 	CLOSE_LOGIN_SNACKBAR: (state) => ({
 		...state,
 		loginError: false,

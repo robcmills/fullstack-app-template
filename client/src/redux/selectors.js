@@ -1,6 +1,8 @@
 // const { createSelector } = require('reselect')
 
 const channelsSelector = state => state.channels
+const createChannelErrorSelector = state => state.createChannelError
+const isCreatingChannelSelector = state => state.isCreatingChannel
 const isAuthenticatingSelector = state => state.isAuthenticating
 const isLoggedInSelector = state => !!state.user
 const isLoggingInSelector = state => state.isLoggingIn
@@ -17,7 +19,9 @@ const usersSelector = state => state.users
 
 module.exports = {
 	channelsSelector,
+	createChannelErrorSelector,
 	isAuthenticatingSelector,
+	isCreatingChannelSelector,
 	isLoggedInSelector,
 	isLoggingInSelector,
 	isRegisteringSelector,
