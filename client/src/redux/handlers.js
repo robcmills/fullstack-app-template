@@ -14,6 +14,11 @@ module.exports = {
 		// todo error
 	}),
 
+	CLEAR_CREATE_CHANNEL_ERROR: (state) => ({
+		...state,
+		createChannelError: false,
+	}),
+
 	CREATE_CHANNEL_REQUEST: (state) => ({
 		...state,
 		createChannelError: false,

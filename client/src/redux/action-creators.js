@@ -53,6 +53,10 @@ export const register = payload =>
 		url: '/api/register',
 	})
 
+export const clearCreateChannelError = () => {
+	store.dispatch({ type: 'CLEAR_CREATE_CHANNEL_ERROR' })
+}
+
 export const closeLoginSnackbar = () => {
 	store.dispatch({ type: 'CLOSE_LOGIN_SNACKBAR' })
 }

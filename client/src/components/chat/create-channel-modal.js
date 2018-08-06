@@ -6,16 +6,41 @@ import DialogActions from '@material-ui/core/DialogActions'
 import DialogContent from '@material-ui/core/DialogContent'
 import DialogTitle from '@material-ui/core/DialogTitle'
 
-import { createChannel } from '../../redux/action-creators'
+import {
+	clearCreateChannelError,
+	createChannel,
+} from '../../redux/action-creators'
 import sweetConnect from '../../redux/sweet-connect'
 import {
 	isCreatingChannelSelector,
 	createChannelErrorSelector
 } from '../../redux/selectors'
 
+const initialState = {
+	errors: { name: false },
+	name: '',
+}
+
 class CreateChannelModal extends Component {
-	state = {
-		name: '',
+	state = initialState
+
+	resetState = () => {
+		this.setState(initialState)
+	}
+
+	validate = () => {
+		this.setState({
+			errors: {
+				name: this.state.name ? false : 'Required',
+			},
+		})
+		const isValid = Boolean(this.state.name)
+		return isValid
+	}
+
+	handleExited = () => {
+		clearCreateChannelError()
+		this.resetState()
 	}
 
 	handleKeyPress = event => {
@@ -31,6 +56,10 @@ class CreateChannelModal extends Component {
 	}
 
 	handleSubmit = () => {
+		const isValid = this.validate()
+		if (!isValid) {
+			return
+		}
 		createChannel(this.state).then((result) => {
 			if (result.id) {
 				this.props.handleClose()
@@ -50,6 +79,7 @@ class CreateChannelModal extends Component {
 				aria-labelledby="form-dialog-title"
 				fullWidth
 				onClose={handleClose}
+				onExited={this.handleExited}
 				open={isOpen}
 			>
 				<DialogTitle id="form-dialog-title">Create a Channel</DialogTitle>
@@ -57,9 +87,9 @@ class CreateChannelModal extends Component {
 					<TextField
 						autoFocus
 						disabled={isCreatingChannel}
-						error={!!createChannelError}
+						error={!!this.state.errors.name || !!createChannelError}
 						fullWidth
-						helperText={createChannelError}
+						helperText={this.state.errors.name || createChannelError}
 						id="name"
 						label="Name"
 						margin="dense"
