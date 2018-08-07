@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import MenuBar from './menu-bar'
 import Drawer from './drawer'
+import Messages from './messages'
 import { fetchChannels, fetchUsers } from '../../redux/action-creators'
 import { withStyles } from '@material-ui/core/styles'
 
@@ -16,7 +17,7 @@ class Chat extends Component {
 			<div className={classes.chat}>
 				<MenuBar />
 				<Drawer />
-				<h1>Chat</h1>
+				<Messages />
 			</div>
 		)
 	}

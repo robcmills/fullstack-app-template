@@ -10,7 +10,9 @@ import ForumIcon from '@material-ui/icons/Forum'
 import AddIcon from '@material-ui/icons/AddCircleOutline'
 import ExpandLess from '@material-ui/icons/ExpandLess'
 import ExpandMore from '@material-ui/icons/ExpandMore'
+
 import CreateChannelModal from './create-channel-modal'
+import ChannelListItem from './channel-list-item'
 
 import sweetConnect from '../../redux/sweet-connect'
 import { channelsSelector } from '../../redux/selectors'
@@ -66,9 +68,7 @@ class ChannelsList extends React.Component {
 								<ListItemText primary="Create" classes={{ primary: classes.primaryLight }} />
 							</ListItem>
 							{channels.map((channel, index) =>
-								<ListItem button dense key={index}>
-									<ListItemText primary={channel.name} />
-								</ListItem>
+								<ChannelListItem channel={channel} key={index} />
 							)}
 						</List>
 					</Collapse>
