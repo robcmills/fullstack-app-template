@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { Route } from 'react-router-dom'
+
 import MenuBar from './menu-bar'
 import Drawer from './drawer'
 import Messages from './messages'
@@ -17,7 +19,10 @@ class Chat extends Component {
 			<div className={classes.chat}>
 				<MenuBar />
 				<Drawer />
-				<Messages />
+				<Route
+					path="/chat/channels/:channel_id"
+					component={Messages}
+				/>
 			</div>
 		)
 	}

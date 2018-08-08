@@ -1,10 +1,10 @@
 import React from 'react'
 import { withStyles } from '@material-ui/core/styles'
 
-const Messages = ({ classes }) =>
+const Messages = ({ classes, match: { params: { channel_id }} }) =>
 	<div className={classes.messages}>
 		<div className={classes.toolbar} />
-		<div>Messages</div>
+		<div>Messages for channel_id: {channel_id}</div>
 	</div>
 
 const styles = theme => ({
