@@ -1,32 +1,19 @@
-// const { createSelector } = require('reselect')
+import _ from 'lodash'
+import { createSelector } from 'reselect'
 
-const channelsSelector = state => state.channels
-const createChannelErrorSelector = state => state.createChannelError
-const isCreatingChannelSelector = state => state.isCreatingChannel
-const isAuthenticatingSelector = state => state.isAuthenticating
-const isLoggedInSelector = state => !!state.user
-const isLoggingInSelector = state => state.isLoggingIn
-const isRegisteringSelector = state => state.isRegistering
-const loginErrorSelector = state => state.loginError
-const registerErrorSelector = state => state.registerError
-const userSelector = state => state.user
-const usersSelector = state => state.users
+export const channelsSelector = state => state.channels
+export const createChannelErrorSelector = state => state.createChannelError
+export const isCreatingChannelSelector = state => state.isCreatingChannel
+export const isAuthenticatingSelector = state => state.isAuthenticating
+export const isLoggedInSelector = state => !!state.user
+export const isLoggingInSelector = state => state.isLoggingIn
+export const isRegisteringSelector = state => state.isRegistering
+export const loginErrorSelector = state => state.loginError
+export const registerErrorSelector = state => state.registerError
+export const userSelector = state => state.user
+export const usersSelector = state => state.users
 
-// const createSelectorExample = createSelector(
-// 	mySelector,
-// 	(foo) => foo + 'bar'
-// )
-
-module.exports = {
+export const channelsByIdSelector = createSelector(
 	channelsSelector,
-	createChannelErrorSelector,
-	isAuthenticatingSelector,
-	isCreatingChannelSelector,
-	isLoggedInSelector,
-	isLoggingInSelector,
-	isRegisteringSelector,
-	loginErrorSelector,
-	registerErrorSelector,
-	userSelector,
-	usersSelector,
-}
+	(channels) => _.keyBy(channels, 'id')
+)
