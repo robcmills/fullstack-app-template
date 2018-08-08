@@ -17,7 +17,7 @@ const ChannelListItem = ({
 			: {}}
 		component={Link}
 		dense
-		to={`/chat/channels/${channel.id}`}
+		to={`/channels/${channel.id}`}
 	>
 		<ListItemText primary={channel.name} />
 	</ListItem>

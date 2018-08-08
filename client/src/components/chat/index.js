@@ -1,9 +1,13 @@
 import React, { Component } from 'react'
-import { Route } from 'react-router-dom'
+import _ from 'lodash'
+import { withProps } from 'recompose'
 
 import MenuBar from './menu-bar'
 import Drawer from './drawer'
 import Messages from './messages'
+
+import sweetConnect from '../../redux/sweet-connect'
+import { channelsByIdSelector } from '../../redux/selectors'
 import { fetchChannels, fetchUsers } from '../../redux/action-creators'
 import { withStyles } from '@material-ui/core/styles'
 
@@ -14,15 +18,12 @@ class Chat extends Component {
 	}
 
 	render() {
-		const { classes, match } = this.props
+		const { activeChannel, classes } = this.props
 		return (
 			<div className={classes.chat}>
 				<MenuBar />
 				<Drawer />
-				<Route
-					path={`${match.url}/channels/:channel_id`}
-					component={Messages}
-				/>
+				<Messages activeChannel={activeChannel} />
 			</div>
 		)
 	}
@@ -38,4 +39,14 @@ const styles = {
 	},
 }
 
-export default withStyles(styles)(Chat)
+export default _.flowRight(
+	withStyles(styles),
+	sweetConnect({
+		selectors: {
+			channelsById: channelsByIdSelector,
+		}
+	}),
+	withProps(({ channelsById, match }) => ({
+		activeChannel: channelsById[match.params.channel_id]
+	}))
+)(Chat)

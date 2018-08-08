@@ -87,6 +87,7 @@ client> npm start
 - [ ] Implement Messages model (with associations between Channels and Users)
 - [ ] Implement Messages routes
 - [ ] Ensure postgres/mysql compatibility for production deployments
+- [ ] Implement generic route handler to enable using async/await
 
 *Bonus*
 
