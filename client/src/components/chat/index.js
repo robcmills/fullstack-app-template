@@ -14,13 +14,13 @@ class Chat extends Component {
 	}
 
 	render() {
-		const { classes } = this.props
+		const { classes, match } = this.props
 		return (
 			<div className={classes.chat}>
 				<MenuBar />
 				<Drawer />
 				<Route
-					path="/chat/channels/:channel_id"
+					path={`${match.url}/channels/:channel_id`}
 					component={Messages}
 				/>
 			</div>
