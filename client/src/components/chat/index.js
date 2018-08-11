@@ -22,7 +22,7 @@ class Chat extends Component {
 		return (
 			<div className={classes.chat}>
 				<MenuBar />
-				<Drawer />
+				<Drawer activeChannel={activeChannel} />
 				<Messages activeChannel={activeChannel} />
 			</div>
 		)

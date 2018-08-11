@@ -34,7 +34,7 @@ class ChannelsList extends React.Component {
 	}
 
 	render() {
-		const { classes, channels } = this.props
+		const { activeChannel, classes, channels } = this.props
 
 		return (
 			<div className={classes.channels}>
@@ -68,7 +68,11 @@ class ChannelsList extends React.Component {
 								<ListItemText primary="Create" classes={{ primary: classes.primaryLight }} />
 							</ListItem>
 							{channels.map((channel, index) =>
-								<ChannelListItem channel={channel} key={index} />
+								<ChannelListItem
+									channel={channel}
+									isActive={channel.id === (activeChannel && activeChannel.id)}
+									key={index}
+								/>
 							)}
 						</List>
 					</Collapse>

@@ -6,27 +6,39 @@ import ListItemText from '@material-ui/core/ListItemText'
 import { withStyles } from '@material-ui/core/styles'
 
 const ChannelListItem = ({
-	activeChannelId,
 	classes,
 	channel,
+	isActive
 }) =>
 	<ListItem
 		button
-		classes={activeChannelId === String(channel.id)
-			? { root: classes.active }
-			: {}}
+		classes={{
+			button: isActive && classes.button,
+			root: isActive && classes.background,
+		}}
 		component={Link}
 		dense
 		to={`/channels/${channel.id}`}
 	>
-		<ListItemText primary={channel.name} />
+		<ListItemText
+			classes={{ textDense: isActive && classes.text }}
+			primary={channel.name}
+		/>
 	</ListItem>
 
 const styles = theme => ({
-	active: {
-		backgroundColor: theme.palette.primary.light,
-		color: 'white',
+	background: {
+		backgroundColor: theme.palette.primary.main,
+		color: 'white'
 	},
+	button: {
+		'&:hover': {
+			backgroundColor: theme.palette.primary.main,
+		}
+	},
+	text: {
+		color: 'inherit',
+	}
 })
 
 export default withStyles(styles)(ChannelListItem)
