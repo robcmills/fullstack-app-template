@@ -21,7 +21,7 @@ class Chat extends Component {
 		const { activeChannel, classes } = this.props
 		return (
 			<div className={classes.chat}>
-				<MenuBar />
+				<MenuBar activeChannel={activeChannel} />
 				<Drawer activeChannel={activeChannel} />
 				<Messages activeChannel={activeChannel} />
 			</div>

@@ -29,7 +29,7 @@ class MenuBar extends Component {
 	}
 
 	render() {
-		const { classes, user: { username } } = this.props
+		const { activeChannel, classes, user: { username } } = this.props
 		const { anchorEl } = this.state
 		const open = Boolean(anchorEl)
 
@@ -40,7 +40,7 @@ class MenuBar extends Component {
 						<MenuIcon />
 					</IconButton>
 					<Typography variant="title" color="inherit" className={classes.flex}>
-						Chat
+						{activeChannel ? activeChannel.name : 'Chat'}
 					</Typography>
 					<div>
 						<Button
