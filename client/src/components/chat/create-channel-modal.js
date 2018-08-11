@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import _ from 'lodash'
+import { withRouter } from 'react-router-dom'
+
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
 import Dialog from '@material-ui/core/Dialog'
@@ -60,9 +63,10 @@ class CreateChannelModal extends Component {
 		if (!isValid) {
 			return
 		}
-		createChannel(this.state).then((result) => {
-			if (result.id) {
+		createChannel(this.state).then((newChannel) => {
+			if (newChannel.id) {
 				this.props.handleClose()
+				this.props.history.push(`/channels/${newChannel.id}`)
 			}
 		})
 	}
@@ -115,9 +119,12 @@ class CreateChannelModal extends Component {
 	}
 }
 
-export default sweetConnect({
-	selectors: {
-		isCreatingChannel: isCreatingChannelSelector,
-		createChannelError: createChannelErrorSelector
-	}
-})(CreateChannelModal)
+export default _.flowRight(
+	withRouter,
+	sweetConnect({
+		selectors: {
+			isCreatingChannel: isCreatingChannelSelector,
+			createChannelError: createChannelErrorSelector
+		}
+	}),
+)(CreateChannelModal)
