@@ -65,6 +65,10 @@ module.exports = (sequelize, DataTypes) => {
 		User.hasMany(models.Token, {
 			foreignKey: 'userId'
 		})
+		User.belongsToMany(models.Channel, {
+			foreignKey: 'userId',
+			through: 'channel_member'
+		})
 	}
 
 	// Instance Methods

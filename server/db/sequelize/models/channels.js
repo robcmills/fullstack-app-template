@@ -8,5 +8,13 @@ module.exports = (sequelize, DataTypes) => {
 		timestamps: false
 	})
 
+	// Class Methods
+	Channel.associate = function (models) {
+		Channel.belongsToMany(models.User, {
+			foreignKey: 'channelId',
+			through: 'channel_member'
+		})
+	}
+
 	return Channel
 }
