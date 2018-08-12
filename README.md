@@ -90,3 +90,5 @@ client> npm start
 - [ ] Improve documentation
 - [ ] Add tests
 - [ ] Dockerize (wrap up both client and server into a docker and run both in parallel with a util like concurrently)
+- [ ] User profile pages
+- [ ] Google auth
