@@ -46,7 +46,7 @@ Start client
 client> npm start
 ```
 
-### Done
+### TODO
 
 *Client*
 
@@ -58,6 +58,13 @@ client> npm start
 - [x] Implement client side auth module for automatic login from previous sessions and redirects back to login page when sessions expire or user logs out
 - [x] Implement client side drawer to display existing channels and users
 - [x] Implement a create channel modal (with error handling)
+- [ ] In register component, if user is logged in, show a message that they must log out with a button to do so (currently just redirects)
+- [x] Improve client routing, especially the ability to determine the active channel id and share the selected channel document among several disparate components (maybe full redux integration)
+- [x] Style the selected channel as highlighted in side drawer
+- [ ] Fetch channel messages and display them in Messages component
+- [ ] Filter users shown in sidebar drawer to only channel members
+- [ ] Implement input to send messages to channel
+- [ ] Implement top left menu icon click handler to show/hide the side drawer
 
 *Server*
 
@@ -68,26 +75,13 @@ client> npm start
 - [x] Set up sequelize models for Users, Tokens, and Channels
 - [x] Implement basic user routes for login, logout, authentication, and registration
 - [x] Implement basic channel routes for creation and fetching
-
-### Todo
-
-*Client*
-
-- [ ] In register component, if user is logged in, show a message that they must log out with a button to do so (currently just redirects)
-- [ ] Improve client routing, especially the ability to determine the active channel id and share the selected channel document among several disparate components (maybe full redux integration)
-- [ ] Style the selected channel as highlighted in side drawer
-- [ ] Fetch channel messages and display them in Messages component
-- [ ] Filter users shown in sidebar drawer to only channel members
-- [ ] Implement input to send messages to channel
-
-*Server*
-
 - [ ] Set up many-to-many associations between Channels and Users
 - [ ] Expose routes to modify these associations (channel.addUser, channel.removeUser, etc.)
 - [ ] Implement Messages model (with associations between Channels and Users)
 - [ ] Implement Messages routes
 - [ ] Ensure postgres/mysql compatibility for production deployments
 - [ ] Implement generic route handler to enable using async/await
+- [ ] Paginate
 
 *Bonus*
 
