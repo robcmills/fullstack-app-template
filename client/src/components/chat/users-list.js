@@ -1,6 +1,5 @@
 import React from 'react'
 import _ from 'lodash'
-import { withProps } from 'recompose'
 
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
@@ -12,7 +11,7 @@ import ExpandLess from '@material-ui/icons/ExpandLess'
 import ExpandMore from '@material-ui/icons/ExpandMore'
 
 import sweetConnect from '../../redux/sweet-connect'
-import { allUsersSelector } from '../../redux/selectors'
+import { usersSelector } from '../../redux/selectors'
 import { withStyles } from '@material-ui/core/styles'
 
 class UsersList extends React.Component {
@@ -70,10 +69,7 @@ export default _.flowRight(
 	withStyles(styles),
 	sweetConnect({
 		selectors: {
-			allUsers: allUsersSelector,
+			users: usersSelector,
 		},
 	}),
-	withProps(({ activeChannel, allUsers }) => ({
-		users: activeChannel ? activeChannel.Users : allUsers,
-	}))
 )(UsersList)

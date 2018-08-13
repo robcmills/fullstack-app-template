@@ -12,7 +12,7 @@ const ChatDrawer = ({ activeChannel, classes }) =>
 		<div className={classes.toolbar} />
 		<ChannelsList activeChannel={activeChannel} />
 		<Divider />
-		<UsersList activeChannel={activeChannel} />
+		<UsersList />
 	</Drawer>
 
 const styles = theme => ({
