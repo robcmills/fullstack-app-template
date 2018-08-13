@@ -32,10 +32,6 @@ class Chat extends Component {
 const styles = {
 	chat: {
 		display: 'flex',
-		flexGrow: 1,
-		overflow: 'hidden',
-		position: 'relative',
-		zIndex: 1,
 	},
 }
 

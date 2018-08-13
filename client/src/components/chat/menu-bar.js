@@ -34,7 +34,7 @@ class MenuBar extends Component {
 		const open = Boolean(anchorEl)
 
 		return (
-			<AppBar position="absolute" className={classes.appBar}>
+			<AppBar className={classes.appBar}>
 				<Toolbar>
 					<IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
 						<MenuIcon />
