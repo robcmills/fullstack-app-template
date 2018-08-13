@@ -1,28 +1,24 @@
 const { Models: { Channel } } = require('../models')
+const asyncHandler = require('./async-handler')
 
-module.exports.all = (req, res) => {
-	Channel.findAll().then((channels) => {
-		res.json(channels)
-	}).catch((err) => {
-		console.log(err)
-		res.status(500).send('Error in Channel.findAll')
+module.exports.all = asyncHandler(async (req, res) =>
+	res.json(await Channel.findAll())
+)
+
+module.exports.create = asyncHandler(async (req, res) => {
+	const existingChannel = await Channel.findOne({
+		where: { name: req.body.name }
 	})
-}
+	if (existingChannel) {
+		return res.sendStatus(409)
+	}
 
-module.exports.create = (req, res, next) => {
-	Channel.findOne({ where: { name: req.body.name } }).then((existingChannel) => {
-		if (existingChannel) {
-			return res.status(409).send('A Channel with the provided name already exists')
-		}
+	const newChannel = await Channel.create({
+		name: req.body.name
+	})
 
-		const channel = Channel.build({
-			name: req.body.name
-		})
+	// Assume current user wants to join the channel they create
+	await newChannel.addUser(req.user)
 
-		return channel.save().then(() => {
-			return res.status(200).json(channel)
-		})
-	}).catch(err =>
-		next(err)
-	)
-}
+	return res.status(200).json(newChannel)
+})
