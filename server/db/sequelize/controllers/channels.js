@@ -1,8 +1,10 @@
-const { Models: { Channel } } = require('../models')
+const { Models: { Channel, User } } = require('../models')
 const asyncHandler = require('./async-handler')
 
 module.exports.all = asyncHandler(async (req, res) =>
-	res.json(await Channel.findAll())
+	res.json(await Channel.findAll({
+		include: [{ model: User, attributes: ['username', 'id'] }]
+	}))
 )
 
 module.exports.create = asyncHandler(async (req, res) => {

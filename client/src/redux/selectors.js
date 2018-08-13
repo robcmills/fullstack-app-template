@@ -1,6 +1,7 @@
 import _ from 'lodash'
 import { createSelector } from 'reselect'
 
+export const allUsersSelector = state => state.users
 export const channelsSelector = state => state.channels
 export const createChannelErrorSelector = state => state.createChannelError
 export const isCreatingChannelSelector = state => state.isCreatingChannel
@@ -11,7 +12,6 @@ export const isRegisteringSelector = state => state.isRegistering
 export const loginErrorSelector = state => state.loginError
 export const registerErrorSelector = state => state.registerError
 export const userSelector = state => state.user
-export const usersSelector = state => state.users
 
 export const channelsByIdSelector = createSelector(
 	channelsSelector,
