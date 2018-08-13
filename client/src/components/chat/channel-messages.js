@@ -1,4 +1,5 @@
 import React from 'react'
+import MessageInput from './message-input'
 import { withStyles } from '@material-ui/core/styles'
 
 const ChannelMessages = ({
@@ -6,8 +7,8 @@ const ChannelMessages = ({
 	classes,
 }) =>
 	<div className={classes.container}>
+		<div className={classes.input}><MessageInput /></div>
 		<div className={classes.messages}>Channel Messages</div>
-		<div className={classes.input}>Input</div>
 	</div>
 
 const styles = theme => ({
@@ -20,7 +21,10 @@ const styles = theme => ({
 		flex: '1 1 auto',
 	},
 	input: {
+		display: 'flex',
 		flex: '0 0 50px',
+		'align-items': 'center',
+		'justify-content': 'center',
 	},
 })
 
