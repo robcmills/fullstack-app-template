@@ -53,6 +53,14 @@ export const register = payload =>
 		url: '/api/register',
 	})
 
+export const sendMessage = ({ channelId, message }) =>
+	requestAction({
+		body: { message },
+		method: 'POST',
+		type: 'SEND_MESSAGE',
+		url: `/api/channels/${channelId}/messages`,
+	})
+
 export const clearCreateChannelError = () => {
 	store.dispatch({ type: 'CLEAR_CREATE_CHANNEL_ERROR' })
 }

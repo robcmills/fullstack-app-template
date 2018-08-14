@@ -6,6 +6,7 @@ module.exports = {
 	isLoggingIn: false,
 	isRegistering: false,
 	loginError: false,
+	messagesByChannelId: {},
 	registerError: false,
 	user: null,
 	users: [],

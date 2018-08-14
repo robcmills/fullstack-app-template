@@ -1,22 +1,53 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Input from '@material-ui/core/Input'
+import { sendMessage } from '../../redux/action-creators'
 import { withStyles } from '@material-ui/core/styles'
 
-const MessageInput = ({
-	activeChannel,
-	classes,
-}) =>
-	<div className={classes.messageInput}>
-		<Input
-			classes={{
-				root: classes.root,
-				input: classes.input,
-				focused: classes.focused,
-			}}
-			disableUnderline
-			fullWidth
-		/>
-	</div>
+class MessageInput extends Component {
+	state = {
+		message: '',
+	}
+
+	handleKeyPress = event => {
+		if (event.key === 'Enter') {
+			this.handleSubmit()
+		}
+	}
+
+	handleChange = name => event => {
+		this.setState({
+			[name]: event.target.value,
+		})
+	}
+
+	handleSubmit = () => {
+		sendMessage({
+			channelId: this.props.channel.id,
+			message: this.state.message,
+		})
+		this.setState({ message: '' })
+	}
+
+	render() {
+		const { classes } = this.props
+		return (
+			<div className={classes.messageInput}>
+				<Input
+					classes={{
+						root: classes.root,
+						input: classes.input,
+						focused: classes.focused,
+					}}
+					disableUnderline
+					fullWidth
+					onChange={this.handleChange('message')}
+					onKeyPress={this.handleKeyPress}
+					placeholder="enter a message"
+				/>
+			</div>
+		)
+	}
+}
 
 const styles = theme => ({
 	messageInput: {

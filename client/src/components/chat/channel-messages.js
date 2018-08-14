@@ -1,14 +1,24 @@
 import React from 'react'
+import _ from 'lodash'
+import { withProps } from 'recompose'
+
 import MessageInput from './message-input'
+import sweetConnect from '../../redux/sweet-connect'
+import { messagesByChannelIdSelector } from '../../redux/selectors'
 import { withStyles } from '@material-ui/core/styles'
 
 const ChannelMessages = ({
-	activeChannel,
+	channel,
 	classes,
+	messages,
 }) =>
 	<div className={classes.container}>
-		<div className={classes.input}><MessageInput /></div>
-		<div className={classes.messages}>Channel Messages</div>
+		<div className={classes.input}>
+			<MessageInput channel={channel} />
+		</div>
+		<div className={classes.messages}>
+			{messages.map((message, index) => <div key={index}>{message}</div>)}
+		</div>
 	</div>
 
 const styles = theme => ({
@@ -19,6 +29,7 @@ const styles = theme => ({
 	},
 	messages: {
 		flex: '1 1 auto',
+		padding: '10px',
 	},
 	input: {
 		display: 'flex',
@@ -28,4 +39,14 @@ const styles = theme => ({
 	},
 })
 
-export default withStyles(styles)(ChannelMessages)
+export default _.flowRight(
+	withStyles(styles),
+	sweetConnect({
+		selectors: {
+			messagesByChannelId: messagesByChannelIdSelector,
+		},
+	}),
+	withProps(({ channel = {}, messagesByChannelId }) => ({
+		messages: messagesByChannelId[channel.id] || [],
+	}))
+)(ChannelMessages)

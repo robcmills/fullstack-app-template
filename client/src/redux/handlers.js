@@ -99,6 +99,17 @@ module.exports = {
 		registerError: true,
 	}),
 
+	SEND_MESSAGE_REQUEST: (state, { channelId, message }) => ({
+		...state,
+		messagesByChannelId: {
+			...state.messagesByChannelId,
+			[channelId]: [
+				...(state.messagesByChannelId[channelId] || []),
+				message,
+			],
+		},
+	}),
+
 	CLOSE_LOGIN_SNACKBAR: (state) => ({
 		...state,
 		loginError: false,
