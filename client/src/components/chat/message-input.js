@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
+import _ from 'lodash'
 import Input from '@material-ui/core/Input'
+import sweetConnect from '../../redux/sweet-connect'
+import { userSelector } from '../../redux/selectors'
 import { sendMessage } from '../../redux/action-creators'
 import { withStyles } from '@material-ui/core/styles'
 
@@ -21,10 +24,13 @@ class MessageInput extends Component {
 	}
 
 	handleSubmit = () => {
-		sendMessage({
-			channelId: this.props.channel.id,
-			message: this.state.message,
-		})
+		const { channel, user } = this.props
+		const message = {
+			channelId: channel.id,
+			content: this.state.message,
+			userId: user.id,
+		}
+		sendMessage(message)
 		this.setState({ message: '' })
 	}
 
@@ -70,4 +76,11 @@ const styles = theme => ({
 	}
 })
 
-export default withStyles(styles)(MessageInput)
+export default _.flowRight(
+	withStyles(styles),
+	sweetConnect({
+		selectors: {
+			user: userSelector,
+		},
+	}),
+)(MessageInput)

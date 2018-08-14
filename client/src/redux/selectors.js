@@ -18,3 +18,7 @@ export const channelsByIdSelector = createSelector(
 	channelsSelector,
 	(channels) => _.keyBy(channels, 'id')
 )
+export const usersByIdSelector = createSelector(
+	usersSelector,
+	(users) => _.keyBy(users, 'id')
+)

@@ -3,6 +3,7 @@ import _ from 'lodash'
 import { withProps } from 'recompose'
 
 import MessageInput from './message-input'
+import ChannelMessage from './channel-message'
 import sweetConnect from '../../redux/sweet-connect'
 import { messagesByChannelIdSelector } from '../../redux/selectors'
 import { withStyles } from '@material-ui/core/styles'
@@ -17,7 +18,8 @@ const ChannelMessages = ({
 			<MessageInput channel={channel} />
 		</div>
 		<div className={classes.messages}>
-			{messages.map((message, index) => <div key={index}>{message}</div>)}
+			{messages.map((message, index) =>
+				<ChannelMessage key={index} message={message} />)}
 		</div>
 	</div>
 

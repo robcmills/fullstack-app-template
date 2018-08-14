@@ -99,12 +99,12 @@ module.exports = {
 		registerError: true,
 	}),
 
-	SEND_MESSAGE_REQUEST: (state, { channelId, message }) => ({
+	SEND_MESSAGE_REQUEST: (state, message) => ({
 		...state,
 		messagesByChannelId: {
 			...state.messagesByChannelId,
-			[channelId]: [
-				...(state.messagesByChannelId[channelId] || []),
+			[message.channelId]: [
+				...(state.messagesByChannelId[message.channelId] || []),
 				message,
 			],
 		},

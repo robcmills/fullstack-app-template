@@ -53,12 +53,12 @@ export const register = payload =>
 		url: '/api/register',
 	})
 
-export const sendMessage = ({ channelId, message }) =>
+export const sendMessage = message =>
 	requestAction({
-		body: { channelId, message },
+		body: message,
 		method: 'POST',
 		type: 'SEND_MESSAGE',
-		url: `/api/channels/${channelId}/messages`,
+		url: `/api/channels/${message.channelId}/messages`,
 	})
 
 export const clearCreateChannelError = () => {
