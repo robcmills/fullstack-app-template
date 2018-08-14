@@ -55,7 +55,7 @@ export const register = payload =>
 
 export const sendMessage = ({ channelId, message }) =>
 	requestAction({
-		body: { message },
+		body: { channelId, message },
 		method: 'POST',
 		type: 'SEND_MESSAGE',
 		url: `/api/channels/${channelId}/messages`,

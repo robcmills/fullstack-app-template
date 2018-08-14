@@ -43,6 +43,7 @@ class MessageInput extends Component {
 					onChange={this.handleChange('message')}
 					onKeyPress={this.handleKeyPress}
 					placeholder="enter a message"
+					value={this.state.message}
 				/>
 			</div>
 		)
