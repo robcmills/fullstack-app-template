@@ -10,6 +10,10 @@ module.exports = (sequelize, DataTypes) => {
 
 	// Class Methods
 	Channel.associate = function (models) {
+		Channel.belongsToMany(models.Message, {
+			foreignKey: 'channelId',
+			through: 'channel_member'
+		})
 		Channel.belongsToMany(models.User, {
 			foreignKey: 'channelId',
 			through: 'channel_member'

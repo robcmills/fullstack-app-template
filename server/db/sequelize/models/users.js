@@ -62,6 +62,9 @@ module.exports = (sequelize, DataTypes) => {
 
 	// Class Methods
 	User.associate = function (models) {
+		User.hasMany(models.Message, {
+			foreignKey: 'userId'
+		})
 		User.hasMany(models.Token, {
 			foreignKey: 'userId'
 		})

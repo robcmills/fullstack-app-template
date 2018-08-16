@@ -1,7 +1,9 @@
-const userRoutes = require('./user-routes')
-const channelRoutes = require('./channel-routes')
+const initChannelRoutes = require('./channel-routes')
+const initMessageRoutes = require('./message-routes')
+const initUserRoutes = require('./user-routes')
 
 module.exports = (app) => {
-	channelRoutes(app)
-	userRoutes(app)
+	initChannelRoutes(app)
+	initMessageRoutes(app)
+	initUserRoutes(app)
 }
