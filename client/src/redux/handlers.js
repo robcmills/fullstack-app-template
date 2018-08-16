@@ -50,6 +50,23 @@ module.exports = {
 		isFetchingChannels: false,
 	}),
 
+	FETCH_MESSAGES_REQUEST: (state) => ({
+		...state,
+		isFetchingMessages: true,
+	}),
+	FETCH_MESSAGES_FAILURE: (state) => ({
+		...state,
+		isFetchingMessages: false,
+	}),
+	FETCH_MESSAGES_SUCCESS: (state, messages) => ({
+		...state,
+		isFetchingMessages: false,
+		messagesByChannelId: {
+			...state.messagesByChannelId,
+			[messages[0].channelId]: messages,
+		},
+	}),
+
 	FETCH_USERS_REQUEST: (state) => ({
 		...state,
 		isFetchingUsers: true,

@@ -3,6 +3,7 @@ module.exports = {
 	createChannelError: false,
 	isAuthenticating: true,
 	isCreatingChannel: false,
+	isFetchingMessages: false,
 	isLoggingIn: false,
 	isRegistering: false,
 	loginError: false,

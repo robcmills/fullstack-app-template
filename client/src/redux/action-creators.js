@@ -23,6 +23,13 @@ export const fetchChannels = () =>
 		url: '/api/channels',
 	})
 
+export const fetchMessages = ({ channelId }) =>
+	requestAction({
+		method: 'GET',
+		type: 'FETCH_MESSAGES',
+		url: `/api/channels/${channelId}/messages`,
+	})
+
 export const fetchUsers = () =>
 	requestAction({
 		method: 'GET',
