@@ -4,6 +4,7 @@ import { withProps } from 'recompose'
 
 import MessageInput from './message-input'
 import ChannelMessage from './channel-message'
+import Divider from '@material-ui/core/Divider'
 
 import { fetchMessages } from '../../redux/action-creators'
 import sweetConnect from '../../redux/sweet-connect'
@@ -26,6 +27,7 @@ class ChannelMessages extends Component {
 				<div className={classes.input}>
 					<MessageInput channel={channel} />
 				</div>
+				<Divider />
 				<div className={classes.messages}>
 					{messages.map((message, index) =>
 						<ChannelMessage key={index} message={message} />)}
@@ -43,6 +45,7 @@ const styles = theme => ({
 	},
 	messages: {
 		flex: '1 1 auto',
+		overflowY: 'scroll',
 		padding: '10px',
 	},
 	input: {

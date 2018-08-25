@@ -18,6 +18,7 @@ const styles = theme => ({
 	messages: {
 		display: 'flex',
 		flex: '1 1 auto',
+		height: '100vh',
 		'flex-direction': 'column',
 	},
 	toolbar: theme.mixins.toolbar,
