@@ -49,6 +49,7 @@ const styles = theme => ({
 		padding: '10px',
 	},
 	input: {
+		background: theme.palette.grey['50'],
 		display: 'flex',
 		flex: '0 0 50px',
 		'align-items': 'center',

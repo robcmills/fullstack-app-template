@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import _ from 'lodash'
 import Input from '@material-ui/core/Input'
+import IconButton from '@material-ui/core/IconButton'
+import SendIcon from '@material-ui/icons/Send'
+
 import sweetConnect from '../../redux/sweet-connect'
 import { userSelector } from '../../redux/selectors'
 import { sendMessage } from '../../redux/action-creators'
@@ -38,19 +41,31 @@ class MessageInput extends Component {
 		const { classes } = this.props
 		return (
 			<div className={classes.messageInput}>
-				<Input
-					classes={{
-						root: classes.root,
-						input: classes.input,
-						focused: classes.focused,
-					}}
-					disableUnderline
-					fullWidth
-					onChange={this.handleChange('message')}
-					onKeyPress={this.handleKeyPress}
-					placeholder="enter a message"
-					value={this.state.message}
-				/>
+				<div className={classes.inputWrapper}>
+					<Input
+						classes={{
+							root: classes.root,
+							input: classes.input,
+							focused: classes.focused,
+						}}
+						disableUnderline
+						fullWidth
+						onChange={this.handleChange('message')}
+						onKeyPress={this.handleKeyPress}
+						placeholder="enter a message"
+						value={this.state.message}
+					/>
+				</div>
+				<div className={classes.sendWrapper}>
+					<IconButton
+						aria-label="Send"
+						color="primary"
+						disabled={!this.state.message}
+						onClick={this.handleSubmit}
+					>
+						<SendIcon />
+		      </IconButton>
+				</div>
 			</div>
 		)
 	}
@@ -58,8 +73,12 @@ class MessageInput extends Component {
 
 const styles = theme => ({
 	messageInput: {
+		display: 'flex',
 		flex: '1 1 auto',
-		padding: '0 10px',
+	},
+	inputWrapper: {
+		flex: '1 1 auto',
+		padding: 8,
 	},
 	root: {
 		background: theme.palette.background.paper,
@@ -73,7 +92,10 @@ const styles = theme => ({
 	},
 	input: {
 		padding: '5px',
-	}
+	},
+	sendWrapper: {
+		paddingRight: 8,
+	},
 })
 
 export default _.flowRight(
