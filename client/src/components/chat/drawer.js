@@ -8,19 +8,24 @@ import { withStyles } from '@material-ui/core/styles'
 const drawerWidth = 240
 
 const ChatDrawer = ({ activeChannel, classes }) =>
-	<Drawer variant="permanent" classes={{ paper: classes.drawerPaper }}>
+	<Drawer variant="permanent" classes={{ paper: classes.drawer }}>
 		<div className={classes.toolbar} />
-		<ChannelsList activeChannel={activeChannel} />
-		<Divider />
-		<UsersList />
+		<div className={classes.scrollContainer}>
+			<ChannelsList activeChannel={activeChannel} />
+			<Divider />
+			<UsersList />
+		</div>
 	</Drawer>
 
 const styles = theme => ({
-	drawerPaper: {
+	drawer: {
 		position: 'relative',
 		width: drawerWidth,
 	},
 	toolbar: theme.mixins.toolbar,
+	scrollContainer: {
+		overflowY: 'scroll',
+	}
 })
 
 export default withStyles(styles)(ChatDrawer)
