@@ -10,9 +10,7 @@ module.exports.get = asyncHandler(async (req, res) =>
 
 module.exports.create = asyncHandler(async (req, res) => {
 	const message = await Message.create({
-		// channelId: req.params.channel_id,
 		content: req.body.content
-		// userId: req.user.id
 	})
 
 	await message.setChannel(req.params.channel_id)
