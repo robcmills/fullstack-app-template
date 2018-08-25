@@ -121,8 +121,8 @@ module.exports = {
 		messagesByChannelId: {
 			...state.messagesByChannelId,
 			[message.channelId]: [
-				...(state.messagesByChannelId[message.channelId] || []),
 				message,
+				...(state.messagesByChannelId[message.channelId] || []),
 			],
 		},
 	}),
