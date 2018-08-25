@@ -10,16 +10,16 @@ import { withStyles } from '@material-ui/core/styles'
 
 const ChannelMessage = ({
 	classes,
-	messageContent,
-	messageUsername,
+	content,
+	username,
 }) =>
 	<div className={classes.wrapper}>
 		<Paper elevation={0} classes={{ root: classes.message }}>
 			<Typography>
 				<span className={classes.username}>
-					{messageUsername}:&nbsp;
+					{username}:&nbsp;
 				</span>
-				{messageContent}
+				{content}
 			</Typography>
 		</Paper>
 	</div>
@@ -46,8 +46,8 @@ export default _.flowRight(
 	}),
 	withProps(({ usersById, message }) => {
 		return {
-			messageContent: message.content,
-			messageUsername: usersById[message.userId].username,
+			content: message.content,
+			username: usersById[message.userId].username,
 		}
 	})
 )(ChannelMessage)
