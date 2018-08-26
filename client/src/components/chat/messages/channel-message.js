@@ -4,8 +4,8 @@ import { withProps } from 'recompose'
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
 
-import sweetConnect from '../../redux/sweet-connect'
-import { usersByIdSelector } from '../../redux/selectors'
+import sweetConnect from '../../../redux/sweet-connect'
+import { usersByIdSelector } from '../../../redux/selectors'
 import { withStyles } from '@material-ui/core/styles'
 
 const ChannelMessage = ({

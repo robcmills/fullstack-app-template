@@ -14,8 +14,8 @@ import ExpandMore from '@material-ui/icons/ExpandMore'
 import CreateChannelModal from './create-channel-modal'
 import ChannelListItem from './channel-list-item'
 
-import sweetConnect from '../../redux/sweet-connect'
-import { channelsSelector } from '../../redux/selectors'
+import sweetConnect from '../../../redux/sweet-connect'
+import { channelsSelector } from '../../../redux/selectors'
 import { withStyles } from '@material-ui/core/styles'
 
 class ChannelsList extends React.Component {

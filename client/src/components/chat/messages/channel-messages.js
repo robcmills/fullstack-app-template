@@ -6,9 +6,9 @@ import MessageInput from './message-input'
 import ChannelMessage from './channel-message'
 import Divider from '@material-ui/core/Divider'
 
-import { fetchMessages } from '../../redux/action-creators'
-import sweetConnect from '../../redux/sweet-connect'
-import { messagesByChannelIdSelector } from '../../redux/selectors'
+import { fetchMessages } from '../../../redux/action-creators'
+import sweetConnect from '../../../redux/sweet-connect'
+import { messagesByChannelIdSelector } from '../../../redux/selectors'
 import { withStyles } from '@material-ui/core/styles'
 
 class ChannelMessages extends Component {
@@ -29,6 +29,7 @@ class ChannelMessages extends Component {
 				</div>
 				<Divider />
 				<div className={classes.messages}>
+					{messages.length === 0 && 'No messages yet'}
 					{messages.map((message, index) =>
 						<ChannelMessage key={index} message={message} />)}
 				</div>

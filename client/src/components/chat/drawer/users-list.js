@@ -10,8 +10,8 @@ import AccountCircle from '@material-ui/icons/AccountCircle'
 import ExpandLess from '@material-ui/icons/ExpandLess'
 import ExpandMore from '@material-ui/icons/ExpandMore'
 
-import sweetConnect from '../../redux/sweet-connect'
-import { usersSelector } from '../../redux/selectors'
+import sweetConnect from '../../../redux/sweet-connect'
+import { usersSelector } from '../../../redux/selectors'
 import { withStyles } from '@material-ui/core/styles'
 
 class UsersList extends React.Component {
