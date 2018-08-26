@@ -34,6 +34,7 @@ class MenuBar extends Component {
 		const { activeChannel, classes, user: { username } } = this.props
 		const { anchorEl } = this.state
 		const open = Boolean(anchorEl)
+		const channelName = activeChannel ? activeChannel.name : 'Chat'
 
 		return (
 			<AppBar className={classes.appBar} position="absolute">
@@ -48,8 +49,14 @@ class MenuBar extends Component {
 							<MenuIcon />
 						</IconButton>
 					</Hidden>
-					<Typography variant="title" color="inherit" className={classes.flex}>
-						{activeChannel ? activeChannel.name : 'Chat'}
+					<Typography
+						className={classes.flex}
+						color="inherit"
+						noWrap
+						title={channelName}
+						variant="title"
+					>
+						{channelName}
 					</Typography>
 					<div>
 						<Button

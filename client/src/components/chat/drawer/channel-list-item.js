@@ -40,6 +40,8 @@ class ChannelListItem extends Component {
 				<ListItemText
 					classes={{ textDense: isActive && classes.text }}
 					primary={channel.name}
+					primaryTypographyProps={{ noWrap: true }}
+					title={channel.name}
 				/>
 			</ListItem>
 		)
