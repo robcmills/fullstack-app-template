@@ -15,7 +15,11 @@ import CreateChannelModal from './create-channel-modal'
 import ChannelListItem from './channel-list-item'
 
 import sweetConnect from '../../../redux/sweet-connect'
-import { channelsSelector } from '../../../redux/selectors'
+import {
+	channelsSelector,
+	isDrawerOpenSelector,
+} from '../../../redux/selectors'
+import { toggleDrawer } from '../../../redux/action-creators'
 import { withStyles } from '@material-ui/core/styles'
 
 class ChannelsList extends React.Component {
@@ -27,6 +31,14 @@ class ChannelsList extends React.Component {
 
 	closeCreateChannelModal = () => {
 		this.setState({ isCreateOpen: false })
+	}
+
+	handleCreateChannelClick = () => {
+		const { isDrawerOpen } = this.props
+		if (isDrawerOpen) {
+			toggleDrawer()
+		}
+		this.openCreateChannelModal()
 	}
 
 	openCreateChannelModal = () => {
@@ -62,10 +74,13 @@ class ChannelsList extends React.Component {
 								button
 								dense
 								classes={{ root: classes.primaryLight }}
-								onClick={this.openCreateChannelModal}
+								onClick={this.handleCreateChannelClick}
 							>
 								<AddIcon />
-								<ListItemText primary="Create" classes={{ primary: classes.primaryLight }} />
+								<ListItemText
+									classes={{ primary: classes.primaryLight }}
+									primary="Create"
+								/>
 							</ListItem>
 							{channels.map((channel, index) =>
 								<ChannelListItem
@@ -104,6 +119,7 @@ export default _.flowRight(
 	sweetConnect({
 		selectors: {
 			channels: channelsSelector,
+			isDrawerOpen: isDrawerOpenSelector,
 		},
 	})
 )(ChannelsList)

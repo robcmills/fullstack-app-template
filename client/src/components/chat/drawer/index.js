@@ -29,6 +29,9 @@ const ChatDrawer = ({ activeChannel, classes, isDrawerOpen }) =>
 				classes={{ paper: classes.drawer }}
 				open={isDrawerOpen}
 				onClose={toggleDrawer}
+				ModalProps={{
+					keepMounted: true, // Better open performance on mobile.
+				}}
 			>
 				<ChannelsList activeChannel={activeChannel} />
 				<Divider />
