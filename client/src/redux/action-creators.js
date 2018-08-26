@@ -68,6 +68,10 @@ export const sendMessage = message =>
 		url: `/api/channels/${message.channelId}/messages`,
 	})
 
+export const toggleDrawer = () => {
+	store.dispatch({ type: 'TOGGLE_DRAWER' })
+}
+
 export const clearCreateChannelError = () => {
 	store.dispatch({ type: 'CLEAR_CREATE_CHANNEL_ERROR' })
 }

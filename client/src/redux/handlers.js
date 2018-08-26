@@ -127,6 +127,11 @@ module.exports = {
 		},
 	}),
 
+	TOGGLE_DRAWER: (state) => ({
+		...state,
+		isDrawerOpen: !state.isDrawerOpen,
+	}),
+
 	CLOSE_LOGIN_SNACKBAR: (state) => ({
 		...state,
 		loginError: false,

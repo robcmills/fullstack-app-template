@@ -10,10 +10,12 @@ import MenuIcon from '@material-ui/icons/Menu'
 import AccountCircle from '@material-ui/icons/AccountCircle'
 import MenuItem from '@material-ui/core/MenuItem'
 import Menu from '@material-ui/core/Menu'
+import Hidden from '@material-ui/core/Hidden'
 import { withStyles } from '@material-ui/core/styles'
+
 import sweetConnect from '../../redux/sweet-connect'
 import { userSelector } from '../../redux/selectors'
-import { logout } from '../../redux/action-creators'
+import { logout, toggleDrawer } from '../../redux/action-creators'
 
 class MenuBar extends Component {
 	state = {
@@ -36,9 +38,16 @@ class MenuBar extends Component {
 		return (
 			<AppBar className={classes.appBar} position="absolute">
 				<Toolbar>
-					<IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
-						<MenuIcon />
-					</IconButton>
+					<Hidden mdUp>
+						<IconButton
+							aria-label="Menu"
+							className={classes.menuButton}
+							color="inherit"
+							onClick={toggleDrawer}
+						>
+							<MenuIcon />
+						</IconButton>
+					</Hidden>
 					<Typography variant="title" color="inherit" className={classes.flex}>
 						{activeChannel ? activeChannel.name : 'Chat'}
 					</Typography>
