@@ -8,7 +8,10 @@ import Divider from '@material-ui/core/Divider'
 
 import { fetchMessages } from '../../../redux/action-creators'
 import sweetConnect from '../../../redux/sweet-connect'
-import { messagesByChannelIdSelector } from '../../../redux/selectors'
+import {
+	isFetchingMessagesSelector,
+	messagesByChannelIdSelector,
+} from '../../../redux/selectors'
 import { withStyles } from '@material-ui/core/styles'
 
 class ChannelMessages extends Component {
@@ -20,6 +23,7 @@ class ChannelMessages extends Component {
 		const {
 			channel,
 			classes,
+			isFetchingMessages,
 			messages,
 		} = this.props
 		return (
@@ -29,7 +33,7 @@ class ChannelMessages extends Component {
 				</div>
 				<Divider />
 				<div className={classes.messages}>
-					{messages.length === 0 && 'No messages yet'}
+					{messages.length === 0 && !isFetchingMessages && 'No messages yet'}
 					{messages.map((message, index) =>
 						<ChannelMessage key={index} message={message} />)}
 				</div>
@@ -62,6 +66,7 @@ export default _.flowRight(
 	withStyles(styles),
 	sweetConnect({
 		selectors: {
+			isFetchingMessages: isFetchingMessagesSelector,
 			messagesByChannelId: messagesByChannelIdSelector,
 		},
 	}),

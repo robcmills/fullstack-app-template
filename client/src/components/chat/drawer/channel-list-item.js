@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
 import { withStyles } from '@material-ui/core/styles'
+import { fetchMessages } from '../../../redux/action-creators'
 
 const ChannelListItem = ({
 	classes,
@@ -18,6 +19,7 @@ const ChannelListItem = ({
 		}}
 		component={Link}
 		dense
+		onClick={() => fetchMessages({ channelId: channel.id })}
 		to={`/channels/${channel.id}`}
 	>
 		<ListItemText

@@ -3,8 +3,9 @@ import { createSelector } from 'reselect'
 
 export const channelsSelector = state => state.channels
 export const createChannelErrorSelector = state => state.createChannelError
-export const isCreatingChannelSelector = state => state.isCreatingChannel
 export const isAuthenticatingSelector = state => state.isAuthenticating
+export const isCreatingChannelSelector = state => state.isCreatingChannel
+export const isFetchingMessagesSelector = state => state.isFetchingMessages
 export const isLoggedInSelector = state => !!state.user
 export const isLoggingInSelector = state => state.isLoggingIn
 export const isRegisteringSelector = state => state.isRegistering
