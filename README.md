@@ -6,6 +6,7 @@ Simple full stack app template for experimentation
 - React
 - Redux
 - React Router
+- Material UI
 
 - Express
 - Sequelize
