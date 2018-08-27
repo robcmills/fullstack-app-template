@@ -1,10 +1,10 @@
 module.exports = {
 	development: {
-		username: 'root',
-		password: null,
 		database: 'fullstack_app_dev',
 		dialect: 'sqlite',
-		storage: 'data/fullstack-app-dev.sqlite3'
+		password: null,
+		storage: 'data/fullstack-app-dev.sqlite3',
+		username: 'root'
 	},
 	test: {
 		database: 'fullstack_app_test',
@@ -14,9 +14,8 @@ module.exports = {
 	production: {
 		database: 'fullstack_app_prod',
 		dialect: 'sqlite',
-		host: process.env.RDS_HOSTNAME,
 		password: process.env.RDS_PASSWORD,
-		port: process.env.RDS_PORT,
+		storage: 'data/fullstack-app-prod.sqlite3',
 		username: process.env.RDS_USERNAME
 	}
 }

@@ -1,5 +1,5 @@
 .DS_Store
 build
-server/data/*
 node_modules
+server/data/*
 sessions
