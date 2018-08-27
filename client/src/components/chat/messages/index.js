@@ -10,7 +10,7 @@ const Messages = ({
 		<div className={classes.toolbar} />
 		<div className={classes.children}>{activeChannel
 			? <ChannelMessages channel={activeChannel} />
-			: 'No channel selected'}
+			: <div className={classes.noChannel}>No channel selected</div>}
 		</div>
 	</div>
 
@@ -26,6 +26,9 @@ const styles = theme => ({
 		display: 'flex',
 		flex: '1 1 auto',
 		'flex-direction': 'column',
+	},
+	noChannel: {
+		padding: theme.spacing.unit,
 	},
 })
 
