@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import _ from 'lodash'
-import { withProps } from 'recompose'
+import { compose, withProps } from 'recompose'
 
 import MenuBar from './menu-bar'
 import Drawer from './drawer'
@@ -35,7 +34,7 @@ const styles = {
 	},
 }
 
-export default _.flowRight(
+export default compose(
 	withStyles(styles),
 	sweetConnect({
 		selectors: {

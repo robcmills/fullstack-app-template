@@ -1,11 +1,12 @@
 import React from 'react'
-import _ from 'lodash'
+import { compose } from 'recompose'
 import Drawer from '@material-ui/core/Drawer'
 import Divider from '@material-ui/core/Divider'
 import Hidden from '@material-ui/core/Hidden'
+import { withStyles } from '@material-ui/core/styles'
+
 import ChannelsList from './channels-list'
 import UsersList from './users-list'
-import { withStyles } from '@material-ui/core/styles'
 import sweetConnect from '../../../redux/sweet-connect'
 import { isDrawerOpenSelector } from '../../../redux/selectors'
 import { toggleDrawer } from '../../../redux/action-creators'
@@ -51,7 +52,7 @@ const styles = theme => ({
 	}
 })
 
-export default _.flowRight(
+export default compose(
 	withStyles(styles),
 	sweetConnect({
 		selectors: {

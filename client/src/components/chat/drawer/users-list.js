@@ -1,5 +1,5 @@
 import React from 'react'
-import _ from 'lodash'
+import { compose } from 'recompose'
 
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
@@ -9,10 +9,10 @@ import Collapse from '@material-ui/core/Collapse'
 import AccountCircle from '@material-ui/icons/AccountCircle'
 import ExpandLess from '@material-ui/icons/ExpandLess'
 import ExpandMore from '@material-ui/icons/ExpandMore'
+import { withStyles } from '@material-ui/core/styles'
 
 import sweetConnect from '../../../redux/sweet-connect'
 import { usersSelector } from '../../../redux/selectors'
-import { withStyles } from '@material-ui/core/styles'
 
 class UsersList extends React.Component {
 	state = { open: true }
@@ -65,7 +65,7 @@ const styles = theme => ({
 	},
 })
 
-export default _.flowRight(
+export default compose(
 	withStyles(styles),
 	sweetConnect({
 		selectors: {

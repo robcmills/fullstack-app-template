@@ -1,11 +1,12 @@
 import React from 'react'
-import _ from 'lodash'
+import { compose } from 'recompose'
 import Snackbar from '@material-ui/core/Snackbar'
 import SnackbarContent from '@material-ui/core/SnackbarContent'
 import IconButton from '@material-ui/core/IconButton'
 import CloseIcon from '@material-ui/icons/Close'
 import ErrorIcon from '@material-ui/icons/Error'
 import { withStyles } from '@material-ui/core/styles'
+
 import sweetConnect from '../../redux/sweet-connect'
 import { closeLoginSnackbar } from '../../redux/action-creators'
 import { loginErrorSelector } from '../../redux/selectors'
@@ -62,7 +63,7 @@ const LoginSnackbar = ({ classes, loginError }) =>
 		/>
 	</Snackbar>
 
-export default _.flowRight(
+export default compose(
 	withStyles(styles),
 	sweetConnect({
 		selectors: {

@@ -1,6 +1,5 @@
 import React from 'react'
-import _ from 'lodash'
-import { withProps } from 'recompose'
+import { compose, withProps } from 'recompose'
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
 
@@ -37,7 +36,7 @@ const styles = theme => ({
 	},
 })
 
-export default _.flowRight(
+export default compose(
 	withStyles(styles),
 	sweetConnect({
 		selectors: {

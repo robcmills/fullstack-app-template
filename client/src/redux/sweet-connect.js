@@ -1,4 +1,4 @@
-import _ from 'lodash'
+import { partial } from 'ramda'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
@@ -11,7 +11,7 @@ export default function sweetConnect({ selectors, actions } = {}) {
 			mapStateToSelectors(selectors) :
 			null,
 		actions ?
-			_.partial(bindActionCreators, actions) :
+			partial(bindActionCreators, actions) :
 			null
 	)
 }

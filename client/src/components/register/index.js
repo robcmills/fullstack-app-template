@@ -1,17 +1,19 @@
 import React, { Component } from 'react'
-import _ from 'lodash'
+import { compose } from 'recompose'
 import { Link, Redirect } from 'react-router-dom'
-
-import RegisterSnackbar from './snackbar'
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
-
 import { withStyles } from '@material-ui/core/styles'
+
+import RegisterSnackbar from './snackbar'
 import sweetConnect from '../../redux/sweet-connect'
 import { register } from '../../redux/action-creators'
-import { isLoggedInSelector, isRegisteringSelector } from '../../redux/selectors'
+import {
+	isLoggedInSelector,
+	isRegisteringSelector,
+} from '../../redux/selectors'
 
 class Register extends Component {
 	state = {
@@ -144,7 +146,7 @@ const styles = {
 	},
 }
 
-export default _.flowRight(
+export default compose(
 	withStyles(styles),
 	sweetConnect({
 		selectors: {

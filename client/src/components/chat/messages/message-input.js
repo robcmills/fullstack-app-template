@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import _ from 'lodash'
+import { compose } from 'recompose'
 import Input from '@material-ui/core/Input'
 import IconButton from '@material-ui/core/IconButton'
 import SendIcon from '@material-ui/icons/Send'
@@ -98,7 +98,7 @@ const styles = theme => ({
 	},
 })
 
-export default _.flowRight(
+export default compose(
 	withStyles(styles),
 	sweetConnect({
 		selectors: {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import _ from 'lodash'
+import { compose } from 'recompose'
 import { withRouter } from 'react-router-dom'
 
 import Button from '@material-ui/core/Button'
@@ -119,7 +119,7 @@ class CreateChannelModal extends Component {
 	}
 }
 
-export default _.flowRight(
+export default compose(
 	withRouter,
 	sweetConnect({
 		selectors: {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import _ from 'lodash'
+import { compose } from 'recompose'
 import { Link, Redirect } from 'react-router-dom'
 
 import LoginSnackbar from './snackbar'
@@ -129,7 +129,7 @@ const styles = {
 	},
 }
 
-export default _.flowRight(
+export default compose(
 	withStyles(styles),
 	sweetConnect({
 		selectors: {

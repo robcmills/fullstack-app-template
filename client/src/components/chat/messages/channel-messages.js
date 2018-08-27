@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import _ from 'lodash'
-import { withProps } from 'recompose'
+import { compose, withProps } from 'recompose'
 
 import MessageInput from './message-input'
 import ChannelMessage from './channel-message'
@@ -62,7 +61,7 @@ const styles = theme => ({
 	},
 })
 
-export default _.flowRight(
+export default compose(
 	withStyles(styles),
 	sweetConnect({
 		selectors: {

@@ -1,4 +1,4 @@
-import _ from 'lodash'
+import { indexBy, prop } from 'ramda'
 import { createSelector } from 'reselect'
 
 export const channelsSelector = state => state.channels
@@ -18,9 +18,9 @@ export const usersSelector = state => state.users
 
 export const channelsByIdSelector = createSelector(
 	channelsSelector,
-	(channels) => _.keyBy(channels, 'id')
+	(channels) => indexBy(prop('id'), channels)
 )
 export const usersByIdSelector = createSelector(
 	usersSelector,
-	(users) => _.keyBy(users, 'id')
+	(users) => indexBy(prop('id'), users)
 )

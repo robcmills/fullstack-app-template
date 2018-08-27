@@ -1,5 +1,5 @@
 import React from 'react'
-import _ from 'lodash'
+import { compose } from 'recompose'
 
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
@@ -114,7 +114,7 @@ const styles = theme => ({
 	},
 })
 
-export default _.flowRight(
+export default compose(
 	withStyles(styles),
 	sweetConnect({
 		selectors: {
