@@ -1,4 +1,4 @@
 module.exports.DB_TYPES = {
-  POSTGRES: 'POSTGRES',
-  SQLITE: 'SQLITE',
+	POSTGRES: 'POSTGRES',
+	SQLITE: 'SQLITE'
 }
