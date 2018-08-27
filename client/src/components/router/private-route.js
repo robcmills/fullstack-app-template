@@ -5,8 +5,7 @@ import sweetConnect from '../../redux/sweet-connect'
 import { isAuthenticatingSelector, isLoggedInSelector } from '../../redux/selectors'
 
 const PrivateRoute = ({ isAuthenticating, isLoggedIn, ...props }) => {
-	// On initial render isAuthenticating is undefined
-	if (isAuthenticating !== false) {
+	if (isAuthenticating && !isLoggedIn) {
 		return null
 	}
 	return isLoggedIn

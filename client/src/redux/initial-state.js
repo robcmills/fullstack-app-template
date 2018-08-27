@@ -1,7 +1,7 @@
 module.exports = {
 	channels: [],
 	createChannelError: false,
-	isAuthenticating: true,
+	isAuthenticating: false,
 	isCreatingChannel: false,
 	isDrawerOpen: false,
 	isFetchingMessages: false,
@@ -12,4 +12,5 @@ module.exports = {
 	registerError: false,
 	user: null,
 	users: [],
+	...window.__INITIAL_STATE__,
 }

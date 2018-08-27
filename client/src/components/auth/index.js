@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
 
+import sweetConnect from '../../redux/sweet-connect'
+import { isLoggedInSelector } from '../../redux/selectors'
 import { authenticate } from '../../redux/action-creators'
 
 class Auth extends Component {
 	componentDidMount() {
-		authenticate()
+		if (!this.props.isLoggedIn) {
+			authenticate()
+		}
 	}
 
 	render() {
@@ -12,4 +16,8 @@ class Auth extends Component {
 	}
 }
 
-export default Auth
+export default sweetConnect({
+	selectors: {
+		isLoggedIn: isLoggedInSelector,
+	},
+})(Auth)

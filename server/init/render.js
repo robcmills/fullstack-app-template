@@ -2,7 +2,7 @@ const express = require('express')
 const path = require('path')
 const manifest = require('../../client/build/asset-manifest.json')
 
-const getIndexHtml = () => `
+const getIndexHtml = ({ initialState }) => `
 <!doctype html>
 <html lang="en">
 <head>
@@ -16,14 +16,16 @@ const getIndexHtml = () => `
 </head>
 <body>
 	<div id="root"></div>
+	<script>window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}</script>
 	<script type="text/javascript" src="/${manifest['main.js']}"></script>
 </body>
 </html>
 `
 
 module.exports = (app) => {
-	app.use(express.static(path.join(__dirname, '../../client/build')))
+	app.use(express.static(path.join(__dirname, '../../client/build'), { index: false }))
 	app.get('*', (req, res) => {
-		res.status(200).send(getIndexHtml())
+		const initialState = { user: req.user }
+		res.status(200).send(getIndexHtml({ initialState }))
 	})
 }
