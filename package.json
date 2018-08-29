@@ -1,8 +1,6 @@
 {
-  "name": "Elastic-Beanstalk-Sample-App",
+  "name": "Fullstack App Template",
   "version": "0.0.1",
-  "private": true,
-  "dependencies": {},
   "scripts": {
     "start": "cd server && npm install && node index.js"
   }
