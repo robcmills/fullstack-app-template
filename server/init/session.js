@@ -7,10 +7,14 @@ module.exports = (app) => {
 	let sessionStore = db.session()
 
 	const sess = {
+		cookie: {
+			httpOnly: true,
+			secure: false
+		},
+		proxy: true,
 		resave: false,
 		saveUninitialized: false,
 		secret: process.env.SESSION_SECRET || 'session_secret',
-		proxy: true,
 		store: sessionStore
 	}
 
