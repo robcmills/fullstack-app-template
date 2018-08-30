@@ -1,7 +1,6 @@
 *.zip
 .DS_Store
 .env
-build
 node_modules
 server/data/*
 sessions
