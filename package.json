@@ -6,7 +6,7 @@
     "node": "8.11.3"
   },
   "scripts": {
-    "start": "cd server && node index.js",
+    "start": "cd server && node index.js"
   },
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
