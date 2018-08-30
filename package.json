@@ -1,7 +1,59 @@
 {
-  "name": "Fullstack App Template",
+  "name": "fullstack-app-template",
   "version": "0.0.1",
+  "description": "A sample app",
+  "engines": {
+    "node": "8.11.3"
+  },
   "scripts": {
-    "start": "cd server && npm install && node index.js"
-  }
+    "start": "cd server && node index.js",
+  },
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "bluebird": "^3.5.1",
+    "body-parser": "^1.18.3",
+    "compression": "^1.7.3",
+    "connect-sqlite3": "^0.9.11",
+    "express": "^4.16.3",
+    "express-session": "^1.15.6",
+    "helmet": "^3.13.0",
+    "method-override": "^3.0.0",
+    "passport": "^0.4.0",
+    "passport-google-oauth": "^1.0.0",
+    "passport-local": "^1.0.0",
+    "sequelize": "^4.38.0",
+    "sequelize-cli": "^4.0.0",
+    "sqlite3": "^4.0.2",
+    "@material-ui/core": "^1.4.2",
+    "@material-ui/icons": "^2.0.0",
+    "classnames": "^2.2.6",
+    "ramda": "^0.25.0",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "1.1.4",
+    "recompose": "^0.28.2",
+    "redux": "^4.0.0",
+    "reselect": "^3.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^5.2.0",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^3.8.0",
+    "eslint-plugin-standard": "^3.1.0",
+    "nodemon": "^1.18.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/robcmills/fullstack-app-template.git"
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ],
+  "license": "MIT"
 }
