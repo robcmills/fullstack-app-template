@@ -2,5 +2,5 @@
 .DS_Store
 .env
 node_modules
-server/data/*
+server/data/*.sqlite3
 sessions
