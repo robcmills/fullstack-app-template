@@ -1,2 +1,1 @@
-release: cd client && npm run build
-web: cd server && node index.js
+web: cd client && npm run build && cd ../server && node index.js
