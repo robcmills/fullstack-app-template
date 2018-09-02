@@ -14,11 +14,9 @@ module.exports = {
 		username: process.env.PGUSER || 'postgres'
 	},
 	production: {
-		database: 'fullstack_app_prod',
 		dialect: 'postgres',
-		host: '127.0.0.1',
-		password: null,
-		use_env_variable: 'POSTGRES_DB_URL',
-		username: process.env.PGUSER || 'postgres'
+		dialectOptions: { ssl: true },
+		ssl: true,
+		use_env_variable: 'DATABASE_URL'
 	}
 }
