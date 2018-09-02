@@ -6,8 +6,8 @@ const initRender = require('./render')
 
 module.exports = (app) => {
 	initPassport()
-	initSession(app)
 	initExpress(app)
+	initSession(app)
 	initRoutes(app)
 	initRender(app)
 }

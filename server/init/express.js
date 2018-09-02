@@ -1,5 +1,6 @@
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
+const cookieParser = require('cookie-parser')
 const gzip = require('compression')
 const helmet = require('helmet')
 const { ENV } = require('../config/env')
@@ -16,4 +17,5 @@ module.exports = (app) => {
 	app.use(bodyParser.json())
 	app.use(bodyParser.urlencoded({ extended: true }))
 	app.use(methodOverride())
+	app.use(cookieParser())
 }
