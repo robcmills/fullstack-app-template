@@ -10,16 +10,12 @@ module.exports.get = asyncHandler(async (req, res) =>
 )
 
 module.exports.create = asyncHandler(async (req, res) => {
-	console.log('req.body', req.body)
-	console.log('req.user', req.user)
 	const message = await Message.create({
-		channelId: req.body.channelId,
-		content: req.body.content,
-		userId: req.body.userId
+		content: req.body.content
 	})
 
-	// await message.setChannel(req.params.channel_id)
-	// await message.setUser(req.user.id)
+	await message.setChannel(req.params.channel_id)
+	await message.setUser(req.user.id)
 
 	return res.status(200).json(message)
 })
