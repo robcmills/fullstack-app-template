@@ -11,6 +11,7 @@ module.exports = (app) => {
 			httpOnly: true,
 			secure: false
 		},
+		name: 'sid',
 		proxy: true,
 		resave: false,
 		saveUninitialized: false,
