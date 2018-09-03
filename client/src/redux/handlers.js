@@ -1,16 +1,16 @@
 module.exports = {
 	AUTHENTICATE_REQUEST: (state) => ({
 		...state,
-		isAuthenticating: true,
+		isLoggingIn: true,
 	}),
 	AUTHENTICATE_SUCCESS: (state, user) => ({
 		...state,
-		isAuthenticating: false,
+		isLoggingIn: false,
 		user,
 	}),
 	AUTHENTICATE_FAILURE: (state) => ({
 		...state,
-		isAuthenticating: false,
+		isLoggingIn: false,
 		// todo error
 	}),
 

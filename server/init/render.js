@@ -25,7 +25,7 @@ const getIndexHtml = ({ initialState }) => `
 module.exports = (app) => {
 	app.use(express.static(path.join(__dirname, '../../client/build'), { index: false }))
 	app.get('*', (req, res) => {
-		const initialState = { user: req.user }
+		const initialState = { isLoggingIn: !req.user, user: req.user }
 		res.status(200).send(getIndexHtml({ initialState }))
 	})
 }

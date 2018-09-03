@@ -2,12 +2,9 @@ import React from 'react'
 import { Route, Redirect, withRouter } from 'react-router-dom'
 
 import sweetConnect from '../../redux/sweet-connect'
-import { isAuthenticatingSelector, isLoggedInSelector } from '../../redux/selectors'
+import { isLoggedInSelector } from '../../redux/selectors'
 
-const PrivateRoute = ({ isAuthenticating, isLoggedIn, ...props }) => {
-	if (isAuthenticating && !isLoggedIn) {
-		return null
-	}
+const PrivateRoute = ({ isLoggedIn, ...props }) => {
 	return isLoggedIn
 		? <Route {...props} />
 		: <Redirect to="/login" />
@@ -15,7 +12,6 @@ const PrivateRoute = ({ isAuthenticating, isLoggedIn, ...props }) => {
 
 export default withRouter(sweetConnect({
 	selectors: {
-		isAuthenticating: isAuthenticatingSelector,
 		isLoggedIn: isLoggedInSelector,
 	},
 })(PrivateRoute))

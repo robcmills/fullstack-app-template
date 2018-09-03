@@ -1,11 +1,10 @@
 module.exports = {
 	channels: [],
 	createChannelError: false,
-	isAuthenticating: false,
 	isCreatingChannel: false,
 	isDrawerOpen: false,
 	isFetchingMessages: false,
-	isLoggingIn: false,
+	isLoggingIn: true,
 	isRegistering: false,
 	loginError: false,
 	messagesByChannelId: {},

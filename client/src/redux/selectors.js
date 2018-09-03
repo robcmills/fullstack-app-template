@@ -3,7 +3,6 @@ import { createSelector } from 'reselect'
 
 export const channelsSelector = state => state.channels
 export const createChannelErrorSelector = state => state.createChannelError
-export const isAuthenticatingSelector = state => state.isAuthenticating
 export const isCreatingChannelSelector = state => state.isCreatingChannel
 export const isDrawerOpenSelector = state => state.isDrawerOpen
 export const isFetchingMessagesSelector = state => state.isFetchingMessages
