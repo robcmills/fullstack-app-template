@@ -5,6 +5,7 @@ export const channelsSelector = state => state.channels
 export const createChannelErrorSelector = state => state.createChannelError
 export const isCreatingChannelSelector = state => state.isCreatingChannel
 export const isDrawerOpenSelector = state => state.isDrawerOpen
+export const isFetchingChannelsSelector = state => state.isFetchingChannels
 export const isFetchingMessagesSelector = state => state.isFetchingMessages
 export const isLoggedInSelector = state => !!state.user
 export const isLoggingInSelector = state => state.isLoggingIn

@@ -1,11 +1,16 @@
 import React from 'react'
+import { compose } from 'recompose'
 import ChannelMessages from './channel-messages'
 import { withStyles } from '@material-ui/core/styles'
+import sweetConnect from '../../../redux/sweet-connect'
+import { isFetchingChannelsSelector } from '../../../redux/selectors'
 
 const Messages = ({
 	activeChannel,
 	classes,
-}) =>
+	isFetchingChannels,
+}) => isFetchingChannels ?
+	<div /> :
 	<div className={classes.messages}>
 		<div className={classes.toolbar} />
 		<div className={classes.children}>{activeChannel
@@ -32,4 +37,11 @@ const styles = theme => ({
 	},
 })
 
-export default withStyles(styles)(Messages)
+export default compose(
+	withStyles(styles),
+	sweetConnect({
+		selectors: {
+			isFetchingChannels: isFetchingChannelsSelector,
+		}
+	}),
+)(Messages)
