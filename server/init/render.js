@@ -18,6 +18,7 @@ const getIndexHtml = ({ initialState }) => `
 	<div id="root"></div>
 	<script>window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}</script>
 	<script type="text/javascript" src="/${manifest['main.js']}"></script>
+	<script src="/socket.io/socket.io.js"></script>
 </body>
 </html>
 `

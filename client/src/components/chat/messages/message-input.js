@@ -31,7 +31,10 @@ class MessageInput extends Component {
 		const message = {
 			channelId: channel.id,
 			content: this.state.message,
-			userId: user.id,
+			User: {
+				id: user.id,
+				username: user.username,
+			},
 		}
 		sendMessage(message)
 		this.setState({ message: '' })

@@ -1,5 +1,6 @@
 import store from './store'
 import requestAction from './request-action'
+import socket from '../socket'
 
 export const authenticate = () =>
 	requestAction({
@@ -60,13 +61,16 @@ export const register = payload =>
 		url: '/api/register',
 	})
 
-export const sendMessage = message =>
-	requestAction({
-		body: message,
+export const sendMessage = payload => {
+	const type = 'SEND_MESSAGE'
+	socket.emit(type, payload)
+	return requestAction({
+		body: payload,
 		method: 'POST',
-		type: 'SEND_MESSAGE',
-		url: `/api/channels/${message.channelId}/messages`,
+		type,
+		url: `/api/channels/${payload.channelId}/messages`,
 	})
+}
 
 export const toggleDrawer = () => {
 	store.dispatch({ type: 'TOGGLE_DRAWER' })

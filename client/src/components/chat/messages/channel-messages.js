@@ -5,6 +5,7 @@ import MessageInput from './message-input'
 import ChannelMessage from './channel-message'
 import Divider from '@material-ui/core/Divider'
 
+import socket from '../../../socket'
 import { fetchMessages } from '../../../redux/action-creators'
 import sweetConnect from '../../../redux/sweet-connect'
 import {
@@ -15,7 +16,14 @@ import { withStyles } from '@material-ui/core/styles'
 
 class ChannelMessages extends Component {
 	componentDidMount() {
-		fetchMessages({ channelId: this.props.channel.id })
+		const { channel } = this.props
+		fetchMessages({ channelId: channel.id })
+		socket.emit('ENTER_CHANNEL', { channelId: channel.id })
+	}
+
+	componentWillUnmount() {
+		const { channel } = this.props
+		socket.emit('EXIT_CHANNEL', { channelId: channel.id })
 	}
 
 	render () {

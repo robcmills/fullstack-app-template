@@ -2,6 +2,7 @@ module.exports = {
 	development: {
 		database: 'fullstack_app_dev',
 		dialect: 'sqlite',
+		logging: false,
 		password: null,
 		storage: 'data/fullstack-app-dev.sqlite3',
 		username: 'root'

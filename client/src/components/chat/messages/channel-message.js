@@ -1,24 +1,20 @@
 import React from 'react'
-import { compose, withProps } from 'recompose'
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
 
-import sweetConnect from '../../../redux/sweet-connect'
-import { usersByIdSelector } from '../../../redux/selectors'
 import { withStyles } from '@material-ui/core/styles'
 
 const ChannelMessage = ({
 	classes,
-	content,
-	username,
+	message,
 }) =>
 	<div className={classes.wrapper}>
 		<Paper elevation={0} classes={{ root: classes.message }}>
 			<Typography>
 				<span className={classes.username}>
-					{username}:&nbsp;
+					{message.User.username}:&nbsp;
 				</span>
-				{content}
+				{message.content}
 			</Typography>
 		</Paper>
 	</div>
@@ -36,17 +32,4 @@ const styles = theme => ({
 	},
 })
 
-export default compose(
-	withStyles(styles),
-	sweetConnect({
-		selectors: {
-			usersById: usersByIdSelector,
-		},
-	}),
-	withProps(({ usersById, message }) => {
-		return {
-			content: message.content,
-			username: usersById[message.userId].username,
-		}
-	})
-)(ChannelMessage)
+export default withStyles(styles)(ChannelMessage)
