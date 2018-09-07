@@ -31,10 +31,15 @@ class MenuBar extends Component {
 	}
 
 	render() {
-		const { activeChannel, classes, user: { username } } = this.props
+		const { activeChannel, activePath, classes, user: { username } } = this.props
 		const { anchorEl } = this.state
 		const open = Boolean(anchorEl)
-		const channelName = activeChannel ? activeChannel.name : 'Chat'
+		let title = 'Chat'
+		if (activePath === '/channels') {
+			title = 'Channels'
+		} else if (activeChannel) {
+			title = activeChannel.name
+		}
 
 		return (
 			<AppBar className={classes.appBar} position="absolute">
@@ -53,10 +58,10 @@ class MenuBar extends Component {
 						className={classes.flex}
 						color="inherit"
 						noWrap
-						title={channelName}
+						title={title}
 						variant="title"
 					>
-						{channelName}
+						{title}
 					</Typography>
 					<div>
 						<Button

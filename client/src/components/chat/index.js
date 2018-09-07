@@ -3,26 +3,30 @@ import { compose, withProps } from 'recompose'
 
 import MenuBar from './menu-bar'
 import Drawer from './drawer'
+import Channels from './channels'
 import Messages from './messages'
 
 import sweetConnect from '../../redux/sweet-connect'
 import { channelsByIdSelector } from '../../redux/selectors'
-import { fetchChannels, fetchUsers } from '../../redux/action-creators'
+import { fetchUsers } from '../../redux/action-creators'
 import { withStyles } from '@material-ui/core/styles'
 
 class Chat extends Component {
 	componentDidMount() {
-		fetchChannels()
 		fetchUsers()
 	}
 
 	render() {
-		const { activeChannel, classes } = this.props
+		const { activeChannel, activePath, classes } = this.props
 		return (
 			<div className={classes.chat}>
-				<MenuBar activeChannel={activeChannel} />
+				<MenuBar activeChannel={activeChannel} activePath={activePath} />
 				<Drawer activeChannel={activeChannel} />
-				<Messages activeChannel={activeChannel} />
+				{
+					activePath === '/channels'
+						? <Channels />
+						: <Messages activeChannel={activeChannel} />
+				}
 			</div>
 		)
 	}
@@ -42,6 +46,7 @@ export default compose(
 		}
 	}),
 	withProps(({ channelsById, match }) => ({
-		activeChannel: channelsById[match.params.channel_id]
+		activeChannel: channelsById[match.params.channel_id],
+		activePath: match.path,
 	}))
 )(Chat)
