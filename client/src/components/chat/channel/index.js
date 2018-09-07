@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { compose, withProps } from 'recompose'
-import { withStyles } from '@material-ui/core/styles'
 
+import ChannelMessages from '../messages/channel-messages'
 import sweetConnect from '../../../redux/sweet-connect'
 import { fetchChannel } from '../../../redux/action-creators'
 import {
@@ -16,25 +16,14 @@ class Channel extends Component {
 	}
 
 	render() {
-		const { classes, channel = {}, isFetchingChannel } = this.props
+		const { channel = {}, isFetchingChannel } = this.props
 		return isFetchingChannel ?
 			<div /> :
-			<div className={classes.channel}>
-				Channel Name: {channel.name}
-			</div>
+			<ChannelMessages channel={channel} />
 	}
 }
 
-const styles = theme => ({
-	channels: {
-		display: 'flex',
-		flex: '1 1 auto',
-		'flex-direction': 'column',
-	},
-})
-
 export default compose(
-	withStyles(styles),
 	sweetConnect({
 		selectors: {
 			channelsById: channelsByIdSelector,

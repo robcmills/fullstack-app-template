@@ -1,12 +1,10 @@
 import React from 'react'
 import { compose } from 'recompose'
 import Drawer from '@material-ui/core/Drawer'
-import Divider from '@material-ui/core/Divider'
 import Hidden from '@material-ui/core/Hidden'
 import { withStyles } from '@material-ui/core/styles'
 
-import ChannelsList from './channels-list'
-import UsersList from './users-list'
+import Navigation from './navigation'
 import sweetConnect from '../../../redux/sweet-connect'
 import { isDrawerOpenSelector } from '../../../redux/selectors'
 import { toggleDrawer } from '../../../redux/action-creators'
@@ -19,9 +17,7 @@ const ChatDrawer = ({ activeChannel, classes, isDrawerOpen }) =>
 			<Drawer variant="permanent" classes={{ paper: classes.drawer }}>
 				<div className={classes.toolbar} />
 				<div className={classes.scrollContainer}>
-					<ChannelsList activeChannel={activeChannel} />
-					<Divider />
-					<UsersList />
+					<Navigation />
 				</div>
 			</Drawer>
 		</Hidden>
@@ -34,9 +30,7 @@ const ChatDrawer = ({ activeChannel, classes, isDrawerOpen }) =>
 					keepMounted: true, // Better open performance on mobile.
 				}}
 			>
-				<ChannelsList activeChannel={activeChannel} />
-				<Divider />
-				<UsersList />
+				<Navigation />
 			</Drawer>
 		</Hidden>
 	</div>
