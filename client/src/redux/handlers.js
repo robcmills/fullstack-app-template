@@ -36,6 +36,23 @@ module.exports = {
 		isCreatingChannel: false,
 	}),
 
+	FETCH_CHANNEL_REQUEST: (state) => ({
+		...state,
+		isFetchingChannel: true,
+	}),
+	FETCH_CHANNEL_FAILURE: (state) => ({
+		...state,
+		isFetchingChannel: false,
+	}),
+	FETCH_CHANNEL_SUCCESS: (state, channel) => ({
+		...state,
+		channelsById: {
+			...state.channelsById,
+			[channel.id]: channel,
+		},
+		isFetchingChannel: false,
+	}),
+
 	FETCH_CHANNELS_REQUEST: (state) => ({
 		...state,
 		isFetchingChannels: true,

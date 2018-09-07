@@ -13,8 +13,6 @@ const Router = () =>
 			<Route path="/login" component={Login} />
 			<Route path="/register" component={Register} />
 			<PrivateRoute path="/chat" component={Chat} />
-			<PrivateRoute path="/channels" component={Chat} exact />
-			<PrivateRoute path="/channels/:channel_id" component={Chat} />
 		</Switch>
 	</BrowserRouter>
 

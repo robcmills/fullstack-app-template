@@ -3,8 +3,7 @@ import { compose, withProps } from 'recompose'
 
 import MenuBar from './menu-bar'
 import Drawer from './drawer'
-import Channels from './channels'
-import Messages from './messages'
+import View from './view'
 
 import sweetConnect from '../../redux/sweet-connect'
 import { channelsByIdSelector } from '../../redux/selectors'
@@ -22,11 +21,7 @@ class Chat extends Component {
 			<div className={classes.chat}>
 				<MenuBar activeChannel={activeChannel} activePath={activePath} />
 				<Drawer activeChannel={activeChannel} />
-				{
-					activePath === '/channels'
-						? <Channels />
-						: <Messages activeChannel={activeChannel} />
-				}
+				<View />
 			</div>
 		)
 	}

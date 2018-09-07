@@ -1,8 +1,10 @@
 module.exports = {
 	channels: [],
+	channelsById: {},
 	createChannelError: false,
 	isCreatingChannel: false,
 	isDrawerOpen: false,
+	isFetchingChannel: false,
 	isFetchingChannels: false,
 	isFetchingMessages: false,
 	isLoggingIn: true,

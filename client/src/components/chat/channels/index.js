@@ -20,30 +20,20 @@ class Channels extends Component {
 		return isFetchingChannels ?
 			<div /> :
 			<div className={classes.channels}>
-				<div className={classes.toolbar} />
-				<div className={classes.children}>
-					{
-						channels.map((channel, index) =>
-							<Channel channel={channel} key={index} />)
-					}
-					{
-						!channels.length &&
-							<div className={classes.noChannels}>No channels created yet</div>
-					}
-				</div>
+				{
+					channels.map((channel, index) =>
+						<Channel channel={channel} key={index} />)
+				}
+				{
+					!channels.length &&
+						<div className={classes.noChannels}>No channels created yet</div>
+				}
 			</div>
 	}
 }
 
 const styles = theme => ({
 	channels: {
-		display: 'flex',
-		flex: '1 1 auto',
-		height: '100vh',
-		'flex-direction': 'column',
-	},
-	toolbar: theme.mixins.toolbar,
-	children: {
 		display: 'flex',
 		flex: '1 1 auto',
 		'flex-direction': 'column',

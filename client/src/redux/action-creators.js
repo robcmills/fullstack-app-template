@@ -17,6 +17,13 @@ export const createChannel = payload =>
 		url: '/api/channels',
 	})
 
+export const fetchChannel = ({ channelId }) =>
+	requestAction({
+		method: 'GET',
+		type: 'FETCH_CHANNEL',
+		url: `/api/channels/${channelId}`,
+	})
+
 export const fetchChannels = () =>
 	requestAction({
 		method: 'GET',

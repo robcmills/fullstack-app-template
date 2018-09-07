@@ -1,6 +1,11 @@
 const { Models: { Channel, User } } = require('../models')
 const asyncHandler = require('./async-handler')
 
+module.exports.getById = asyncHandler(async (req, res) =>
+	res.json(await Channel.findById(req.params.channel_id, {
+		include: [{ model: User, attributes: ['username', 'id'] }]
+	}))
+)
 module.exports.all = asyncHandler(async (req, res) =>
 	res.json(await Channel.findAll({
 		include: [{ model: User, attributes: ['username', 'id'] }]

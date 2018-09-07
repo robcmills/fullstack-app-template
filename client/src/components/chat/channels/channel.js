@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { withStyles } from '@material-ui/core/styles'
 
 const Channel = ({ channel, classes }) =>
-	<Link className={classes.channel} to={`/channels/${channel.id}`}>
+	<Link className={classes.channel} to={`/chat/channels/${channel.id}`}>
 		{channel.name}
 	</Link>
 

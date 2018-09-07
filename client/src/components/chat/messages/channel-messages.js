@@ -9,6 +9,7 @@ import socket from '../../../socket'
 import { fetchMessages } from '../../../redux/action-creators'
 import sweetConnect from '../../../redux/sweet-connect'
 import {
+	channelsByIdSelector,
 	isFetchingMessagesSelector,
 	messagesByChannelIdSelector,
 } from '../../../redux/selectors'
@@ -73,11 +74,13 @@ export default compose(
 	withStyles(styles),
 	sweetConnect({
 		selectors: {
+			channelsById: channelsByIdSelector,
 			isFetchingMessages: isFetchingMessagesSelector,
 			messagesByChannelId: messagesByChannelIdSelector,
 		},
 	}),
-	withProps(({ channel = {}, messagesByChannelId }) => ({
+	withProps(({ channel = {}, channelsById, match, messagesByChannelId }) => ({
+		channel: channelsById[match.params.channel_id],
 		messages: messagesByChannelId[channel.id] || [],
 	}))
 )(ChannelMessages)
