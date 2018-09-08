@@ -19,6 +19,6 @@ sequelize.sync().then(() => {
 	console.log(`Listening on port: ${app.get('port')}`)
 
 	const server = app.listen(app.get('port'))
-	const io = new Socket(server)
+	const io = Socket(server)
 	initSocketEvents(io)
 })

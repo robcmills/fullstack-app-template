@@ -9,7 +9,7 @@ const View = ({ classes }) =>
 	<div className={classes.view}>
 		<div className={classes.toolbar} />
 		<div className={classes.children}>
-			<Route path="/chat/channels" component={Channels} exact />
+			<Route path="/chat/channels" exact component={Channels} />
 			<Route path="/chat/channels/:channel_id" component={Channel} />
 		</div>
 	</div>
