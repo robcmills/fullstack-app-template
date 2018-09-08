@@ -14,9 +14,11 @@ export const isLoggingInSelector = state => state.isLoggingIn
 export const isRegisteringSelector = state => state.isRegistering
 export const loginErrorSelector = state => state.loginError
 export const messagesByChannelIdSelector = state => state.messagesByChannelId
+export const pathnameSelector = () => window.location.pathname
 export const registerErrorSelector = state => state.registerError
 export const userSelector = state => state.user
 export const usersSelector = state => state.users
+
 
 export const usersByIdSelector = createSelector(
 	usersSelector,
