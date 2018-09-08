@@ -3,7 +3,7 @@ module.exports = {
 	createChannelError: false,
 	isCreatingChannel: false,
 	isDrawerOpen: false,
-	isFetchingChannel: false,
+	isFetchingChannel: true,
 	isFetchingChannels: false,
 	isFetchingMessages: false,
 	isLoggingIn: true,

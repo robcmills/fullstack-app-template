@@ -20,6 +20,7 @@ export const createChannel = payload =>
 export const fetchChannel = ({ channelId }) =>
 	requestAction({
 		method: 'GET',
+		payload: { channelId },
 		type: 'FETCH_CHANNEL',
 		url: `/api/channels/${channelId}`,
 	})
@@ -34,6 +35,7 @@ export const fetchChannels = () =>
 export const fetchMessages = ({ channelId }) =>
 	requestAction({
 		method: 'GET',
+		payload: { channelId },
 		type: 'FETCH_MESSAGES',
 		url: `/api/channels/${channelId}/messages`,
 	})
@@ -74,6 +76,7 @@ export const sendMessage = payload => {
 	return requestAction({
 		body: payload,
 		method: 'POST',
+		payload,
 		type,
 		url: `/api/channels/${payload.channelId}/messages`,
 	})

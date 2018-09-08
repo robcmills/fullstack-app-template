@@ -1,7 +1,7 @@
 import store from './store'
 
-export default function requestAction({ body, method, type, url }) {
-	store.dispatch({ type: `${type}_REQUEST`, payload: body })
+export default function requestAction({ body, method, payload, type, url }) {
+	store.dispatch({ type: `${type}_REQUEST`, payload })
 	return fetch(url, {
 		method,
 		mode: 'cors', // no-cors, cors, *same-origin
@@ -20,10 +20,16 @@ export default function requestAction({ body, method, type, url }) {
 		}
 		throw new Error('Request failed: ' + response.statusText)
 	}).then(json => {
-		store.dispatch({ type: `${type}_SUCCESS`, payload: json })
+		store.dispatch({
+			type: `${type}_SUCCESS`,
+			payload: { ...payload, response: json },
+		})
 		return json
-	}).catch(error => {
-		store.dispatch({ type: `${type}_FAILURE`, payload: error })
+	}, error => {
+		store.dispatch({
+			type: `${type}_FAILURE`,
+			payload: { ...payload, error },
+		})
 		return error
 	})
 }

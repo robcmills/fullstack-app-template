@@ -5,15 +5,15 @@ export default {
 		...state,
 		isLoggingIn: true,
 	}),
-	AUTHENTICATE_SUCCESS: (state, user) => ({
-		...state,
-		isLoggingIn: false,
-		user,
-	}),
 	AUTHENTICATE_FAILURE: (state) => ({
 		...state,
 		isLoggingIn: false,
 		// todo error
+	}),
+	AUTHENTICATE_SUCCESS: (state, { response: user }) => ({
+		...state,
+		isLoggingIn: false,
+		user,
 	}),
 
 	CLEAR_CREATE_CHANNEL_ERROR: (state) => ({
@@ -26,14 +26,17 @@ export default {
 		createChannelError: false,
 		isCreatingChannel: true,
 	}),
-	CREATE_CHANNEL_FAILURE: (state, error) => ({
+	CREATE_CHANNEL_FAILURE: (state, { error }) => ({
 		...state,
 		createChannelError: error.message,
 		isCreatingChannel: false,
 	}),
-	CREATE_CHANNEL_SUCCESS: (state, channel) => ({
+	CREATE_CHANNEL_SUCCESS: (state, { response: channel }) => ({
 		...state,
-		channels: state.channels.concat(channel),
+		channelsById: {
+			...state.channelsById,
+			[channel.id]: channel,
+		},
 		createChannelError: false,
 		isCreatingChannel: false,
 	}),
@@ -46,11 +49,11 @@ export default {
 		...state,
 		isFetchingChannel: false,
 	}),
-	FETCH_CHANNEL_SUCCESS: (state, channel) => ({
+	FETCH_CHANNEL_SUCCESS: (state, { channelId, response: channel }) => ({
 		...state,
 		channelsById: {
 			...state.channelsById,
-			[channel.id]: channel,
+			[channelId]: channel,
 		},
 		isFetchingChannel: false,
 	}),
@@ -63,7 +66,7 @@ export default {
 		...state,
 		isFetchingChannels: false,
 	}),
-	FETCH_CHANNELS_SUCCESS: (state, channels) => ({
+	FETCH_CHANNELS_SUCCESS: (state, { response: channels }) => ({
 		...state,
 		channelsById: {
 			...state.channelsById,
@@ -80,12 +83,12 @@ export default {
 		...state,
 		isFetchingMessages: false,
 	}),
-	FETCH_MESSAGES_SUCCESS: (state, messages) => ({
+	FETCH_MESSAGES_SUCCESS: (state, { channelId, response: messages }) => ({
 		...state,
 		isFetchingMessages: false,
 		messagesByChannelId: {
 			...state.messagesByChannelId,
-			[messages[0].channelId]: messages,
+			[channelId]: messages,
 		},
 	}),
 
@@ -97,7 +100,7 @@ export default {
 		...state,
 		isFetchingUsers: false,
 	}),
-	FETCH_USERS_SUCCESS: (state, users) => ({
+	FETCH_USERS_SUCCESS: (state, { response: users }) => ({
 		...state,
 		isFetchingUsers: false,
 		usersById: {
@@ -110,15 +113,15 @@ export default {
 		...state,
 		isLoggingIn: true,
 	}),
-	LOGIN_SUCCESS: (state, user) => ({
-		...state,
-		isLoggingIn: false,
-		user,
-	}),
 	LOGIN_FAILURE: (state, error) => ({
 		...state,
 		isLoggingIn: false,
 		loginError: error.message,
+	}),
+	LOGIN_SUCCESS: (state, { response: user }) => ({
+		...state,
+		isLoggingIn: false,
+		user,
 	}),
 
 	LOGOUT_REQUEST: (state) => ({
@@ -126,19 +129,19 @@ export default {
 		user: null,
 	}),
 
-	REGISTER_REQUEST: (state, payload) => ({
+	REGISTER_REQUEST: (state) => ({
 		...state,
 		isRegistering: true,
 	}),
-	REGISTER_SUCCESS: (state, user) => ({
-		...state,
-		isRegistering: false,
-		user,
-	}),
-	REGISTER_FAILURE: (state, payload) => ({
+	REGISTER_FAILURE: (state) => ({
 		...state,
 		isRegistering: false,
 		registerError: true,
+	}),
+	REGISTER_SUCCESS: (state, { response: user }) => ({
+		...state,
+		isRegistering: false,
+		user,
 	}),
 
 	SEND_MESSAGE_REQUEST: (state, message) => ({
