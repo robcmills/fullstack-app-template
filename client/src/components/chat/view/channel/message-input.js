@@ -4,9 +4,9 @@ import Input from '@material-ui/core/Input'
 import IconButton from '@material-ui/core/IconButton'
 import SendIcon from '@material-ui/icons/Send'
 
-import sweetConnect from '../../../redux/sweet-connect'
-import { userSelector } from '../../../redux/selectors'
-import { sendMessage } from '../../../redux/action-creators'
+import sweetConnect from '../../../../redux/sweet-connect'
+import { userSelector } from '../../../../redux/selectors'
+import { sendMessage } from '../../../../redux/action-creators'
 import { withStyles } from '@material-ui/core/styles'
 
 class MessageInput extends Component {
@@ -27,9 +27,9 @@ class MessageInput extends Component {
 	}
 
 	handleSubmit = () => {
-		const { channel, user } = this.props
+		const { channelId, user } = this.props
 		const message = {
-			channelId: channel.id,
+			channelId,
 			content: this.state.message,
 			User: {
 				id: user.id,

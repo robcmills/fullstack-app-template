@@ -3,12 +3,12 @@ import { compose } from 'recompose'
 import { withStyles } from '@material-ui/core/styles'
 
 import Channel from './channel'
-import sweetConnect from '../../../redux/sweet-connect'
-import { fetchChannels } from '../../../redux/action-creators'
+import sweetConnect from '../../../../redux/sweet-connect'
+import { fetchChannels } from '../../../../redux/action-creators'
 import {
 	channelsSelector,
 	isFetchingChannelsSelector,
-} from '../../../redux/selectors'
+} from '../../../../redux/selectors'
 
 class Channels extends Component {
 	componentDidMount() {
@@ -17,18 +17,22 @@ class Channels extends Component {
 
 	render() {
 		const { classes, channels, isFetchingChannels } = this.props
-		return isFetchingChannels ?
-			<div /> :
+		return (
 			<div className={classes.channels}>
 				{
 					channels.map((channel, index) =>
 						<Channel channel={channel} key={index} />)
 				}
 				{
-					!channels.length &&
-						<div className={classes.noChannels}>No channels created yet</div>
+					!channels.length && !isFetchingChannels &&
+						<div className={classes.padding}>No channels created yet</div>
+				}
+				{
+					!channels.length && isFetchingChannels &&
+						<div className={classes.padding}>Fetching channels...</div>
 				}
 			</div>
+		)
 	}
 }
 
@@ -38,7 +42,7 @@ const styles = theme => ({
 		flex: '1 1 auto',
 		'flex-direction': 'column',
 	},
-	noChannels: {
+	padding: {
 		padding: theme.spacing.unit,
 	},
 })
