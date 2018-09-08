@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { compose, withProps } from 'recompose'
-import Divider from '@material-ui/core/Divider'
 import { withStyles } from '@material-ui/core/styles'
 
+import ActionBar from '../action-bar'
 import MessageInput from './message-input'
 import Messages from './messages'
 import sweetConnect from '../../../../redux/sweet-connect'
@@ -21,11 +21,10 @@ class Channel extends Component {
 	render() {
 		const { channelId, classes } = this.props
 		return (
-			<div className={classes.container}>
-				<div className={classes.input}>
+			<div className={classes.channel}>
+				<ActionBar>
 					<MessageInput channelId={channelId} />
-				</div>
-				<Divider />
+				</ActionBar>
 				<Messages channelId={channelId} />
 			</div>
 		)
@@ -33,17 +32,10 @@ class Channel extends Component {
 }
 
 const styles = theme => ({
-	container: {
+	channel: {
 		display: 'flex',
 		flex: '1 1 auto',
 		'flex-direction': 'column',
-	},
-	input: {
-		background: theme.palette.grey['50'],
-		display: 'flex',
-		flex: '0 0 50px',
-		'align-items': 'center',
-		'justify-content': 'center',
 	},
 })
 
