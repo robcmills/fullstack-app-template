@@ -32,9 +32,12 @@ class Messages extends Component {
 		} = this.props
 		return (
 			<div className={classes.messages}>
-				{messages.length === 0 && !isFetchingMessages && 'No messages yet'}
-				{messages.map((message, index) =>
-					<Message key={index} message={message} />)}
+				{
+					messages.map((message, index) =>
+						<Message message={message} key={index} />)
+				}
+				{!messages.length && !isFetchingMessages && 'No messages yet'}
+				{!messages.length && isFetchingMessages && 'Fetching messages...'}
 			</div>
 		)
 	}
@@ -44,7 +47,7 @@ const styles = theme => ({
 	messages: {
 		flex: '1 1 auto',
 		overflowY: 'scroll',
-		padding: '10px',
+		padding: theme.spacing.unit,
 	},
 })
 

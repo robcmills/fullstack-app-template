@@ -23,14 +23,8 @@ class Channels extends Component {
 					channels.map((channel, index) =>
 						<Channel channel={channel} key={index} />)
 				}
-				{
-					!channels.length && !isFetchingChannels &&
-						<div className={classes.padding}>No channels created yet</div>
-				}
-				{
-					!channels.length && isFetchingChannels &&
-						<div className={classes.padding}>Fetching channels...</div>
-				}
+				{!channels.length && !isFetchingChannels && 'No channels created yet'}
+				{!channels.length && isFetchingChannels && 'Fetching channels...'}
 			</div>
 		)
 	}
@@ -40,9 +34,7 @@ const styles = theme => ({
 	channels: {
 		display: 'flex',
 		flex: '1 1 auto',
-		'flex-direction': 'column',
-	},
-	padding: {
+		flexDirection: 'column',
 		padding: theme.spacing.unit,
 	},
 })
