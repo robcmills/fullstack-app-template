@@ -1,7 +1,7 @@
-import { indexBy, prop } from 'ramda'
-import { createSelector } from 'reselect'
+import { values } from 'ramda'
+// import { createSelector } from 'reselect'
 
-export const channelsSelector = state => state.channels
+export const channelsSelector = state => values(state.channelsById)
 export const channelsByIdSelector = state => state.channelsById
 export const createChannelErrorSelector = state => state.createChannelError
 export const isCreatingChannelSelector = state => state.isCreatingChannel
@@ -16,11 +16,6 @@ export const loginErrorSelector = state => state.loginError
 export const messagesByChannelIdSelector = state => state.messagesByChannelId
 export const pathnameSelector = () => window.location.pathname
 export const registerErrorSelector = state => state.registerError
+export const usersByIdSelector = state => state.usersById
 export const userSelector = state => state.user
-export const usersSelector = state => state.users
-
-
-export const usersByIdSelector = createSelector(
-	usersSelector,
-	(users) => indexBy(prop('id'), users)
-)
+export const usersSelector = state => values(state.usersById)

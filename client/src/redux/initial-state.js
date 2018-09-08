@@ -1,5 +1,4 @@
 module.exports = {
-	channels: [],
 	channelsById: {},
 	createChannelError: false,
 	isCreatingChannel: false,
@@ -13,6 +12,6 @@ module.exports = {
 	messagesByChannelId: {},
 	registerError: false,
 	user: null,
-	users: [],
+	usersById: [],
 	...window.__INITIAL_STATE__,
 }

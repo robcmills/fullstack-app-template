@@ -1,4 +1,6 @@
-module.exports = {
+import { indexBy, prop } from 'ramda'
+
+export default {
 	AUTHENTICATE_REQUEST: (state) => ({
 		...state,
 		isLoggingIn: true,
@@ -63,7 +65,10 @@ module.exports = {
 	}),
 	FETCH_CHANNELS_SUCCESS: (state, channels) => ({
 		...state,
-		channels,
+		channelsById: {
+			...state.channelsById,
+			...indexBy(prop('id'), channels)
+		},
 		isFetchingChannels: false,
 	}),
 
@@ -95,7 +100,10 @@ module.exports = {
 	FETCH_USERS_SUCCESS: (state, users) => ({
 		...state,
 		isFetchingUsers: false,
-		users,
+		usersById: {
+			...state.usersById,
+			...indexBy(prop('id'), users)
+		},
 	}),
 
 	LOGIN_REQUEST: (state) => ({
