@@ -24,6 +24,7 @@ const ChannelsList = ({ channels, classes, isFetchingChannels }) =>
 
 const styles = theme => ({
 	list: {
+		background: 'white',
 		flex: '1 1 auto',
 		overflowY: 'scroll',
 	},
