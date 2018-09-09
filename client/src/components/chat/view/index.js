@@ -4,6 +4,7 @@ import { withStyles } from '@material-ui/core/styles'
 
 import Channels from './channels'
 import Channel from './channel'
+import Users from './users'
 
 const View = ({ classes }) =>
 	<div className={classes.view}>
@@ -11,6 +12,7 @@ const View = ({ classes }) =>
 		<div className={classes.children}>
 			<Route path="/chat/channels" exact component={Channels} />
 			<Route path="/chat/channels/:channel_id" component={Channel} />
+			<Route path="/chat/users" exact component={Users} />
 		</div>
 	</div>
 

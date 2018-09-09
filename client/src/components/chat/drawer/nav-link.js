@@ -1,47 +1,49 @@
 import React, { Component } from 'react'
 import { compose } from 'recompose'
 import { Link } from 'react-router-dom'
+import cn from 'classnames'
 
 import ListItem from '@material-ui/core/ListItem'
+import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 import { withStyles } from '@material-ui/core/styles'
 
 import sweetConnect from '../../../redux/sweet-connect'
-import { fetchMessages, toggleDrawer } from '../../../redux/action-creators'
+import { toggleDrawer } from '../../../redux/action-creators'
 import { isDrawerOpenSelector } from '../../../redux/selectors'
+import isActiveSelector from './is-active-selector'
 
-class ChannelListItem extends Component {
+class NavLink extends Component {
 	handleClick = () => {
-		const { channel, isDrawerOpen } = this.props
-		fetchMessages({ channelId: channel.id })
+		const { isDrawerOpen } = this.props
 		if (isDrawerOpen) {
 			toggleDrawer()
 		}
 	}
 
 	render() {
-		const {
-			classes,
-			channel,
-			isActive
-		} = this.props
+		const { classes, icon, isActive, text, to } = this.props
 		return (
 			<ListItem
 				button
 				classes={{
-					button: isActive && classes.button,
-					root: isActive && classes.background,
+					root: cn(classes.primaryColor, isActive && classes.active),
 				}}
 				component={Link}
-				dense
+				key={to}
 				onClick={this.handleClick}
-				to={`/channels/${channel.id}`}
+				to={to}
 			>
+				<ListItemIcon classes={{ root: classes.primaryColor }}>
+					{icon}
+				</ListItemIcon>
 				<ListItemText
-					classes={{ textDense: isActive && classes.text }}
-					primary={channel.name}
+					classes={{
+						root: classes.textRoot,
+						primary: classes.primaryColor,
+					}}
+					primary={text}
 					primaryTypographyProps={{ noWrap: true }}
-					title={channel.name}
 				/>
 			</ListItem>
 		)
@@ -49,25 +51,23 @@ class ChannelListItem extends Component {
 }
 
 const styles = theme => ({
-	background: {
-		backgroundColor: theme.palette.primary.main,
-		color: 'white'
+	active: {
+		backgroundColor: '#eceef8',
 	},
-	button: {
-		'&:hover': {
-			backgroundColor: theme.palette.primary.main,
-		}
+	primaryColor: {
+		color: theme.palette.primary.main,
 	},
-	text: {
-		color: 'inherit',
-	}
+	textRoot: {
+		padding: 0,
+	},
 })
 
 export default compose(
 	withStyles(styles),
 	sweetConnect({
 		selectors: {
+			isActive: isActiveSelector,
 			isDrawerOpen: isDrawerOpenSelector,
 		}
 	}),
-)(ChannelListItem)
+)(NavLink)

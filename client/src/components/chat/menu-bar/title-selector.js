@@ -6,23 +6,33 @@ import {
 	pathnameSelector,
 } from '../../../redux/selectors'
 
+const getChannelsTitle = ({ channelsById, pathname }) => {
+	if (matchPath(pathname, { path: '/chat/channels', exact: true })) {
+		return 'Channels'
+	}
+	const match = matchPath(pathname, { path: '/chat/channels/:id' })
+	if (!match) {
+		return ''
+	}
+	const channelId = match.params.id
+	const channel = channelsById[channelId]
+	if (channelId && !channel) {
+		return ''
+	}
+	return channel.name
+}
+
 const titleSelector = createSelector(
 	channelsByIdSelector,
 	pathnameSelector,
 	(channelsById, pathname) => {
-		if (matchPath(pathname, { path: '/chat/channels', exact: true })) {
-			return 'Channels'
+		if (matchPath(pathname, { path: '/chat/channels' })) {
+			return getChannelsTitle({ channelsById, pathname })
 		}
-		const match = matchPath(pathname, { path: '/chat/channels/:id' })
-		if (!match) {
-			return 'Chat'
+		if (matchPath(pathname, { path: '/chat/users' })) {
+			return 'Users'
 		}
-		const channelId = match.params.id
-		const channel = channelsById[channelId]
-		if (channelId && !channel) {
-			return ''
-		}
-		return channel.name
+		return 'Chat'
 	}
 )
 
