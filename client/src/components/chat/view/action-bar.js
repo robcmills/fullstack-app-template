@@ -11,10 +11,10 @@ const ActionBar = ({ children, classes }) => [
 
 const styles = theme => ({
 	actionBar: {
+		alignItems: 'center',
 		background: theme.palette.grey['50'],
 		display: 'flex',
-		flex: '0 0 50px',
-		'align-items': 'center',
+		flex: '0 0 47px', // matches height of navigation items in drawer
 	},
 })
 
