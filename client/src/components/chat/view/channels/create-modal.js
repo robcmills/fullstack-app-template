@@ -12,19 +12,19 @@ import DialogTitle from '@material-ui/core/DialogTitle'
 import {
 	clearCreateChannelError,
 	createChannel,
-} from '../../../redux/action-creators'
-import sweetConnect from '../../../redux/sweet-connect'
+} from '../../../../redux/action-creators'
+import sweetConnect from '../../../../redux/sweet-connect'
 import {
 	isCreatingChannelSelector,
 	createChannelErrorSelector
-} from '../../../redux/selectors'
+} from '../../../../redux/selectors'
 
 const initialState = {
 	errors: { name: false },
 	name: '',
 }
 
-class CreateChannelModal extends Component {
+class CreateModal extends Component {
 	state = initialState
 
 	resetState = () => {
@@ -66,7 +66,7 @@ class CreateChannelModal extends Component {
 		createChannel(this.state).then((newChannel) => {
 			if (newChannel.id) {
 				this.props.handleClose()
-				this.props.history.push(`/channels/${newChannel.id}`)
+				this.props.history.push(`/chat/channels/${newChannel.id}`)
 			}
 		})
 	}
@@ -127,4 +127,4 @@ export default compose(
 			createChannelError: createChannelErrorSelector
 		}
 	}),
-)(CreateChannelModal)
+)(CreateModal)
