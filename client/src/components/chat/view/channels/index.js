@@ -5,7 +5,7 @@ import ActionBar from '../action-bar'
 import Search from './search'
 import Create from './create'
 import List from './list'
-import { fetchChannels } from '../../../../redux/action-creators'
+import { fetchChannels } from 'redux/action-creators'
 
 class Channels extends Component {
 	componentDidMount() {

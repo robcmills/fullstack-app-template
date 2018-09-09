@@ -3,7 +3,7 @@ import { compose } from 'recompose'
 import Typography from '@material-ui/core/Typography'
 import { withStyles } from '@material-ui/core/styles'
 
-import sweetConnect from '../../../redux/sweet-connect'
+import sweetConnect from 'redux/sweet-connect'
 import titleSelector from './title-selector'
 
 const Title = ({ classes, title }) =>

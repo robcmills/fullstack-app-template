@@ -4,9 +4,9 @@ import AccountCircle from '@material-ui/icons/AccountCircle'
 import MenuItem from '@material-ui/core/MenuItem'
 import Menu from '@material-ui/core/Menu'
 
-import sweetConnect from '../../../redux/sweet-connect'
-import { userSelector } from '../../../redux/selectors'
-import { logout } from '../../../redux/action-creators'
+import sweetConnect from 'redux/sweet-connect'
+import { userSelector } from 'redux/selectors'
+import { logout } from 'redux/action-creators'
 
 class UserMenu extends Component {
 	state = {

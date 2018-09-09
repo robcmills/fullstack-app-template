@@ -7,9 +7,9 @@ import CloseIcon from '@material-ui/icons/Close'
 import ErrorIcon from '@material-ui/icons/Error'
 import { withStyles } from '@material-ui/core/styles'
 
-import { closeRegisterSnackbar } from '../../redux/action-creators'
-import sweetConnect from '../../redux/sweet-connect'
-import { registerErrorSelector } from '../../redux/selectors'
+import { closeRegisterSnackbar } from 'redux/action-creators'
+import sweetConnect from 'redux/sweet-connect'
+import { registerErrorSelector } from 'redux/selectors'
 
 const styles = theme => ({
 	error: {

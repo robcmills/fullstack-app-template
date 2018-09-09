@@ -3,13 +3,13 @@ import { compose, withProps } from 'recompose'
 
 import Message from './message'
 
-import socket from '../../../../socket'
-import { fetchMessages } from '../../../../redux/action-creators'
-import sweetConnect from '../../../../redux/sweet-connect'
+import socket from 'socket' // src/socket.js, not a third party library
+import { fetchMessages } from 'redux/action-creators'
+import sweetConnect from 'redux/sweet-connect'
 import {
 	isFetchingMessagesSelector,
 	messagesByChannelIdSelector,
-} from '../../../../redux/selectors'
+} from 'redux/selectors'
 import { withStyles } from '@material-ui/core/styles'
 
 class Messages extends Component {

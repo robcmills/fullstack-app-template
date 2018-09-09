@@ -8,9 +8,9 @@ import CardContent from '@material-ui/core/CardContent'
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
 import { withStyles } from '@material-ui/core/styles'
-import { login } from '../../redux/action-creators'
-import sweetConnect from '../../redux/sweet-connect'
-import { isLoggingInSelector, isLoggedInSelector } from '../../redux/selectors'
+import { login } from 'redux/action-creators'
+import sweetConnect from 'redux/sweet-connect'
+import { isLoggingInSelector, isLoggedInSelector } from 'redux/selectors'
 
 class Login extends Component {
 	state = {

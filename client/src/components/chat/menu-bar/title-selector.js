@@ -4,7 +4,7 @@ import { createSelector } from 'reselect'
 import {
 	channelsByIdSelector,
 	pathnameSelector,
-} from '../../../redux/selectors'
+} from 'redux/selectors'
 
 const getChannelsTitle = ({ channelsById, pathname }) => {
 	if (matchPath(pathname, { path: '/chat/channels', exact: true })) {

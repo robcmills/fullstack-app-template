@@ -3,7 +3,7 @@ import { withStyles } from '@material-ui/core/styles'
 
 // import ActionBar from '../action-bar'
 // import List from './list'
-import { fetchUsers } from '../../../../redux/action-creators'
+import { fetchUsers } from 'redux/action-creators'
 
 class Users extends Component {
 	componentDidMount() {

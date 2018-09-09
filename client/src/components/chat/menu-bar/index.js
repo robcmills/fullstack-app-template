@@ -10,7 +10,7 @@ import { withStyles } from '@material-ui/core/styles'
 
 import Title from './title'
 import UserMenu from './user-menu'
-import { toggleDrawer } from '../../../redux/action-creators'
+import { toggleDrawer } from 'redux/action-creators'
 
 const MenuBar = ({ classes }) =>
 	<AppBar className={classes.appBar} position="absolute">

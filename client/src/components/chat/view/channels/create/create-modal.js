@@ -12,12 +12,12 @@ import DialogTitle from '@material-ui/core/DialogTitle'
 import {
 	clearCreateChannelError,
 	createChannel,
-} from '../../../../../redux/action-creators'
-import sweetConnect from '../../../../../redux/sweet-connect'
+} from 'redux/action-creators'
+import sweetConnect from 'redux/sweet-connect'
 import {
 	isCreatingChannelSelector,
 	createChannelErrorSelector
-} from '../../../../../redux/selectors'
+} from 'redux/selectors'
 
 const initialState = {
 	errors: { name: false },

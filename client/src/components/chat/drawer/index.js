@@ -5,9 +5,9 @@ import Hidden from '@material-ui/core/Hidden'
 import { withStyles } from '@material-ui/core/styles'
 
 import Navigation from './navigation'
-import sweetConnect from '../../../redux/sweet-connect'
-import { isDrawerOpenSelector } from '../../../redux/selectors'
-import { toggleDrawer } from '../../../redux/action-creators'
+import sweetConnect from 'redux/sweet-connect'
+import { isDrawerOpenSelector } from 'redux/selectors'
+import { toggleDrawer } from 'redux/action-creators'
 
 const drawerWidth = 240
 

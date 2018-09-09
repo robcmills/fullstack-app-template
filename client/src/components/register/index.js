@@ -8,12 +8,12 @@ import TextField from '@material-ui/core/TextField'
 import { withStyles } from '@material-ui/core/styles'
 
 import RegisterSnackbar from './snackbar'
-import sweetConnect from '../../redux/sweet-connect'
-import { register } from '../../redux/action-creators'
+import sweetConnect from 'redux/sweet-connect'
+import { register } from 'redux/action-creators'
 import {
 	isLoggedInSelector,
 	isRegisteringSelector,
-} from '../../redux/selectors'
+} from 'redux/selectors'
 
 class Register extends Component {
 	state = {

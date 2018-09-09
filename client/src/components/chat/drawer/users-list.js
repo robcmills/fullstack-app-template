@@ -11,8 +11,8 @@ import ExpandLess from '@material-ui/icons/ExpandLess'
 import ExpandMore from '@material-ui/icons/ExpandMore'
 import { withStyles } from '@material-ui/core/styles'
 
-import sweetConnect from '../../../redux/sweet-connect'
-import { usersSelector } from '../../../redux/selectors'
+import sweetConnect from 'redux/sweet-connect'
+import { usersSelector } from 'redux/selectors'
 
 class UsersList extends React.Component {
 	state = { open: true }

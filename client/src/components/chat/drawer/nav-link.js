@@ -8,9 +8,9 @@ import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 import { withStyles } from '@material-ui/core/styles'
 
-import sweetConnect from '../../../redux/sweet-connect'
-import { toggleDrawer } from '../../../redux/action-creators'
-import { isDrawerOpenSelector } from '../../../redux/selectors'
+import sweetConnect from 'redux/sweet-connect'
+import { toggleDrawer } from 'redux/action-creators'
+import { isDrawerOpenSelector } from 'redux/selectors'
 import isActiveSelector from './is-active-selector'
 
 class NavLink extends Component {

@@ -4,11 +4,11 @@ import List from '@material-ui/core/List'
 import { withStyles } from '@material-ui/core/styles'
 
 import ChannelsListItem from './list-item'
-import sweetConnect from '../../../../redux/sweet-connect'
+import sweetConnect from 'redux/sweet-connect'
 import {
 	channelsSelector,
 	isFetchingChannelsSelector,
-} from '../../../../redux/selectors'
+} from 'redux/selectors'
 
 const ChannelsList = ({ channels, classes, isFetchingChannels }) =>
 	<div className={classes.list}>

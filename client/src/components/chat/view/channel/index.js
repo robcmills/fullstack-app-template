@@ -5,12 +5,12 @@ import { withStyles } from '@material-ui/core/styles'
 import ActionBar from '../action-bar'
 import MessageInput from './message-input'
 import Messages from './messages'
-import sweetConnect from '../../../../redux/sweet-connect'
-import { fetchChannel } from '../../../../redux/action-creators'
+import sweetConnect from 'redux/sweet-connect'
+import { fetchChannel } from 'redux/action-creators'
 import {
 	channelsByIdSelector,
 	isFetchingChannelSelector,
-} from '../../../../redux/selectors'
+} from 'redux/selectors'
 
 class Channel extends Component {
 	componentDidMount() {
