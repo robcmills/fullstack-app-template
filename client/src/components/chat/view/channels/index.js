@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { withStyles } from '@material-ui/core/styles'
 
 import ActionBar from '../action-bar'
+import Search from './search'
 import Create from './create'
 import List from './list'
 import { fetchChannels } from '../../../../redux/action-creators'
@@ -17,6 +18,7 @@ class Channels extends Component {
 			<div className={classes.channels}>
 				<ActionBar>
 					<div className={classes.actions}>
+						<Search />
 						<Create />
 					</div>
 				</ActionBar>

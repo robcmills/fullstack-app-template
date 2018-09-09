@@ -15,7 +15,7 @@ class Create extends Component {
 		return [
 			<IconButton
 				color="primary"
-				key="button"
+				key="add"
 				onClick={this.handleOpen}
 			>
 				<AddIcon />
