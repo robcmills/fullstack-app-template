@@ -1,20 +1,23 @@
 import React from 'react'
 import { compose } from 'recompose'
+import List from '@material-ui/core/List'
 import { withStyles } from '@material-ui/core/styles'
 
-import Channel from './channel'
+import ChannelsListItem from './list-item'
 import sweetConnect from '../../../../redux/sweet-connect'
 import {
 	channelsSelector,
 	isFetchingChannelsSelector,
 } from '../../../../redux/selectors'
 
-const List = ({ channels, classes, isFetchingChannels }) =>
+const ChannelsList = ({ channels, classes, isFetchingChannels }) =>
 	<div className={classes.list}>
-		{
-			channels.map((channel, index) =>
-				<Channel channel={channel} key={index} />)
-		}
+		<List component="div" disablePadding>
+			{
+				channels.map((channel, index) =>
+					<ChannelsListItem channel={channel} key={index} />)
+			}
+		</List>
 		{!channels.length && !isFetchingChannels && 'No channels created yet'}
 		{!channels.length && isFetchingChannels && 'Fetching channels...'}
 	</div>
@@ -23,7 +26,6 @@ const styles = theme => ({
 	list: {
 		flex: '1 1 auto',
 		overflowY: 'scroll',
-		padding: theme.spacing.unit,
 	},
 })
 
@@ -35,5 +37,5 @@ export default compose(
 			isFetchingChannels: isFetchingChannelsSelector,
 		},
 	}),
-)(List)
+)(ChannelsList)
 
