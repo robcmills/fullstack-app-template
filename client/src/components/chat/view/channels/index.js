@@ -33,7 +33,10 @@ const styles = theme => ({
 		flexDirection: 'column',
 	},
 	actions: {
-		padding: theme.spacing.unit,
+		display: 'flex',
+		flex: '1 1 auto',
+		justifyContent: 'flex-end',
+		padding: `0 ${theme.spacing.unit}px`,
 	},
 })
 
