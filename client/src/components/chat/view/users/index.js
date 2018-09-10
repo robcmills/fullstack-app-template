@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { withStyles } from '@material-ui/core/styles'
 
-// import ActionBar from '../action-bar'
+import ActionBar from '../action-bar'
+import AddUser from './add'
 // import List from './list'
 import { fetchUsers } from 'redux/action-creators'
 
@@ -14,6 +15,11 @@ class Users extends Component {
 		const { classes } = this.props
 		return (
 			<div className={classes.users}>
+				<ActionBar>
+					<div className={classes.actions}>
+						<AddUser />
+					</div>
+				</ActionBar>
 				List of Users
 			</div>
 		)
@@ -27,7 +33,10 @@ const styles = theme => ({
 		flexDirection: 'column',
 	},
 	actions: {
-		padding: theme.spacing.unit,
+		display: 'flex',
+		flex: '1 1 auto',
+		justifyContent: 'flex-end',
+		padding: `0 ${theme.spacing.unit}px`,
 	},
 })
 
