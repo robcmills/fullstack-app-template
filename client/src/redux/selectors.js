@@ -9,6 +9,7 @@ export const isDrawerOpenSelector = state => state.isDrawerOpen
 export const isFetchingChannelSelector = state => state.isFetchingChannel
 export const isFetchingChannelsSelector = state => state.isFetchingChannels
 export const isFetchingMessagesSelector = state => state.isFetchingMessages
+export const isFetchingUsersSelector = state => state.isFetchingUsers
 export const isLoggedInSelector = state => !!state.user
 export const isLoggingInSelector = state => state.isLoggingIn
 export const isRegisteringSelector = state => state.isRegistering

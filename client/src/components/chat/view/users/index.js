@@ -3,7 +3,7 @@ import { withStyles } from '@material-ui/core/styles'
 
 import ActionBar from '../action-bar'
 import AddUser from './add'
-// import List from './list'
+import UsersList from './list'
 import { fetchUsers } from 'redux/action-creators'
 
 class Users extends Component {
@@ -20,7 +20,7 @@ class Users extends Component {
 						<AddUser />
 					</div>
 				</ActionBar>
-				List of Users
+				<UsersList />
 			</div>
 		)
 	}

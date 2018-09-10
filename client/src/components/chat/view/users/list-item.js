@@ -4,17 +4,17 @@ import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
 import { withStyles } from '@material-ui/core/styles'
 
-const ChannelsListItem = ({ channel, classes }) =>
+const UsersListItem = ({ user, classes }) =>
 	<ListItem
 		button
 		className={classes.item}
 		component={Link}
-		to={`/chat/channels/${channel.id}`}
+		to={`/chat/users/${user.id}`}
 	>
 		<ListItemText
-			primary={channel.name}
+			primary={user.username}
 			primaryTypographyProps={{ noWrap: true }}
-			title={channel.name}
+			title={user.username}
 		/>
 	</ListItem>
 
@@ -24,4 +24,4 @@ const styles = theme => ({
 	},
 })
 
-export default withStyles(styles)(ChannelsListItem)
+export default withStyles(styles)(UsersListItem)
