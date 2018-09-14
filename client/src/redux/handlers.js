@@ -92,6 +92,40 @@ export default {
 		},
 	}),
 
+	FETCH_USER_MESSAGES_REQUEST: (state) => ({
+		...state,
+		isFetchingUserMessages: true,
+	}),
+	FETCH_USER_MESSAGES_FAILURE: (state) => ({
+		...state,
+		isFetchingUserMessages: false,
+	}),
+	FETCH_USER_MESSAGES_SUCCESS: (state, { userId, response: messages }) => ({
+		...state,
+		isFetchingUserMessages: false,
+		messagesByUserId: {
+			...state.messagesByUserId,
+			[userId]: messages,
+		},
+	}),
+
+	FETCH_USER_REQUEST: (state) => ({
+		...state,
+		isFetchingUser: true,
+	}),
+	FETCH_USER_FAILURE: (state) => ({
+		...state,
+		isFetchingUser: false,
+	}),
+	FETCH_USER_SUCCESS: (state, { response: user }) => ({
+		...state,
+		isFetchingUser: false,
+		usersById: {
+			...state.usersById,
+			[user.id]: user,
+		},
+	}),
+
 	FETCH_USERS_REQUEST: (state) => ({
 		...state,
 		isFetchingUsers: true,
@@ -151,6 +185,17 @@ export default {
 			[message.channelId]: [
 				message,
 				...(state.messagesByChannelId[message.channelId] || []),
+			],
+		},
+	}),
+
+	SEND_USER_MESSAGE_REQUEST: (state, message) => ({
+		...state,
+		messagesByUserId: {
+			...state.messagesByUserId,
+			[message.recipientUserId]: [
+				message,
+				...(state.messagesByUserId[message.recipientUserId] || []),
 			],
 		},
 	}),

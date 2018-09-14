@@ -5,6 +5,7 @@ const tokenModel = require('./tokens')
 const channelModel = require('./channels')
 const messageModel = require('./messages')
 const userModel = require('./users')
+const userMessageModel = require('./user-message')
 
 const config = sequelizeConfig[ENV]
 
@@ -19,6 +20,7 @@ Models.Token = sequelize.import('Token', tokenModel)
 Models.Channel = sequelize.import('Channel', channelModel)
 Models.Message = sequelize.import('Message', messageModel)
 Models.User = sequelize.import('User', userModel)
+Models.UserMessage = sequelize.import('UserMessage', userMessageModel)
 
 Object.keys(Models).forEach((key) => {
 	const model = Models[key]

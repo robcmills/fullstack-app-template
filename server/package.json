@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
+    "debug": "node --inspect-brk index.js",
     "dev": "nodemon",
     "create": "npx sequelize db:create",
     "migrate": "npx sequelize db:migrate",

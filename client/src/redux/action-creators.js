@@ -40,6 +40,21 @@ export const fetchMessages = ({ channelId }) =>
 		url: `/api/channels/${channelId}/messages`,
 	})
 
+export const fetchUserMessages = ({ userId }) =>
+	requestAction({
+		method: 'GET',
+		payload: { userId },
+		type: 'FETCH_USER_MESSAGES',
+		url: `/api/users/${userId}/messages`,
+	})
+
+export const fetchUser = ({ userId }) =>
+	requestAction({
+		method: 'GET',
+		type: 'FETCH_USER',
+		url: `/api/users/${userId}`,
+	})
+
 export const fetchUsers = () =>
 	requestAction({
 		method: 'GET',
@@ -79,6 +94,18 @@ export const sendMessage = payload => {
 		payload,
 		type,
 		url: `/api/channels/${payload.channelId}/messages`,
+	})
+}
+
+export const sendUserMessage = payload => {
+	const type = 'SEND_USER_MESSAGE'
+	socket.emit(type, payload)
+	return requestAction({
+		body: payload,
+		method: 'POST',
+		payload,
+		type,
+		url: `/api/users/${payload.recipientUserId}/message`,
 	})
 }
 

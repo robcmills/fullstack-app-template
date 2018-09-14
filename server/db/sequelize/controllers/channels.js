@@ -6,6 +6,7 @@ module.exports.getById = asyncHandler(async (req, res) =>
 		include: [{ model: User, attributes: ['username', 'id'] }]
 	}))
 )
+
 module.exports.all = asyncHandler(async (req, res) =>
 	res.json(await Channel.findAll({
 		include: [{ model: User, attributes: ['username', 'id'] }]

@@ -9,12 +9,15 @@ export const isDrawerOpenSelector = state => state.isDrawerOpen
 export const isFetchingChannelSelector = state => state.isFetchingChannel
 export const isFetchingChannelsSelector = state => state.isFetchingChannels
 export const isFetchingMessagesSelector = state => state.isFetchingMessages
+export const isFetchingUserMessagesSelector = state => state.isFetchingUserMessages
 export const isFetchingUsersSelector = state => state.isFetchingUsers
+export const isFetchingUserSelector = state => state.isFetchingUser
 export const isLoggedInSelector = state => !!state.user
 export const isLoggingInSelector = state => state.isLoggingIn
 export const isRegisteringSelector = state => state.isRegistering
 export const loginErrorSelector = state => state.loginError
 export const messagesByChannelIdSelector = state => state.messagesByChannelId
+export const messagesByUserIdSelector = state => state.messagesByUserId
 export const pathnameSelector = () => window.location.pathname
 export const registerErrorSelector = state => state.registerError
 export const usersByIdSelector = state => state.usersById

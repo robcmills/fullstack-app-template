@@ -65,6 +65,12 @@ module.exports = (sequelize, DataTypes) => {
 		User.hasMany(models.Message, {
 			foreignKey: 'userId'
 		})
+		User.hasMany(models.UserMessage, {
+			foreignKey: 'senderUserId'
+		})
+		User.hasMany(models.UserMessage, {
+			foreignKey: 'recipientUserId'
+		})
 		User.hasMany(models.Token, {
 			foreignKey: 'userId'
 		})

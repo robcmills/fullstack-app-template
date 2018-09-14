@@ -4,6 +4,16 @@ const asyncHandler = require('./async-handler')
 
 const User = Models.User
 
+module.exports.getById = asyncHandler(async (req, res) =>
+	res.json(await User.findById(req.params.user_id, {
+		attributes: ['id', 'username']
+	}))
+)
+
+module.exports.getMessages = asyncHandler(async (req, res) =>
+	res.json([])
+)
+
 module.exports.all = asyncHandler(async (req, res) =>
 	res.json(await User.findAll())
 )
