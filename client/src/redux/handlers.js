@@ -197,6 +197,10 @@ export default {
 				message,
 				...(state.messagesByUserId[message.recipientUserId] || []),
 			],
+			[message.senderUserId]: [
+				message,
+				...(state.messagesByUserId[message.senderUserId] || []),
+			],
 		},
 	}),
 
