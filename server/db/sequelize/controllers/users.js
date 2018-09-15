@@ -1,3 +1,5 @@
+const sequelize = require('sequelize')
+const { ne } = sequelize.Op
 const passport = require('passport')
 const { Models } = require('../models')
 const asyncHandler = require('./async-handler')
@@ -15,7 +17,9 @@ module.exports.getMessages = asyncHandler(async (req, res) =>
 )
 
 module.exports.all = asyncHandler(async (req, res) =>
-	res.json(await User.findAll())
+	res.json(await User.findAll({
+		where: { id: { [ne]: req.user.id } }
+	}))
 )
 
 module.exports.authenticate = (req, res) => req.user
