@@ -15,8 +15,8 @@ module.exports = (io) => {
 		socket.on('SEND_MESSAGE', (message) => {
 			socket.broadcast.to(message.channelId).emit('SEND_MESSAGE', message)
 		})
-		socket.on('SEND_USER_MESSAGE', (message) => {
-			socket.broadcast.to(message.recipientUserId).emit('SEND_USER_MESSAGE', message)
+		socket.on('SEND_DIRECT_MESSAGE', (message) => {
+			socket.broadcast.to(message.recipientUserId).emit('SEND_DIRECT_MESSAGE', message)
 		})
 	})
 }

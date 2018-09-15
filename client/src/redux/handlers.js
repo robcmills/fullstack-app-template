@@ -93,15 +93,15 @@ export default {
 		},
 	}),
 
-	FETCH_USER_MESSAGES_REQUEST: (state) => ({
+	FETCH_DIRECT_MESSAGES_REQUEST: (state) => ({
 		...state,
 		isFetchingDirectMessages: true,
 	}),
-	FETCH_USER_MESSAGES_FAILURE: (state) => ({
+	FETCH_DIRECT_MESSAGES_FAILURE: (state) => ({
 		...state,
 		isFetchingDirectMessages: false,
 	}),
-	FETCH_USER_MESSAGES_SUCCESS: (state, { userId, response: messages }) => ({
+	FETCH_DIRECT_MESSAGES_SUCCESS: (state, { userId, response: messages }) => ({
 		...state,
 		isFetchingDirectMessages: false,
 		messagesByRecipientUserId: {
@@ -193,7 +193,7 @@ export default {
 		},
 	}),
 
-	SEND_USER_MESSAGE_REQUEST: (state, message) => ({
+	SEND_DIRECT_MESSAGE_REQUEST: (state, message) => ({
 		...state,
 		messagesByRecipientUserId: {
 			...state.messagesByRecipientUserId,

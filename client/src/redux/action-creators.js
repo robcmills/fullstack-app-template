@@ -44,7 +44,7 @@ export const fetchDirectMessages = ({ userId }) =>
 	requestAction({
 		method: 'GET',
 		payload: { userId },
-		type: 'FETCH_USER_MESSAGES',
+		type: 'FETCH_DIRECT_MESSAGES',
 		url: `/api/users/${userId}/messages`,
 	})
 
@@ -98,7 +98,7 @@ export const sendMessage = payload => {
 }
 
 export const sendDirectMessage = payload => {
-	const type = 'SEND_USER_MESSAGE'
+	const type = 'SEND_DIRECT_MESSAGE'
 	socket.emit(type, payload)
 	return requestAction({
 		body: payload,
