@@ -3,19 +3,19 @@ import { compose } from 'recompose'
 
 import Message from './message'
 import socket from 'socket' // src/socket.js, not a third party library
-import { fetchUserMessages } from 'redux/action-creators'
+import { fetchDirectMessages } from 'redux/action-creators'
 import sweetConnect from 'redux/sweet-connect'
 import {
-	isFetchingUserMessagesSelector,
+	isFetchingDirectMessagesSelector,
 	userSelector,
 } from 'redux/selectors'
-import userMessagesSelector from './selector'
+import directMessagesSelector from './selector'
 import { withStyles } from '@material-ui/core/styles'
 
-class UserMessages extends Component {
+class DirectMessages extends Component {
 	componentDidMount() {
 		const { me, userId } = this.props
-		fetchUserMessages({ userId })
+		fetchDirectMessages({ userId })
 		socket.emit('ENTER_USER_CHANNEL', { userId: me.id })
 	}
 
@@ -27,17 +27,17 @@ class UserMessages extends Component {
 	render () {
 		const {
 			classes,
-			isFetchingUserMessages,
-			userMessages,
+			isFetchingDirectMessages,
+			directMessages,
 		} = this.props
 		return (
 			<div className={classes.messages}>
 				{
-					userMessages.map((message, index) =>
+					directMessages.map((message, index) =>
 						<Message message={message} key={index} />)
 				}
-				{!userMessages.length && !isFetchingUserMessages && 'No messages yet'}
-				{!userMessages.length && isFetchingUserMessages && 'Fetching messages...'}
+				{!directMessages.length && !isFetchingDirectMessages && 'No messages yet'}
+				{!directMessages.length && isFetchingDirectMessages && 'Fetching messages...'}
 			</div>
 		)
 	}
@@ -55,9 +55,9 @@ export default compose(
 	withStyles(styles),
 	sweetConnect({
 		selectors: {
-			isFetchingUserMessages: isFetchingUserMessagesSelector,
+			isFetchingDirectMessages: isFetchingDirectMessagesSelector,
 			me: userSelector,
-			userMessages: userMessagesSelector,
+			directMessages: directMessagesSelector,
 		},
 	}),
-)(UserMessages)
+)(DirectMessages)

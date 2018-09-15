@@ -40,7 +40,7 @@ export const fetchMessages = ({ channelId }) =>
 		url: `/api/channels/${channelId}/messages`,
 	})
 
-export const fetchUserMessages = ({ userId }) =>
+export const fetchDirectMessages = ({ userId }) =>
 	requestAction({
 		method: 'GET',
 		payload: { userId },
@@ -97,7 +97,7 @@ export const sendMessage = payload => {
 	})
 }
 
-export const sendUserMessage = payload => {
+export const sendDirectMessage = payload => {
 	const type = 'SEND_USER_MESSAGE'
 	socket.emit(type, payload)
 	return requestAction({

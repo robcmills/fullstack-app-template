@@ -46,7 +46,7 @@ const existingGoogleAccountMessage = [
 	'Sign in with that account or delete it, then link it with your current account.'
 ].join(' ')
 
-const existingEmailUserMessage = [
+const existingEmailDirectMessage = [
 	'There is already an account using this email address.',
 	'Sign in to that account and link it with Google manually from Account Settings.'
 ].join(' ')
@@ -70,7 +70,7 @@ module.exports = (req, accessToken, refreshToken, profile, done) =>
 			where: { email: profile._json.emails[0].value }
 		}).then((existingEmailUser) => {
 			if (existingEmailUser) {
-				return done(null, false, { message: existingEmailUserMessage })
+				return done(null, false, { message: existingEmailDirectMessage })
 			}
 			return createUserWithToken(profile, accessToken, done)
 		})

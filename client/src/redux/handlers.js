@@ -95,15 +95,15 @@ export default {
 
 	FETCH_USER_MESSAGES_REQUEST: (state) => ({
 		...state,
-		isFetchingUserMessages: true,
+		isFetchingDirectMessages: true,
 	}),
 	FETCH_USER_MESSAGES_FAILURE: (state) => ({
 		...state,
-		isFetchingUserMessages: false,
+		isFetchingDirectMessages: false,
 	}),
 	FETCH_USER_MESSAGES_SUCCESS: (state, { userId, response: messages }) => ({
 		...state,
-		isFetchingUserMessages: false,
+		isFetchingDirectMessages: false,
 		messagesByRecipientUserId: {
 			...state.messagesByRecipientUserId,
 			[userId]: messages

@@ -6,7 +6,7 @@ module.exports = {
 	isFetchingChannel: true,
 	isFetchingChannels: false,
 	isFetchingMessages: false,
-	isFetchingUserMessages: false,
+	isFetchingDirectMessages: false,
 	isFetchingUser: false,
 	isLoggingIn: true,
 	isRegistering: false,

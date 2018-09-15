@@ -6,7 +6,7 @@ import SendIcon from '@material-ui/icons/Send'
 
 import sweetConnect from 'redux/sweet-connect'
 import { userSelector } from 'redux/selectors'
-import { sendUserMessage } from 'redux/action-creators'
+import { sendDirectMessage } from 'redux/action-creators'
 import { withStyles } from '@material-ui/core/styles'
 
 class MessageInput extends Component {
@@ -38,7 +38,7 @@ class MessageInput extends Component {
 				username: user.username,
 			},
 		}
-		sendUserMessage(message)
+		sendDirectMessage(message)
 		this.setState({ message: '' })
 	}
 

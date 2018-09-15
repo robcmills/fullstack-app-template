@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-	const UserMessage = sequelize.define('UserMessage', {
+	const DirectMessage = sequelize.define('DirectMessage', {
 		content: {
 			type: DataTypes.STRING,
 			defaultValue: ''
@@ -23,18 +23,18 @@ module.exports = (sequelize, DataTypes) => {
 	})
 
 	// Class Methods
-	UserMessage.associate = function (models) {
-		UserMessage.belongsTo(models.User, {
+	DirectMessage.associate = function (models) {
+		DirectMessage.belongsTo(models.User, {
 			foreignKey: 'recipientUserId',
 			through: 'user_message_recipient',
 			as: 'Recipient'
 		})
-		UserMessage.belongsTo(models.User, {
+		DirectMessage.belongsTo(models.User, {
 			foreignKey: 'senderUserId',
 			through: 'user_message_sender',
 			as: 'Sender'
 		})
 	}
 
-	return UserMessage
+	return DirectMessage
 }

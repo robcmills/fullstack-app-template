@@ -1,10 +1,10 @@
 const Sequelize = require('sequelize')
 const Op = Sequelize.Op
-const { Models: { User, UserMessage } } = require('../models')
+const { Models: { User, DirectMessage } } = require('../models')
 const asyncHandler = require('./async-handler')
 
 module.exports.create = asyncHandler(async (req, res) => {
-	const message = await UserMessage.create({
+	const message = await DirectMessage.create({
 		content: req.body.content
 	})
 
@@ -15,7 +15,7 @@ module.exports.create = asyncHandler(async (req, res) => {
 })
 
 module.exports.get = asyncHandler(async (req, res) =>
-	res.json(await UserMessage.findAll({
+	res.json(await DirectMessage.findAll({
 		where: {
 			[Op.or]: [{
 				recipientUserId: req.user.id,

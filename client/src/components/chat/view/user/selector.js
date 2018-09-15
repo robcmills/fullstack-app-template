@@ -6,7 +6,7 @@ import {
 } from 'redux/selectors'
 import { isEqualIds } from 'utils'
 
-const userMessagesSelector = createSelector(
+const directMessagesSelector = createSelector(
 	messagesByRecipientUserIdSelector,
 	userSelector,
 	(state, props) => props.userId,
@@ -28,4 +28,4 @@ const userMessagesSelector = createSelector(
 	}
 )
 
-export default userMessagesSelector
+export default directMessagesSelector

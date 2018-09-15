@@ -4,7 +4,7 @@ import Typography from '@material-ui/core/Typography'
 
 import { withStyles } from '@material-ui/core/styles'
 
-const UserMessage = ({
+const DirectMessage = ({
 	classes,
 	message,
 }) =>
@@ -32,4 +32,4 @@ const styles = theme => ({
 	},
 })
 
-export default withStyles(styles)(UserMessage)
+export default withStyles(styles)(DirectMessage)

@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/core/styles'
 
 import ActionBar from '../action-bar'
 import MessageInput from './message-input'
-import UserMessages from './messages'
+import DirectMessages from './messages'
 import sweetConnect from 'redux/sweet-connect'
 import { fetchUser } from 'redux/action-creators'
 import { isFetchingUserSelector } from 'redux/selectors'
@@ -22,7 +22,7 @@ class UserChat extends Component {
 				<ActionBar>
 					<MessageInput recipientUserId={userId} />
 				</ActionBar>
-				<UserMessages userId={userId} />
+				<DirectMessages userId={userId} />
 			</div>
 		)
 	}
