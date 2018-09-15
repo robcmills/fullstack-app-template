@@ -1,28 +1,26 @@
 import React, { Component } from 'react'
-import { compose, withProps } from 'recompose'
+import { compose } from 'recompose'
 
 import Message from './message'
-
 import socket from 'socket' // src/socket.js, not a third party library
 import { fetchUserMessages } from 'redux/action-creators'
 import sweetConnect from 'redux/sweet-connect'
 import {
 	isFetchingUserMessagesSelector,
-	messagesByUserIdSelector,
-	userSelector,
 } from 'redux/selectors'
+import userMessagesSelector from './selector'
 import { withStyles } from '@material-ui/core/styles'
 
 class UserMessages extends Component {
 	componentDidMount() {
-		const { recipientUserId, userId: senderUserId } = this.props
-		fetchUserMessages({ userId: senderUserId })
-		socket.emit('ENTER_USER_CHANNEL', { recipientUserId, senderUserId })
+		const { userId } = this.props
+		fetchUserMessages({ userId })
+		socket.emit('ENTER_USER_CHANNEL', { userId })
 	}
 
 	componentWillUnmount() {
-		const { recipientUserId, userId: senderUserId } = this.props
-		socket.emit('EXIT_USER_CHANNEL', { recipientUserId, senderUserId })
+		const { userId } = this.props
+		socket.emit('EXIT_USER_CHANNEL', { userId })
 	}
 
 	render () {
@@ -57,12 +55,7 @@ export default compose(
 	sweetConnect({
 		selectors: {
 			isFetchingUserMessages: isFetchingUserMessagesSelector,
-			messagesByUserId: messagesByUserIdSelector,
-			user: userSelector,
+			userMessages: userMessagesSelector,
 		},
 	}),
-	withProps(({ user, userId, messagesByUserId }) => ({
-		recipientUserId: user.id,
-		userMessages: messagesByUserId[userId] || [],
-	}))
 )(UserMessages)

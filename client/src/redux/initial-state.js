@@ -12,7 +12,7 @@ module.exports = {
 	isRegistering: false,
 	loginError: false,
 	messagesByChannelId: {},
-	messagesByUserId: {},
+	messagesByRecipientUserId: {},
 	registerError: false,
 	user: null,
 	usersById: [],

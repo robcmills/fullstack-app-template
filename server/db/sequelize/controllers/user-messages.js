@@ -18,9 +18,11 @@ module.exports.get = asyncHandler(async (req, res) =>
 	res.json(await UserMessage.findAll({
 		where: {
 			[Op.or]: [{
+				recipientUserId: req.user.id,
 				senderUserId: req.params.user_id
 			}, {
-				recipientUserId: req.params.user_id
+				recipientUserId: req.params.user_id,
+				senderUserId: req.user.id
 			}]
 		},
 		include: [{

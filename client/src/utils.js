@@ -1,0 +1,1 @@
+export const isEqualIds = (idA, idB) => String(idA) === String(idB)

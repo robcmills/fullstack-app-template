@@ -29,8 +29,9 @@ class MessageInput extends Component {
 	handleSubmit = () => {
 		const { recipientUserId, user } = this.props
 		const message = {
-			recipientUserId,
 			content: this.state.message,
+			createdAt: new Date().toISOString(),
+			recipientUserId,
 			senderUserId: user.id,
 			Sender: {
 				id: user.id,

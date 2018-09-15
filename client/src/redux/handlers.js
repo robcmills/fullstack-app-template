@@ -1,4 +1,5 @@
 import { indexBy, prop } from 'ramda'
+import { isEqualIds } from 'utils'
 
 export default {
 	AUTHENTICATE_REQUEST: (state) => ({
@@ -103,9 +104,12 @@ export default {
 	FETCH_USER_MESSAGES_SUCCESS: (state, { userId, response: messages }) => ({
 		...state,
 		isFetchingUserMessages: false,
-		messagesByUserId: {
-			...state.messagesByUserId,
-			[userId]: messages,
+		messagesByRecipientUserId: {
+			...state.messagesByRecipientUserId,
+			[userId]: messages
+				.filter(message => isEqualIds(message.recipientUserId, userId)),
+			[state.user.id]: messages
+				.filter(message => isEqualIds(message.recipientUserId, state.user.id)),
 		},
 	}),
 
@@ -191,15 +195,11 @@ export default {
 
 	SEND_USER_MESSAGE_REQUEST: (state, message) => ({
 		...state,
-		messagesByUserId: {
-			...state.messagesByUserId,
+		messagesByRecipientUserId: {
+			...state.messagesByRecipientUserId,
 			[message.recipientUserId]: [
 				message,
-				...(state.messagesByUserId[message.recipientUserId] || []),
-			],
-			[message.senderUserId]: [
-				message,
-				...(state.messagesByUserId[message.senderUserId] || []),
+				...(state.messagesByRecipientUserId[message.recipientUserId] || []),
 			],
 		},
 	}),

@@ -7,7 +7,7 @@ import MessageInput from './message-input'
 import UserMessages from './messages'
 import sweetConnect from 'redux/sweet-connect'
 import { fetchUser } from 'redux/action-creators'
-import { usersByIdSelector, isFetchingUserSelector } from 'redux/selectors'
+import { isFetchingUserSelector } from 'redux/selectors'
 
 class UserChat extends Component {
 	componentDidMount() {
@@ -40,12 +40,10 @@ export default compose(
 	withStyles(styles),
 	sweetConnect({
 		selectors: {
-			usersById: usersByIdSelector,
 			isFetchingUser: isFetchingUserSelector,
 		}
 	}),
-	withProps(({ usersById, match }) => ({
-		user: usersById[match.params.user_id],
+	withProps(({ match }) => ({
 		userId: match.params.user_id,
 	}))
 )(UserChat)
