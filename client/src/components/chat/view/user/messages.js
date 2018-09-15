@@ -7,20 +7,21 @@ import { fetchUserMessages } from 'redux/action-creators'
 import sweetConnect from 'redux/sweet-connect'
 import {
 	isFetchingUserMessagesSelector,
+	userSelector,
 } from 'redux/selectors'
 import userMessagesSelector from './selector'
 import { withStyles } from '@material-ui/core/styles'
 
 class UserMessages extends Component {
 	componentDidMount() {
-		const { userId } = this.props
+		const { me, userId } = this.props
 		fetchUserMessages({ userId })
-		socket.emit('ENTER_USER_CHANNEL', { userId })
+		socket.emit('ENTER_USER_CHANNEL', { userId: me.id })
 	}
 
 	componentWillUnmount() {
-		const { userId } = this.props
-		socket.emit('EXIT_USER_CHANNEL', { userId })
+		const { me } = this.props
+		socket.emit('EXIT_USER_CHANNEL', { userId: me.id })
 	}
 
 	render () {
@@ -55,6 +56,7 @@ export default compose(
 	sweetConnect({
 		selectors: {
 			isFetchingUserMessages: isFetchingUserMessagesSelector,
+			me: userSelector,
 			userMessages: userMessagesSelector,
 		},
 	}),
