@@ -1,8 +1,8 @@
-const { Models: { Message, User } } = require('../models')
+const { Models: { ChannelMessage, User } } = require('../models')
 const asyncHandler = require('./async-handler')
 
 module.exports.get = asyncHandler(async (req, res) =>
-	res.json(await Message.findAll({
+	res.json(await ChannelMessage.findAll({
 		where: { channelId: req.params.channel_id },
 		include: [{ model: User, attributes: ['username', 'id'] }],
 		order: [['createdAt', 'DESC']]
@@ -10,7 +10,7 @@ module.exports.get = asyncHandler(async (req, res) =>
 )
 
 module.exports.create = asyncHandler(async (req, res) => {
-	const message = await Message.create({
+	const message = await ChannelMessage.create({
 		content: req.body.content
 	})
 

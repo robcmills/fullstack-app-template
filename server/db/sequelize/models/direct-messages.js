@@ -26,12 +26,12 @@ module.exports = (sequelize, DataTypes) => {
 	DirectMessage.associate = function (models) {
 		DirectMessage.belongsTo(models.User, {
 			foreignKey: 'recipientUserId',
-			through: 'user_message_recipient',
+			through: 'direct_message_recipient',
 			as: 'Recipient'
 		})
 		DirectMessage.belongsTo(models.User, {
 			foreignKey: 'senderUserId',
-			through: 'user_message_sender',
+			through: 'direct_message_sender',
 			as: 'Sender'
 		})
 	}

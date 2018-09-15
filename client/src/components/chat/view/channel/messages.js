@@ -4,18 +4,18 @@ import { compose, withProps } from 'recompose'
 import Message from './message'
 
 import socket from 'socket' // src/socket.js, not a third party library
-import { fetchMessages } from 'redux/action-creators'
+import { fetchChannelMessages } from 'redux/action-creators'
 import sweetConnect from 'redux/sweet-connect'
 import {
-	isFetchingMessagesSelector,
+	isFetchingChannelMessagesSelector,
 	messagesByChannelIdSelector,
 } from 'redux/selectors'
 import { withStyles } from '@material-ui/core/styles'
 
-class Messages extends Component {
+class ChannelMessages extends Component {
 	componentDidMount() {
 		const { channelId } = this.props
-		fetchMessages({ channelId })
+		fetchChannelMessages({ channelId })
 		socket.emit('ENTER_CHANNEL', { channelId })
 	}
 
@@ -27,7 +27,7 @@ class Messages extends Component {
 	render () {
 		const {
 			classes,
-			isFetchingMessages,
+			isFetchingChannelMessages,
 			messages,
 		} = this.props
 		return (
@@ -36,8 +36,8 @@ class Messages extends Component {
 					messages.map((message, index) =>
 						<Message message={message} key={index} />)
 				}
-				{!messages.length && !isFetchingMessages && 'No messages yet'}
-				{!messages.length && isFetchingMessages && 'Fetching messages...'}
+				{!messages.length && !isFetchingChannelMessages && 'No messages yet'}
+				{!messages.length && isFetchingChannelMessages && 'Fetching messages...'}
 			</div>
 		)
 	}
@@ -55,11 +55,11 @@ export default compose(
 	withStyles(styles),
 	sweetConnect({
 		selectors: {
-			isFetchingMessages: isFetchingMessagesSelector,
+			isFetchingChannelMessages: isFetchingChannelMessagesSelector,
 			messagesByChannelId: messagesByChannelIdSelector,
 		},
 	}),
 	withProps(({ channelId, messagesByChannelId }) => ({
 		messages: messagesByChannelId[channelId] || [],
 	}))
-)(Messages)
+)(ChannelMessages)

@@ -32,11 +32,11 @@ export const fetchChannels = () =>
 		url: '/api/channels',
 	})
 
-export const fetchMessages = ({ channelId }) =>
+export const fetchChannelMessages = ({ channelId }) =>
 	requestAction({
 		method: 'GET',
 		payload: { channelId },
-		type: 'FETCH_MESSAGES',
+		type: 'FETCH_CHANNEL_MESSAGES',
 		url: `/api/channels/${channelId}/messages`,
 	})
 

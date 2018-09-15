@@ -7,7 +7,7 @@ export const isCreatingChannelSelector = state => state.isCreatingChannel
 export const isDrawerOpenSelector = state => state.isDrawerOpen
 export const isFetchingChannelSelector = state => state.isFetchingChannel
 export const isFetchingChannelsSelector = state => state.isFetchingChannels
-export const isFetchingMessagesSelector = state => state.isFetchingMessages
+export const isFetchingChannelMessagesSelector = state => state.isFetchingChannelMessages
 export const isFetchingDirectMessagesSelector = state => state.isFetchingDirectMessages
 export const isFetchingUsersSelector = state => state.isFetchingUsers
 export const isFetchingUserSelector = state => state.isFetchingUser

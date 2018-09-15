@@ -4,8 +4,8 @@ module.exports = {
 	isCreatingChannel: false,
 	isDrawerOpen: false,
 	isFetchingChannel: true,
+	isFetchingChannelMessages: false,
 	isFetchingChannels: false,
-	isFetchingMessages: false,
 	isFetchingDirectMessages: false,
 	isFetchingUser: false,
 	isLoggingIn: true,
@@ -15,6 +15,6 @@ module.exports = {
 	messagesByRecipientUserId: {},
 	registerError: false,
 	user: null,
-	usersById: [],
+	usersById: {},
 	...window.__INITIAL_STATE__,
 }

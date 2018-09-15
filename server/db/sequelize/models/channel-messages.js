@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-	const Message = sequelize.define('Message', {
+	const ChannelMessage = sequelize.define('ChannelMessage', {
 		channelId: {
 			type: DataTypes.INTEGER,
 			references: {
@@ -23,16 +23,16 @@ module.exports = (sequelize, DataTypes) => {
 	})
 
 	// Class Methods
-	Message.associate = function (models) {
-		Message.belongsTo(models.Channel, {
+	ChannelMessage.associate = function (models) {
+		ChannelMessage.belongsTo(models.Channel, {
 			foreignKey: 'channelId',
 			through: 'channel_message'
 		})
-		Message.belongsTo(models.User, {
+		ChannelMessage.belongsTo(models.User, {
 			foreignKey: 'userId',
 			through: 'message_sender'
 		})
 	}
 
-	return Message
+	return ChannelMessage
 }

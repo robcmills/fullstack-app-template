@@ -76,17 +76,17 @@ export default {
 		isFetchingChannels: false,
 	}),
 
-	FETCH_MESSAGES_REQUEST: (state) => ({
+	FETCH_CHANNEL_MESSAGES_REQUEST: (state) => ({
 		...state,
-		isFetchingMessages: true,
+		isFetchingChannelMessages: true,
 	}),
-	FETCH_MESSAGES_FAILURE: (state) => ({
+	FETCH_CHANNEL_MESSAGES_FAILURE: (state) => ({
 		...state,
-		isFetchingMessages: false,
+		isFetchingChannelMessages: false,
 	}),
-	FETCH_MESSAGES_SUCCESS: (state, { channelId, response: messages }) => ({
+	FETCH_CHANNEL_MESSAGES_SUCCESS: (state, { channelId, response: messages }) => ({
 		...state,
-		isFetchingMessages: false,
+		isFetchingChannelMessages: false,
 		messagesByChannelId: {
 			...state.messagesByChannelId,
 			[channelId]: messages,

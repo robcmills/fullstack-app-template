@@ -62,7 +62,7 @@ module.exports = (sequelize, DataTypes) => {
 
 	// Class Methods
 	User.associate = function (models) {
-		User.hasMany(models.Message, {
+		User.hasMany(models.ChannelMessage, {
 			foreignKey: 'userId'
 		})
 		User.hasMany(models.DirectMessage, {
@@ -73,10 +73,6 @@ module.exports = (sequelize, DataTypes) => {
 		})
 		User.hasMany(models.Token, {
 			foreignKey: 'userId'
-		})
-		User.belongsToMany(models.Channel, {
-			foreignKey: 'userId',
-			through: 'channel_member'
 		})
 	}
 
