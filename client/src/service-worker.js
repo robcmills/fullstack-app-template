@@ -108,6 +108,7 @@ function checkValidServiceWorker(swUrl) {
 		})
 }
 
+// eslint-disable-next-line no-unused-vars
 function unregister() {
 	if ('serviceWorker' in navigator) {
 		navigator.serviceWorker.ready.then(registration => {

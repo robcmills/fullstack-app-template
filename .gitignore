@@ -1,3 +1,4 @@
+*.sketch
 *.zip
 .DS_Store
 .env
