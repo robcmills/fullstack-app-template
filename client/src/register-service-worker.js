@@ -18,41 +18,43 @@ const isLocalhost = Boolean(
 		)
 )
 
+const isProduction = process.env.NODE_ENV === 'production'
+
+const isServiceWorkerSupported = 'serviceWorker' in navigator
+
 function register() {
-	if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
-		// The URL constructor is available in all browsers that support SW.
-		const publicUrl = new URL(process.env.PUBLIC_URL, window.location)
-		if (publicUrl.origin !== window.location.origin) {
-			// Our service worker won't work if PUBLIC_URL is on a different origin
-			// from what our page is served on. This might happen if a CDN is used to
-			// serve assets; see https://github.com/facebookincubator/create-react-app/issues/2374
-			return
-		}
-
-		window.addEventListener('load', () => {
-			const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`
-
-			if (isLocalhost) {
-				// This is running on localhost. Lets check if a service worker still exists or not.
-				checkValidServiceWorker(swUrl)
-
-				// Add some additional logging to localhost, pointing developers to the
-				// service worker/PWA documentation.
-				navigator.serviceWorker.ready.then(() => {
-					console.log(
-						'This web app is being served cache-first by a service ' +
-							'worker. To learn more, visit https://goo.gl/SC7cgQ'
-					)
-				})
-			} else {
-				// Is not local host. Just register service worker
-				registerValidSW(swUrl)
-			}
-		})
+	// The URL constructor is available in all browsers that support SW.
+	const publicUrl = new URL(process.env.PUBLIC_URL, window.location)
+	if (publicUrl.origin !== window.location.origin) {
+		// Our service worker won't work if PUBLIC_URL is on a different origin
+		// from what our page is served on. This might happen if a CDN is used to
+		// serve assets; see https://github.com/facebookincubator/create-react-app/issues/2374
+		return
 	}
+
+	window.addEventListener('load', () => {
+		const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`
+
+		if (isLocalhost) {
+			// This is running on localhost. Lets check if a service worker still exists or not.
+			checkValidServiceWorker(swUrl)
+
+			// Add some additional logging to localhost, pointing developers to the
+			// service worker/PWA documentation.
+			navigator.serviceWorker.ready.then(() => {
+				console.log(
+					'This web app is being served cache-first by a service ' +
+						'worker. To learn more, visit https://goo.gl/SC7cgQ'
+				)
+			})
+		} else {
+			// Is not local host. Just register service worker
+			registerValidServiceWorker(swUrl)
+		}
+	})
 }
 
-function registerValidSW(swUrl) {
+function registerValidServiceWorker(swUrl) {
 	navigator.serviceWorker
 		.register(swUrl)
 		.then(registration => {
@@ -98,7 +100,7 @@ function checkValidServiceWorker(swUrl) {
 				})
 			} else {
 				// Service worker found. Proceed as normal.
-				registerValidSW(swUrl)
+				registerValidServiceWorker(swUrl)
 			}
 		})
 		.catch(() => {
@@ -110,11 +112,13 @@ function checkValidServiceWorker(swUrl) {
 
 // eslint-disable-next-line no-unused-vars
 function unregister() {
-	if ('serviceWorker' in navigator) {
+	if (isServiceWorkerSupported) {
 		navigator.serviceWorker.ready.then(registration => {
 			registration.unregister()
 		})
 	}
 }
 
-register()
+if (isProduction && isServiceWorkerSupported) {
+	register()
+}

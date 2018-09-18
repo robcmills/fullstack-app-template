@@ -6,7 +6,7 @@ import store from './redux/store'
 import App from './components/app'
 
 import './index.css'
-import './service-worker'
+import './register-service-worker'
 import './socket-events'
 
 ReactDOM.render(
