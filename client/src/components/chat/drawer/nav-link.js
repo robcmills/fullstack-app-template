@@ -52,7 +52,7 @@ class NavLink extends Component {
 
 const styles = theme => ({
 	active: {
-		backgroundColor: '#eceef8',
+		backgroundColor: '#E0F2F1',
 	},
 	primaryColor: {
 		color: theme.palette.primary.main,

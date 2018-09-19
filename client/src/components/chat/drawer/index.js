@@ -12,7 +12,7 @@ import { toggleDrawer } from 'redux/action-creators'
 const drawerWidth = 240
 
 const ChatDrawer = ({ activeChannel, classes, isDrawerOpen }) =>
-	<div>
+	<div className={classes.container}>
 		<Hidden smDown>
 			<Drawer variant="permanent" classes={{ paper: classes.drawer }}>
 				<div className={classes.toolbar} />
@@ -36,6 +36,9 @@ const ChatDrawer = ({ activeChannel, classes, isDrawerOpen }) =>
 	</div>
 
 const styles = theme => ({
+	container: {
+		display: 'flex',
+	},
 	drawer: {
 		position: 'relative',
 		width: drawerWidth,
