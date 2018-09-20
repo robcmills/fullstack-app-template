@@ -27,6 +27,9 @@ class MessageInput extends Component {
 	}
 
 	handleSubmit = () => {
+		if (this.state.message === '') {
+			return
+		}
 		const { recipientUserId, user } = this.props
 		const message = {
 			content: this.state.message,
@@ -93,7 +96,7 @@ const styles = theme => ({
 		borderRadius: theme.shape.borderRadius,
 	},
 	focused: {
-		borderColor: theme.palette.primary.light,
+		borderColor: theme.palette.primary.main,
 	},
 	input: {
 		padding: '5px',
