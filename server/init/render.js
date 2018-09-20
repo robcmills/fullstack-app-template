@@ -9,6 +9,7 @@ const indexHtml = fs.readFileSync(
 const getIndexHtml = ({ initialState }) => indexHtml
 	.toString()
 	.replace('"__INITIAL_STATE__"', JSON.stringify(initialState))
+	.replace('__GOOGLE_SIGNIN_CLIENT_ID__', process.env.GOOGLE_SIGNIN_CLIENT_ID)
 
 module.exports = (app) => {
 	app.use(express.static(path.join(__dirname, '../../client/build'), { index: false }))

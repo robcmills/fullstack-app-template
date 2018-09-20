@@ -50,6 +50,14 @@ class Login extends Component {
 		login(this.state)
 	}
 
+	handleGoogleSignIn = (googleUser) => {
+		const profile = googleUser.getBasicProfile()
+		console.log('ID: ' + profile.getId()) // Do not send to your backend! Use an ID token instead.
+		console.log('Name: ' + profile.getName())
+		console.log('Image URL: ' + profile.getImageUrl())
+		console.log('Email: ' + profile.getEmail()) // This is null if the 'email' scope is not present.
+	}
+
 	render() {
 		const { classes, isLoggingIn, isLoggedIn } = this.props
 		if (isLoggedIn) {
@@ -97,6 +105,9 @@ class Login extends Component {
 							>
 								{isLoggingIn ? 'Logging in...' : 'Login'}
 							</Button>
+						</CardContent>
+						<CardContent className={classes.actions}>
+							<div className="g-signin2" data-onsuccess={this.onGoogleSignIn} />
 						</CardContent>
 						<CardContent className={classes.actions}>
 							<Button component={Link} to="/register">Register</Button>
