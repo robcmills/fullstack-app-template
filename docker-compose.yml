@@ -12,6 +12,7 @@ services:
     working_dir: /src
     environment:
       NODE_ENV: development
+      DB_TYPE: POSTGRES
     volumes:
       - .:/src
 
