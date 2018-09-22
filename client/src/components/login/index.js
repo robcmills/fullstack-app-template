@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { compose } from 'recompose'
 import { Link, Redirect } from 'react-router-dom'
 
+import GoogleSignIn from './google-sign-in'
 import LoginSnackbar from './snackbar'
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
@@ -107,10 +108,10 @@ class Login extends Component {
 							</Button>
 						</CardContent>
 						<CardContent className={classes.actions}>
-							<div className="g-signin2" data-onsuccess={this.onGoogleSignIn} />
+							<GoogleSignIn />
 						</CardContent>
 						<CardContent className={classes.actions}>
-							<Button component={Link} to="/register">Register</Button>
+							<Button component={Link} to="/register" size="large">Register</Button>
 						</CardContent>
 					</form>
 				</Card>
