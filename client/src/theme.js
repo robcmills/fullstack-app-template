@@ -7,6 +7,9 @@ export default createMuiTheme({
 			light: teal[50],
 			main: teal[800],
 		},
+		secondary: {
+			main: teal[600],
+		},
 	},
 	props: {
 		MuiButtonBase: {

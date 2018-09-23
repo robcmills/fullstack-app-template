@@ -8,7 +8,7 @@ import theme from './theme'
 import App from './components/app'
 
 import './index.css'
-import './service-worker'
+// import './service-worker'
 import './socket-events'
 
 ReactDOM.render(

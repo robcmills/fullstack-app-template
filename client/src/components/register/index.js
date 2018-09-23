@@ -106,7 +106,7 @@ class Register extends Component {
 						</CardContent>
 						<CardContent className={classes.actions}>
 							<Button
-								color="primary"
+								color="secondary"
 								disabled={isRegistering}
 								onClick={this.handleSubmit}
 								size="large"
@@ -116,7 +116,13 @@ class Register extends Component {
 							</Button>
 						</CardContent>
 						<CardContent className={classes.actions}>
-							<Button component={Link} to="/login">Login</Button>
+							<Button
+								component={Link}
+								to="/login"
+								variant="outlined"
+							>
+								Login
+							</Button>
 						</CardContent>
 					</form>
 				</Card>

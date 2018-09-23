@@ -98,7 +98,7 @@ class Login extends Component {
 						</CardContent>
 						<CardContent className={classes.actions}>
 							<Button
-								color="primary"
+								color="secondary"
 								disabled={isLoggingIn}
 								size="large"
 								variant="contained"
@@ -111,7 +111,14 @@ class Login extends Component {
 							<GoogleSignIn />
 						</CardContent>
 						<CardContent className={classes.actions}>
-							<Button component={Link} to="/register" size="large">Register</Button>
+							<Button
+								component={Link}
+								to="/register"
+								size="large"
+								variant="outlined"
+							>
+								Register
+							</Button>
 						</CardContent>
 					</form>
 				</Card>

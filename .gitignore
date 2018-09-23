@@ -2,6 +2,7 @@
 *.zip
 .DS_Store
 .env
+credentials
 node_modules
 server/data/*.sqlite3
 sessions
