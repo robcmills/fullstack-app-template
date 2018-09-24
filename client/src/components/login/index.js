@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { compose } from 'recompose'
 import { Link, Redirect } from 'react-router-dom'
 
-import GoogleSignIn from './google-sign-in'
+import GoogleLogin from './google-login'
 import LoginSnackbar from './snackbar'
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
@@ -49,14 +49,6 @@ class Login extends Component {
 			return
 		}
 		login(this.state)
-	}
-
-	handleGoogleSignIn = (googleUser) => {
-		const profile = googleUser.getBasicProfile()
-		console.log('ID: ' + profile.getId()) // Do not send to your backend! Use an ID token instead.
-		console.log('Name: ' + profile.getName())
-		console.log('Image URL: ' + profile.getImageUrl())
-		console.log('Email: ' + profile.getEmail()) // This is null if the 'email' scope is not present.
 	}
 
 	render() {
@@ -108,7 +100,7 @@ class Login extends Component {
 							</Button>
 						</CardContent>
 						<CardContent className={classes.actions}>
-							<GoogleSignIn />
+							<GoogleLogin />
 						</CardContent>
 						<CardContent className={classes.actions}>
 							<Button
