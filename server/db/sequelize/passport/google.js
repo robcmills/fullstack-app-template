@@ -25,11 +25,11 @@ function attachGoogleAccount (user, profile, accessToken, done) {
 function createUserWithToken (profile, accessToken, done) {
 	return sequelize.transaction(transaction =>
 		User.create({
-			email: profile._json.emails[0].value,
+			email: profile.emails[0].value,
 			google: profile.id,
 			name: profile.displayName,
-			gender: profile._json.gender,
-			picture: profile._json.picture
+			gender: profile.gender,
+			picture: profile.photos[0].value
 		}, { transaction }).then(user =>
 			user.createToken({
 				kind: 'google',
@@ -58,19 +58,19 @@ module.exports = (accessToken, refreshToken, profile, done) => {
 	return User.findOne({
 		where: { google: profile.id }
 	}).then((existingUser) => {
-		if (req.user) {
-			if (existingUser) {
-				return done(null, false, { message: existingGoogleAccountMessage })
-			}
-			return User.findById(req.user.id).then(user =>
-				attachGoogleAccount(user, profile, accessToken, done)
-			)
-		}
+		// if (req.user) {
+		// 	if (existingUser) {
+		// 		return done(null, false, { message: existingGoogleAccountMessage })
+		// 	}
+		// 	return User.findById(req.user.id).then(user =>
+		// 		attachGoogleAccount(user, profile, accessToken, done)
+		// 	)
+		// }
 
 		if (existingUser) return done(null, existingUser)
 
 		return User.findOne({
-			where: { email: profile._json.emails[0].value }
+			where: { email: profile.emails[0].value }
 		}).then((existingEmailUser) => {
 			if (existingEmailUser) {
 				return done(null, false, { message: existingEmailDirectMessage })

@@ -2,11 +2,15 @@ import React, { Component } from 'react'
 // import ReactGoogleLogin from 'react-google-login'
 import Button from '@material-ui/core/Button'
 
-import { googleLogin } from 'redux/action-creators'
+// import { googleLogin } from 'redux/action-creators'
 
 // const clientId = process.env.NODE_ENV === 'development'
 // 	? process.env.REACT_APP_GOOGLE_CLIENT_ID
 // 	: process.env.GOOGLE_CLIENT_ID
+
+// import { PORT } from ''
+// const googleLoginUrl = process.env.NODE_ENV === 'development'
+//  	? 'http://localhost:${PORT}/api/google-login'
 
 const LOGO_SIZE = 22
 
