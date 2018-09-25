@@ -26,9 +26,9 @@ module.exports.get = asyncHandler(async (req, res) =>
 			}]
 		},
 		include: [{
-			model: User, as: 'Sender', attributes: ['username', 'id']
+			model: User, as: 'Sender', attributes: ['id', 'name', 'picture', 'username']
 		}, {
-			model: User, as: 'Recipient', attributes: ['username', 'id']
+			model: User, as: 'Recipient', attributes: ['id', 'name', 'picture', 'username']
 		}],
 		order: [['createdAt', 'DESC']]
 	}))

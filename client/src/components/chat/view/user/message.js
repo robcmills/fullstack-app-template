@@ -1,4 +1,5 @@
 import React from 'react'
+import Avatar from '@material-ui/core/Avatar'
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
 
@@ -6,21 +7,23 @@ import { withStyles } from '@material-ui/core/styles'
 
 const DirectMessage = ({
 	classes,
-	message,
+	message: { content, Sender: { name, picture, username } },
 }) =>
 	<div className={classes.wrapper}>
+		{picture && <Avatar alt={username || name} src={picture} />}
 		<Paper elevation={0} classes={{ root: classes.message }}>
 			<Typography>
 				<span className={classes.username}>
-					{message.Sender.username}:&nbsp;
+					{username || name}:&nbsp;
 				</span>
-				{message.content}
+				{content}
 			</Typography>
 		</Paper>
 	</div>
 
 const styles = theme => ({
 	message: {
+		marginLeft: theme.spacing.unit,
 		padding: 8,
 	},
 	username: {

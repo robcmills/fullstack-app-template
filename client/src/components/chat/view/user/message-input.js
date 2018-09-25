@@ -38,6 +38,8 @@ class MessageInput extends Component {
 			senderUserId: user.id,
 			Sender: {
 				id: user.id,
+				name: user.profile.name,
+				picture: user.profile.picture,
 				username: user.username,
 			},
 		}
