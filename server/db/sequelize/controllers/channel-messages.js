@@ -4,7 +4,7 @@ const asyncHandler = require('./async-handler')
 module.exports.get = asyncHandler(async (req, res) =>
 	res.json(await ChannelMessage.findAll({
 		where: { channelId: req.params.channel_id },
-		include: [{ model: User, attributes: ['username', 'id'] }],
+		include: [{ model: User, attributes: ['id', 'name', 'picture', 'username'] }],
 		order: [['createdAt', 'DESC']]
 	}))
 )

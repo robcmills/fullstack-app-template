@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Button from '@material-ui/core/Button'
+import Avatar from '@material-ui/core/Avatar'
 import AccountCircle from '@material-ui/icons/AccountCircle'
 import MenuItem from '@material-ui/core/MenuItem'
 import Menu from '@material-ui/core/Menu'
@@ -22,7 +23,7 @@ class UserMenu extends Component {
 	}
 
 	render() {
-		const { user: { username } } = this.props
+		const { user: { profile, username } } = this.props
 		const { anchorEl } = this.state
 		const open = Boolean(anchorEl)
 		return (
@@ -34,9 +35,15 @@ class UserMenu extends Component {
 					onClick={this.handleMenu}
 					style={{ textTransform: 'none' }}
 				>
-					<AccountCircle />
-					&nbsp;
-					{username}
+					{profile.picture ?
+						<Avatar
+							alt={username || profile.name}
+			        src={profile.picture}
+			      /> :
+						<AccountCircle />
+			    }
+					&nbsp;&nbsp;
+					{username || profile.name}
 				</Button>
 				<Menu
 					id="menu-appbar"

@@ -36,6 +36,8 @@ class MessageInput extends Component {
 			content: this.state.message,
 			User: {
 				id: user.id,
+				name: user.profile.name,
+				picture: user.profile.picture,
 				username: user.username,
 			},
 		}
