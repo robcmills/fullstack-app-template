@@ -15,9 +15,6 @@ const Router = () =>
 			<Route path="/login" component={Login} />
 			<Route path="/register" component={Register} />
 			<PrivateRoute path="/chat" component={ChatRouter} />
-			<Route>
-				<Redirect to="/chat" />
-			</Route>
 		</Switch>
 	</BrowserRouter>
 

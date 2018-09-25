@@ -62,6 +62,13 @@ export const fetchUsers = () =>
 		url: '/api/users',
 	})
 
+export const googleLogin = () =>
+	requestAction({
+		method: 'GET',
+		type: 'GOOGLE_LOGIN',
+		url: 'http://localhost:3001/api/google-login',
+	})
+
 export const login = payload =>
 	requestAction({
 		body: payload,

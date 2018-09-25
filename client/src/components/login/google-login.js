@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
-import ReactGoogleLogin from 'react-google-login'
+// import ReactGoogleLogin from 'react-google-login'
 import Button from '@material-ui/core/Button'
 
-const clientId = process.env.NODE_ENV === 'development'
-	? process.env.REACT_APP_GOOGLE_SIGN_IN_CLIENT_ID
-	: process.env.GOOGLE_SIGN_IN_CLIENT_ID
+import { googleLogin } from 'redux/action-creators'
+
+// const clientId = process.env.NODE_ENV === 'development'
+// 	? process.env.REACT_APP_GOOGLE_CLIENT_ID
+// 	: process.env.GOOGLE_CLIENT_ID
 
 const LOGO_SIZE = 22
 
@@ -13,44 +15,40 @@ class GoogleLogin extends Component {
 		isLoggingIn: false,
 	}
 
-	getClickHandler = reactGoogleLoginClickHandler => () => {
+	handleClick = () => {
 		this.setState({ isLoggingIn: true })
-		reactGoogleLoginClickHandler()
+		window.location = 'http://localhost:3001/api/google-login'
+		 // googleLogin()
 	}
 
 	handleFailure = res => {
-		console.log('SignIn failure', res)
 		this.setState({ isLoggingIn: false })
+		// TODO: throw error after implementing React app error boundary
+		console.error('SignIn failure', res)
 	}
 
 	handleSuccess = res => {
 		console.log('SignIn success', res)
+		// const { tokenId } = res
 	}
 
 	render() {
 		return (
-			<ReactGoogleLogin
-				clientId={clientId}
-				onSuccess={this.handleSuccess}
-				onFailure={this.handleFailure}
-				render={({ onClick }) =>
-					<Button
-						disabled={this.state.isLoggingIn}
-						onClick={this.getClickHandler(onClick)}
-						size="large"
-						variant="outlined"
-					>
-						<img
-							alt="Google Logo"
-							height={LOGO_SIZE}
-							src="/images/google.png"
-							width={LOGO_SIZE}
-						/>
-						&nbsp;&nbsp;
-						{this.state.isLoggingIn ? 'Logging in...' : 'Login with Google'}
-					</Button>
-				}
-			/>
+			<Button
+				disabled={this.state.isLoggingIn}
+				onClick={this.handleClick}
+				size="large"
+				variant="outlined"
+			>
+				<img
+					alt="Google Logo"
+					height={LOGO_SIZE}
+					src="/images/google.png"
+					width={LOGO_SIZE}
+				/>
+				&nbsp;&nbsp;
+				{this.state.isLoggingIn ? 'Logging in...' : 'Login with Google'}
+			</Button>
 		)
 	}
 }

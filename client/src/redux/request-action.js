@@ -15,6 +15,7 @@ export default function requestAction({ body, method, payload, type, url }) {
 		referrer: 'no-referrer', // no-referrer, *client
 		body: JSON.stringify(body), // body data type must match 'Content-Type' header
 	}).then(response => {
+		console.log('response', response)
 		if (response.ok) {
 			return response.json()
 		}

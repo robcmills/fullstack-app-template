@@ -51,8 +51,11 @@ const existingEmailDirectMessage = [
 	'Sign in to that account and link it with Google manually from Account Settings.'
 ].join(' ')
 
-module.exports = (req, accessToken, refreshToken, profile, done) =>
-	User.findOne({
+module.exports = (accessToken, refreshToken, profile, done) => {
+	console.log('accessToken', accessToken)
+	console.log('refreshToken', refreshToken)
+	console.log('profile', profile)
+	return User.findOne({
 		where: { google: profile.id }
 	}).then((existingUser) => {
 		if (req.user) {
@@ -78,3 +81,4 @@ module.exports = (req, accessToken, refreshToken, profile, done) =>
 		console.log(err)
 		return done(null, false, { message: 'Something went wrong trying to authenticate' })
 	})
+}
