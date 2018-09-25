@@ -3,8 +3,8 @@ import ReactGoogleLogin from 'react-google-login'
 import Button from '@material-ui/core/Button'
 
 const clientId = process.env.NODE_ENV === 'development'
-	? process.env.REACT_APP_GOOGLE_SIGN_IN_CLIENT_ID
-	: process.env.GOOGLE_SIGN_IN_CLIENT_ID
+	? process.env.REACT_APP_GOOGLE_CLIENT_ID
+	: process.env.GOOGLE_CLIENT_ID
 
 const LOGO_SIZE = 22
 
