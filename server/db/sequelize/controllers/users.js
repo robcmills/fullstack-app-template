@@ -36,14 +36,15 @@ module.exports.googleLogin = (req, res, next) => {
 module.exports.googleCallback = (req, res, next) => {
 	passport.authenticate('google', {
 		failureRedirect: '/login'
-	}, (error, user, info) => {
-		console.log('googleCallback success', error, user, info)
-		if (error) return next(error)
-		if (!user) {
-			return res.sendStatus(401)
+	}, (authError, user, info) => {
+		console.log('googleCallback', authError, user, info)
+		if (authError) {
+			return res.redirect('/login')
 		}
-		return req.logIn(user, (loginErr) => {
-			if (loginErr) return res.sendStatus(401)
+		return req.logIn(user, (loginError) => {
+			if (loginError) {
+				return res.redirect('/login')
+			}
 			return res.redirect('/')
 		})
 	})(req, res, next)
