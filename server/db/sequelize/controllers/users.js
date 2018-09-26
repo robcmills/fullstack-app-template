@@ -34,7 +34,6 @@ module.exports.googleCallback = (req, res, next) => {
 	passport.authenticate('google', {
 		failureRedirect: '/login'
 	}, (authError, user, info) => {
-		console.log('googleCallback', authError, user, info)
 		if (authError) {
 			return res.redirect('/login')
 		}
