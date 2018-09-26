@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
+import { compose } from 'recompose'
 import Button from '@material-ui/core/Button'
 import Avatar from '@material-ui/core/Avatar'
 import AccountCircle from '@material-ui/icons/AccountCircle'
+import Typography from '@material-ui/core/Typography'
 import MenuItem from '@material-ui/core/MenuItem'
 import Menu from '@material-ui/core/Menu'
+import { withStyles } from '@material-ui/core/styles'
 
 import sweetConnect from 'redux/sweet-connect'
 import { userSelector } from 'redux/selectors'
@@ -23,14 +26,15 @@ class UserMenu extends Component {
 	}
 
 	render() {
-		const { user: { profile, username } } = this.props
+		const { classes, user: { profile, username } } = this.props
 		const { anchorEl } = this.state
 		const open = Boolean(anchorEl)
 		return (
-			<div>
+			<div className={classes.userMenu}>
 				<Button
 					aria-owns={open ? 'menu-appbar' : null}
 					aria-haspopup="true"
+					className={classes.button}
 					color="inherit"
 					onClick={this.handleMenu}
 					style={{ textTransform: 'none' }}
@@ -43,7 +47,14 @@ class UserMenu extends Component {
 						<AccountCircle />
 					}
 					&nbsp;&nbsp;
-					{username || profile.name}
+					<Typography
+						className={classes.flex}
+						color="inherit"
+						noWrap
+						title={username || profile.name}
+					>
+						{username || profile.name}
+					</Typography>
 				</Button>
 				<Menu
 					id="menu-appbar"
@@ -67,8 +78,23 @@ class UserMenu extends Component {
 	}
 }
 
-export default sweetConnect({
-	selectors: {
-		user: userSelector,
+const styles = theme => ({
+	userMenu: {
+		display: 'flex',
+		flex: '0 0 auto',
+		maxWidth: '40%',
+		overflow: 'hidden',
 	},
-})(UserMenu)
+	button: {
+		padding: theme.spacing.unit / 2,
+	}
+})
+
+export default compose(
+	withStyles(styles),
+	sweetConnect({
+		selectors: {
+			user: userSelector,
+		}
+	}),
+)(UserMenu)

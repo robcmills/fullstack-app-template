@@ -25,10 +25,7 @@
     "eject": "react-scripts eject"
   },
   "proxy": {
-    "/": {
-      "target": {
-        "port": 3001
-      }
-    }
+    "/api": { "target": { "port": 3001 } },
+    "/socket.io": { "target": { "port": 3001 } }
   }
 }
