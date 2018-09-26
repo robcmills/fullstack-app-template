@@ -20,7 +20,7 @@ const getChannelsTitle = ({ channelsById, pathname }) => {
 	if (channelId && !channel) {
 		return ''
 	}
-	return channel.name
+	return '#' + channel.name
 }
 
 const getUsersTitle = ({ usersById, pathname }) => {
@@ -36,7 +36,7 @@ const getUsersTitle = ({ usersById, pathname }) => {
 	if (userId && !user) {
 		return ''
 	}
-	return user.username
+	return '@' + (user.username || user.profile.name)
 }
 
 const titleSelector = createSelector(

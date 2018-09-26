@@ -8,7 +8,7 @@ const User = Models.User
 
 module.exports.getById = asyncHandler(async (req, res) =>
 	res.json(await User.findById(req.params.user_id, {
-		attributes: ['id', 'username']
+		attributes: ['id', 'name', 'picture', 'username']
 	}))
 )
 

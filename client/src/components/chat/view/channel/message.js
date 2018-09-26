@@ -1,5 +1,6 @@
 import React from 'react'
 import Avatar from '@material-ui/core/Avatar'
+import AccountCircle from '@material-ui/icons/AccountCircle'
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
 
@@ -10,7 +11,10 @@ const ChannelMessage = ({
 	message: { content, User: { name, picture, username } },
 }) =>
 	<div className={classes.wrapper}>
-		{picture && <Avatar alt={username || name} src={picture} />}
+		{picture ?
+			<Avatar alt={username || name} src={picture} /> :
+			<AccountCircle color="secondary" className={classes.avatar} />
+		}
 		<Paper elevation={0} classes={{ root: classes.message }}>
 			<Typography>
 				<span className={classes.username}>
@@ -22,6 +26,10 @@ const ChannelMessage = ({
 	</div>
 
 const styles = theme => ({
+	avatar: {
+		height: 40,
+		width: 40,
+	},
 	message: {
 		marginLeft: theme.spacing.unit,
 		padding: 8,
