@@ -26,12 +26,9 @@ module.exports.authenticate = (req, res) => req.user
 	? res.status(200).json(req.user)
 	: res.sendStatus(401)
 
-module.exports.googleLogin = (req, res, next) => {
-	console.log('googleLogin')
-	passport.authenticate('google', {
-		scope: ['profile', 'email']
-	})(req, res, next)
-}
+module.exports.googleLogin = passport.authenticate('google', {
+	scope: ['profile', 'email']
+})
 
 module.exports.googleCallback = (req, res, next) => {
 	passport.authenticate('google', {
@@ -51,7 +48,6 @@ module.exports.googleCallback = (req, res, next) => {
 }
 
 module.exports.login = (req, res, next) => {
-	console.log('login')
 	passport.authenticate('local', (authErr, user, info) => {
 		if (authErr) return next(authErr)
 		if (!user) {

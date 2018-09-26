@@ -38,10 +38,10 @@ class UserMenu extends Component {
 					{profile.picture ?
 						<Avatar
 							alt={username || profile.name}
-			        src={profile.picture}
-			      /> :
+							src={profile.picture}
+						/> :
 						<AccountCircle />
-			    }
+					}
 					&nbsp;&nbsp;
 					{username || profile.name}
 				</Button>
