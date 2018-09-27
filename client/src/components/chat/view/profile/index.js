@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import { compose, withProps } from 'recompose'
 import { withStyles } from '@material-ui/core/styles'
 import Avatar from '@material-ui/core/Avatar'
 import AccountCircle from '@material-ui/icons/AccountCircle'
+import ChatBubbleIcon from '@material-ui/icons/ChatBubble'
 import Typography from '@material-ui/core/Typography'
+import Button from '@material-ui/core/Button'
 
 import setPictureSize from 'utils/set-picture-size'
 import Card from 'components/shared/card'
@@ -20,7 +23,6 @@ class Profile extends Component {
 	}
 
 	render() {
-		console.log('user', this.props.user)
 		const { classes, user } = this.props
 		if (!user) {
 			return (
@@ -48,6 +50,17 @@ class Profile extends Component {
 						<Typography noWrap>
 							<Bold>Name:</Bold>&nbsp;{name || 'undefined'}
 						</Typography>
+						<Spacer /><Spacer /><Spacer />
+						<Button
+							color="secondary"
+							component={Link}
+							size="small"
+							to={`/chat/users/${user.id}`}
+							variant="outlined"
+						>
+							<ChatBubbleIcon className={classes.actionIcon} />&nbsp;
+							Direct Message
+						</Button>
 					</div>
 				</Card>
 			</div>
@@ -65,6 +78,10 @@ const styles = theme => ({
 	avatar: {
 		height: 128,
 		width: 128,
+	},
+	actionIcon: {
+		height: 16,
+		width: 16,
 	},
 })
 
