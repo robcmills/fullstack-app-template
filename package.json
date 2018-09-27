@@ -6,9 +6,9 @@
     "node": "8.11.3"
   },
   "scripts": {
+    "postinstall": "./build-client.sh",
     "start": "./start.sh"
   },
-  "postinstall": "./build-client.sh",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "bluebird": "^3.5.1",
