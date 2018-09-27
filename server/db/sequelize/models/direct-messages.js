@@ -1,7 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
 	const DirectMessage = sequelize.define('DirectMessage', {
 		content: {
-			type: DataTypes.STRING,
+			type: DataTypes.TEXT,
 			defaultValue: ''
 		},
 		recipientUserId: {
