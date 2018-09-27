@@ -1,3 +1,3 @@
 cd client
 npm install
-npm run build
+NODE_PATH=src/ npm run build
