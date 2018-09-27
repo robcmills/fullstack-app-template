@@ -36,7 +36,12 @@ const getUsersTitle = ({ usersById, pathname }) => {
 	if (userId && !user) {
 		return ''
 	}
-	return '@' + (user.username || user.profile.name)
+	const title = user.username || user.profile.name
+	const isProfile = !!matchPath(pathname, { path: '/chat/users/:id/profile' })
+	if (isProfile) {
+		return title
+	}
+	return '@' + title
 }
 
 const titleSelector = createSelector(

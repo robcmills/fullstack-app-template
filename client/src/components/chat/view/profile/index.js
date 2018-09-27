@@ -5,7 +5,10 @@ import Avatar from '@material-ui/core/Avatar'
 import AccountCircle from '@material-ui/icons/AccountCircle'
 import Typography from '@material-ui/core/Typography'
 
+import setPictureSize from 'utils/set-picture-size'
+import Card from 'components/shared/card'
 import Bold from 'components/shared/bold'
+import Spacer from 'components/shared/spacer'
 import sweetConnect from 'redux/sweet-connect'
 import { fetchUser } from 'redux/action-creators'
 import { isFetchingUserSelector, userByIdSelector } from 'redux/selectors'
@@ -26,39 +29,42 @@ class Profile extends Component {
 		}
 		const { profile: { name, picture }, username } = user
 		return (
-			<div className={classes.profile}>
-				<div className={classes.row}>
-					{picture ?
-						<Avatar
-							alt={username || name}
-							className={classes.avatar}
-							src={picture}
-						/> :
-						<AccountCircle color="secondary" className={classes.avatar} />
-					}
-				</div>
-				<div className={classes.row}>
-					<Typography><Bold>Username:</Bold>&nbsp;{username || 'undefined'}</Typography>
-				</div>
-				<div className={classes.row}>
-					<Typography><Bold>Name:</Bold>&nbsp;{name || 'undefined'}</Typography>
-				</div>
+			<div className={classes.padding}>
+				<Card className={classes.card}>
+					<div className={classes.padding}>
+						{picture ?
+							<Avatar
+								alt={username || name}
+								className={classes.avatar}
+								src={setPictureSize(picture, 256)}
+							/> :
+							<AccountCircle color="secondary" className={classes.avatar} />
+						}
+						<Spacer />
+						<Typography noWrap>
+							<Bold>Username:</Bold>&nbsp;{username || 'undefined'}
+						</Typography>
+						<Spacer />
+						<Typography noWrap>
+							<Bold>Name:</Bold>&nbsp;{name || 'undefined'}
+						</Typography>
+					</div>
+				</Card>
 			</div>
 		)
 	}
 }
 
 const styles = theme => ({
-	profile: {
+	padding: {
 		padding: theme.spacing.unit * 2,
 	},
-	avatar: {
-		height: 64,
-		width: 64,
+	card: {
+		maxWidth: 400,
 	},
-	row: {
-		display: 'flex',
-		paddingBottom: theme.spacing.unit * 2,
+	avatar: {
+		height: 128,
+		width: 128,
 	},
 })
 
