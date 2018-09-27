@@ -14,7 +14,7 @@ import Bold from 'components/shared/bold'
 import Spacer from 'components/shared/spacer'
 import sweetConnect from 'redux/sweet-connect'
 import { fetchUser } from 'redux/action-creators'
-import { isFetchingUserSelector, userByIdSelector } from 'redux/selectors'
+import { isFetchingUserSelector, userSelector, userByIdSelector } from 'redux/selectors'
 
 class Profile extends Component {
 	componentDidMount() {
@@ -23,7 +23,7 @@ class Profile extends Component {
 	}
 
 	render() {
-		const { classes, user } = this.props
+		const { classes, me, user } = this.props
 		if (!user) {
 			return (
 				<div className={classes.profile}>Fetching user...</div>
@@ -51,16 +51,18 @@ class Profile extends Component {
 							<Bold>Name:</Bold>&nbsp;{name || 'undefined'}
 						</Typography>
 						<Spacer /><Spacer /><Spacer />
-						<Button
-							color="secondary"
-							component={Link}
-							size="small"
-							to={`/chat/users/${user.id}`}
-							variant="outlined"
-						>
-							<ChatBubbleIcon className={classes.actionIcon} />&nbsp;
-							Direct Message
-						</Button>
+						{user.id !== me.id &&
+							<Button
+								color="secondary"
+								component={Link}
+								size="small"
+								to={`/chat/users/${user.id}`}
+								variant="outlined"
+							>
+								<ChatBubbleIcon className={classes.actionIcon} />&nbsp;
+								Direct Message
+							</Button>
+						}
 					</div>
 				</Card>
 			</div>
@@ -93,6 +95,7 @@ export default compose(
 	sweetConnect({
 		selectors: {
 			isFetchingUser: isFetchingUserSelector,
+			me: userSelector,
 			user: userByIdSelector,
 		}
 	}),
