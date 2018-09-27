@@ -60,7 +60,7 @@ class Profile extends Component {
 								variant="outlined"
 							>
 								<ChatBubbleIcon className={classes.actionIcon} />&nbsp;
-								Direct Message
+								Chat
 							</Button>
 						}
 					</div>
