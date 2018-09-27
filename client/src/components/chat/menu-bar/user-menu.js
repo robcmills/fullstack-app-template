@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import { compose } from 'recompose'
 import Button from '@material-ui/core/Button'
 import Avatar from '@material-ui/core/Avatar'
@@ -26,7 +27,7 @@ class UserMenu extends Component {
 	}
 
 	render() {
-		const { classes, user: { profile, username } } = this.props
+		const { classes, user: { id, profile, username } } = this.props
 		const { anchorEl } = this.state
 		const open = Boolean(anchorEl)
 		return (
@@ -70,7 +71,11 @@ class UserMenu extends Component {
 					open={open}
 					onClose={this.handleClose}
 				>
-					<MenuItem onClick={this.handleClose}>Profile</MenuItem>
+					<MenuItem onClick={this.handleClose}>
+						<Link to={`/chat/users/${id}/profile`} className={classes.link}>
+							Profile
+						</Link>
+					</MenuItem>
 					<MenuItem onClick={logout}>Logout</MenuItem>
 				</Menu>
 			</div>
@@ -87,6 +92,10 @@ const styles = theme => ({
 	},
 	button: {
 		padding: theme.spacing.unit / 2,
+	},
+	link: {
+		color: 'inherit',
+		textDecoration: 'none',
 	}
 })
 

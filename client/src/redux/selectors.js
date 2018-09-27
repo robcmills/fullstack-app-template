@@ -20,5 +20,12 @@ export const messagesByRecipientUserIdSelector = state => state.messagesByRecipi
 export const pathnameSelector = () => window.location.pathname
 export const registerErrorSelector = state => state.registerError
 export const usersByIdSelector = state => state.usersById
+export const userByIdSelector = (state, { userId }) => {
+	const me = state.user
+	if (userId === me.id) {
+		return me
+	}
+	return state.usersById[userId]
+}
 export const userSelector = state => state.user
 export const usersSelector = state => values(state.usersById)
