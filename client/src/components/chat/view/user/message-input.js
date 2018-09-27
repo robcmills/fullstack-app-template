@@ -33,7 +33,7 @@ class MessageInput extends Component {
 		const { recipientUserId, user } = this.props
 		const message = {
 			content: this.state.message,
-			createdAt: new Date().toISOString(),
+			createdAt: (new Date()).toISOString(),
 			recipientUserId,
 			senderUserId: user.id,
 			Sender: {

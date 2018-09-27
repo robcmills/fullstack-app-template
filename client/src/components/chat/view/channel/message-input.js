@@ -34,6 +34,7 @@ class MessageInput extends Component {
 		const message = {
 			channelId,
 			content: this.state.message,
+			createdAt: (new Date()).toISOString(),
 			User: {
 				id: user.id,
 				name: user.profile.name,

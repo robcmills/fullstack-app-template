@@ -1,5 +1,5 @@
 import { indexBy, prop } from 'ramda'
-import { isEqualIds } from 'utils'
+import isEqualIds from 'utils/is-equal-ids'
 
 export default {
 	AUTHENTICATE_REQUEST: (state) => ({

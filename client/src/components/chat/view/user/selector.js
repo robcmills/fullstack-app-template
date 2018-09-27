@@ -4,7 +4,7 @@ import {
 	messagesByRecipientUserIdSelector,
 	userSelector,
 } from 'redux/selectors'
-import { isEqualIds } from 'utils'
+import isEqualIds from 'utils/is-equal-ids'
 
 const directMessagesSelector = createSelector(
 	messagesByRecipientUserIdSelector,

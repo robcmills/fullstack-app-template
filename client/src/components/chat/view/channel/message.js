@@ -4,14 +4,18 @@ import Typography from '@material-ui/core/Typography'
 import { withStyles } from '@material-ui/core/styles'
 
 import UserAvatar from 'components/shared/user-avatar'
+import getLocaleString from 'utils/get-locale-string'
 
 const ChannelMessage = ({
 	classes,
-	message: { content, User: { id, name, picture, username } },
+	message: { createdAt, content, User: { id, name, picture, username } },
 }) =>
 	<div className={classes.wrapper}>
 		<UserAvatar alt={username || name} src={picture} userId={id} />
 		<Paper elevation={0} classes={{ root: classes.message }}>
+			<Typography className={classes.date} variant="caption">
+				{createdAt && getLocaleString(createdAt)}
+			</Typography>
 			<Typography>
 				<span className={classes.username}>
 					{username || name}:&nbsp;
@@ -28,7 +32,10 @@ const styles = theme => ({
 	},
 	message: {
 		marginLeft: theme.spacing.unit,
-		padding: 8,
+		padding: '2px 8px',
+	},
+	date: {
+		color: theme.palette.grey[500],
 	},
 	username: {
 		fontWeight: 'bold',
