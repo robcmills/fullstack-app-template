@@ -25,6 +25,7 @@ const styles = theme => ({
 		display: 'flex',
 		flex: '1 1 auto',
 		height: '100vh',
+		overflow: 'hidden',
 		'flex-direction': 'column',
 	},
 	toolbar: theme.mixins.toolbar,

@@ -14,7 +14,7 @@ import { toggleDrawer } from 'redux/action-creators'
 
 const MenuBar = ({ classes }) =>
 	<AppBar className={classes.appBar} position="absolute">
-		<Toolbar>
+		<Toolbar className={classes.toolBar}>
 			<Hidden mdUp>
 				<IconButton
 					aria-label="Menu"
@@ -35,9 +35,11 @@ const styles = theme => ({
 		boxShadow: 'none',
 		zIndex: theme.zIndex.drawer + 1,
 	},
+	toolBar: {
+		padding: 0,
+	},
 	menuButton: {
-		marginLeft: -12,
-		marginRight: 20,
+		margin: 4,
 	},
 })
 

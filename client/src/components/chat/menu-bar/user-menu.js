@@ -93,6 +93,7 @@ const styles = theme => ({
 	userMenu: {
 		display: 'flex',
 		flex: '0 0 auto',
+		marginRight: theme.spacing.unit,
 		maxWidth: '40%',
 		overflow: 'hidden',
 	},
