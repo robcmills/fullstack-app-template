@@ -1,4 +1,5 @@
 import { values } from 'ramda'
+import { createSelector } from 'reselect'
 
 export const channelsSelector = state => values(state.channelsById)
 export const channelsByIdSelector = state => state.channelsById
@@ -20,12 +21,18 @@ export const messagesByRecipientUserIdSelector = state => state.messagesByRecipi
 export const pathnameSelector = () => window.location.pathname
 export const registerErrorSelector = state => state.registerError
 export const usersByIdSelector = state => state.usersById
-export const userByIdSelector = (state, { userId }) => {
-	const me = state.user
-	if (userId === me.id) {
-		return me
-	}
-	return state.usersById[userId]
-}
+export const userIdFromPropsSelector = (state, { userId }) => userId
 export const userSelector = state => state.user
-export const usersSelector = state => values(state.usersById)
+
+export const usersSelector = createSelector(
+	usersByIdSelector,
+	userSelector,
+	(usersById, me) => values(usersById).filter(user => user.id !== me.id)
+)
+
+export const userByIdSelector = createSelector(
+	userIdFromPropsSelector,
+	userSelector,
+	usersByIdSelector,
+	(userId, me, usersById) => userId === me.id ? me : usersById[userId]
+)
