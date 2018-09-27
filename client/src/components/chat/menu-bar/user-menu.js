@@ -71,10 +71,13 @@ class UserMenu extends Component {
 					open={open}
 					onClose={this.handleClose}
 				>
-					<MenuItem onClick={this.handleClose}>
-						<Link to={`/chat/users/${id}/profile`} className={classes.link}>
-							Profile
-						</Link>
+					<MenuItem
+						component={Link}
+						className={classes.link}
+						onClick={this.handleClose}
+						to={`/chat/users/${id}/profile`}
+					>
+						Profile
 					</MenuItem>
 					<MenuItem onClick={logout}>Logout</MenuItem>
 				</Menu>
