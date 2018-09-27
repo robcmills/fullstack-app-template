@@ -3,14 +3,14 @@ import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
 import { withStyles } from '@material-ui/core/styles'
 
-import Avatar from './avatar'
+import UserAvatar from 'components/shared/user-avatar'
 
 const DirectMessage = ({
 	classes,
 	message: { content, Sender: { id, name, picture, username } },
 }) =>
 	<div className={classes.wrapper}>
-		<Avatar alt={username || name} src={picture} userId={id} />
+		<UserAvatar alt={username || name} src={picture} userId={id} />
 		<Paper elevation={0} classes={{ root: classes.message }}>
 			<Typography>
 				<span className={classes.username}>
