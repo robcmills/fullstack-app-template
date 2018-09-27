@@ -24,11 +24,7 @@ export const usersByIdSelector = state => state.usersById
 export const userIdFromPropsSelector = (state, { userId }) => userId
 export const userSelector = state => state.user
 
-export const usersSelector = createSelector(
-	usersByIdSelector,
-	userSelector,
-	(usersById, me) => values(usersById).filter(user => user.id !== me.id)
-)
+export const usersSelector = createSelector(usersByIdSelector, values)
 
 export const userByIdSelector = createSelector(
 	userIdFromPropsSelector,

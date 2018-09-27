@@ -12,6 +12,11 @@ export default createMuiTheme({
 		},
 	},
 	props: {
+		MuiAvatar: {
+			style: {
+				borderRadius: 0,
+			},
+		},
 		MuiButtonBase: {
 			disableRipple: true,
 		},
