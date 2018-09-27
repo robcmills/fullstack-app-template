@@ -31,27 +31,27 @@ class Profile extends Component {
 		}
 		const { profile: { name, picture }, username } = user
 		return (
-			<div className={classes.padding}>
+			<div className={classes.profile}>
 				<Card className={classes.card}>
-					<div className={classes.padding}>
-						{picture ?
-							<Avatar
-								alt={username || name}
-								className={classes.avatar}
-								src={setPictureSize(picture, 256)}
-							/> :
-							<AccountCircle color="secondary" className={classes.avatar} />
-						}
-						<Spacer />
-						<Typography noWrap>
-							<Bold>Username:</Bold>&nbsp;{username || 'undefined'}
-						</Typography>
-						<Spacer />
-						<Typography noWrap>
-							<Bold>Name:</Bold>&nbsp;{name || 'undefined'}
-						</Typography>
-						<Spacer /><Spacer /><Spacer />
-						{user.id !== me.id &&
+					{picture ?
+						<Avatar
+							alt={username || name}
+							className={classes.avatar}
+							src={setPictureSize(picture, 256)}
+						/> :
+						<AccountCircle color="secondary" className={classes.avatar} />
+					}
+					<Spacer /><Spacer />
+					<Typography noWrap>
+						<Bold>Username:</Bold>&nbsp;{username || 'undefined'}
+					</Typography>
+					<Spacer />
+					<Typography noWrap>
+						<Bold>Name:</Bold>&nbsp;{name || 'undefined'}
+					</Typography>
+					{user.id !== me.id &&
+						<div>
+							<Spacer /><Spacer /><Spacer />
 							<Button
 								color="secondary"
 								component={Link}
@@ -62,8 +62,8 @@ class Profile extends Component {
 								<ChatBubbleIcon className={classes.actionIcon} />&nbsp;
 								Chat
 							</Button>
-						}
-					</div>
+						</div>
+					}
 				</Card>
 			</div>
 		)
@@ -71,11 +71,21 @@ class Profile extends Component {
 }
 
 const styles = theme => ({
-	padding: {
+	profile: {
+		display: 'flex',
 		padding: theme.spacing.unit * 2,
+		[theme.breakpoints.down('sm')]: {
+			justifyContent: 'center',
+		},
 	},
 	card: {
-		maxWidth: 400,
+		alignItems: 'center',
+		display: 'flex',
+		flexDirection: 'column',
+		padding: theme.spacing.unit * 2,
+		[theme.breakpoints.down('xs')]: {
+			flex: '1 1 auto',
+		},
 	},
 	avatar: {
 		height: 128,
