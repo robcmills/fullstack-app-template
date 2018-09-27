@@ -4,5 +4,8 @@
 .env
 credentials
 node_modules
+npm-debug.log*
 server/data/*.sqlite3
 sessions
+yarn-debug.log*
+yarn-error.log*
