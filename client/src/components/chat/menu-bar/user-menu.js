@@ -4,6 +4,7 @@ import { compose } from 'recompose'
 import Button from '@material-ui/core/Button'
 import Avatar from '@material-ui/core/Avatar'
 import AccountCircle from '@material-ui/icons/AccountCircle'
+import Hidden from '@material-ui/core/Hidden'
 import Typography from '@material-ui/core/Typography'
 import MenuItem from '@material-ui/core/MenuItem'
 import Menu from '@material-ui/core/Menu'
@@ -47,15 +48,17 @@ class UserMenu extends Component {
 						/> :
 						<AccountCircle />
 					}
-					&nbsp;&nbsp;
-					<Typography
-						className={classes.flex}
-						color="inherit"
-						noWrap
-						title={username || profile.name}
-					>
-						{username || profile.name}
-					</Typography>
+					<Hidden xsDown>
+						&nbsp;&nbsp;
+						<Typography
+							className={classes.flex}
+							color="inherit"
+							noWrap
+							title={username || profile.name}
+						>
+							{username || profile.name}
+						</Typography>
+					</Hidden>
 				</Button>
 				<Menu
 					id="menu-appbar"
@@ -94,6 +97,7 @@ const styles = theme => ({
 		overflow: 'hidden',
 	},
 	button: {
+		minWidth: 0,
 		padding: theme.spacing.unit / 2,
 	},
 	link: {
