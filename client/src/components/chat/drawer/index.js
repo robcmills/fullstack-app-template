@@ -26,6 +26,9 @@ const ChatDrawer = ({ activeChannel, classes, isDrawerOpen }) =>
 				classes={{ paper: classes.drawer }}
 				open={isDrawerOpen}
 				onClose={toggleDrawer}
+				BackdropProps={{
+					invisible: true,
+				}}
 				ModalProps={{
 					keepMounted: true, // Better open performance on mobile.
 				}}
