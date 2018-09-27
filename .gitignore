@@ -2,6 +2,7 @@
 *.zip
 .DS_Store
 .env
+client/build
 credentials
 node_modules
 npm-debug.log*
