@@ -3,10 +3,11 @@ import Button from '@material-ui/core/Button'
 import EditIcon from '@material-ui/icons/Edit'
 import { withStyles } from '@material-ui/core/styles'
 
-const EditButton = ({ classes }) =>
+const EditButton = ({ classes, onClick }) =>
 	<Button
 		className={classes.editButton}
 		color="secondary"
+		onClick={onClick}
 		size="small"
 		variant="outlined"
 	>
@@ -15,7 +16,7 @@ const EditButton = ({ classes }) =>
 
 const styles = theme => ({
 	editButton: {
-		marginTop: theme.spacing.unit * 3,
+		marginTop: theme.spacing.unit * 2,
 	},
 	editIcon: {
 		height: theme.spacing.unit * 2,

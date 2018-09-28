@@ -18,7 +18,7 @@ const ChatButton = ({ classes, userId }) =>
 
 const styles = theme => ({
 	chatButton: {
-		marginTop: theme.spacing.unit * 3,
+		marginTop: theme.spacing.unit * 2,
 	},
 	chatIcon: {
 		height: theme.spacing.unit * 2,
