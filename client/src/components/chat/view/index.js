@@ -10,7 +10,6 @@ import Profile from './profile'
 
 const View = ({ classes }) =>
 	<div className={classes.view}>
-		<div className={classes.toolbar} />
 		<div className={classes.children}>
 			<Route path="/chat/channels" exact component={Channels} />
 			<Route path="/chat/channels/:channel_id" component={Channel} />
@@ -25,14 +24,13 @@ const styles = theme => ({
 		display: 'flex',
 		flex: '1 1 auto',
 		flexDirection: 'column',
-	},
-	toolbar: {
-		flex: '0 0 56px',
+		height: '100%',
 	},
 	children: {
 		display: 'flex',
 		flex: '1 1 auto',
 		flexDirection: 'column',
+		height: '100%',
 	},
 })
 

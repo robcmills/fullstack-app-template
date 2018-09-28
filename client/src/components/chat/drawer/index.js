@@ -15,7 +15,6 @@ const ChatDrawer = ({ activeChannel, classes, isDrawerOpen }) =>
 	<div className={classes.container}>
 		<Hidden smDown>
 			<Drawer variant="permanent" classes={{ paper: classes.drawer }}>
-				<div className={classes.toolbar} />
 				<div className={classes.scrollContainer}>
 					<Navigation />
 				</div>
@@ -41,12 +40,13 @@ const ChatDrawer = ({ activeChannel, classes, isDrawerOpen }) =>
 const styles = theme => ({
 	container: {
 		display: 'flex',
+		flex: '0 0 auto',
+		height: '100%',
 	},
 	drawer: {
 		position: 'relative',
 		width: drawerWidth,
 	},
-	toolbar: theme.mixins.toolbar,
 	scrollContainer: {
 		overflowY: 'scroll',
 	}

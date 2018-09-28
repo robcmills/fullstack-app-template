@@ -13,7 +13,7 @@ import UserMenu from './user-menu'
 import { toggleDrawer } from 'redux/action-creators'
 
 const MenuBar = ({ classes }) =>
-	<AppBar className={classes.appBar} position="absolute">
+	<AppBar className={classes.appBar} position="relative">
 		<Toolbar className={classes.toolBar}>
 			<Hidden mdUp>
 				<IconButton
@@ -33,7 +33,6 @@ const MenuBar = ({ classes }) =>
 const styles = theme => ({
 	appBar: {
 		boxShadow: 'none',
-		zIndex: theme.zIndex.drawer + 1,
 	},
 	toolBar: {
 		padding: 0,

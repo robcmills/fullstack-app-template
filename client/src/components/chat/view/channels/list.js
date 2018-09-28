@@ -26,6 +26,7 @@ const styles = theme => ({
 	list: {
 		background: 'white',
 		flex: '1 1 auto',
+		height: '100%',
 		overflowY: 'scroll',
 	},
 })

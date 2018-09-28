@@ -22,6 +22,7 @@ const UsersList = ({ users, classes, isFetchingUsers }) =>
 const styles = theme => ({
 	list: {
 		background: 'white',
+		height: '100%',
 		flex: '1 1 auto',
 		overflowY: 'scroll',
 	},

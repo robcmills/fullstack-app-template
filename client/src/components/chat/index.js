@@ -9,8 +9,10 @@ import { withStyles } from '@material-ui/core/styles'
 const Chat = ({ classes }) =>
 	<div className={classes.chat}>
 		<MenuBar />
-		<Drawer />
-		<View />
+		<div className={classes.view}>
+			<Drawer />
+			<View />
+		</div>
 	</div>
 
 const styles = {
@@ -18,8 +20,14 @@ const styles = {
 		display: 'flex',
 		flex: '1 1 auto',
 		flexDirection: 'column',
+		height: '100%',
 		overflow: 'hidden',
 	},
+	view: {
+		display: 'flex',
+		flex: '1 1 auto',
+		height: '100%',
+	}
 }
 
 export default withStyles(styles)(Chat)

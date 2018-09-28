@@ -35,7 +35,8 @@ const styles = theme => ({
 	channel: {
 		display: 'flex',
 		flex: '1 1 auto',
-		'flex-direction': 'column',
+		flexDirection: 'column',
+		height: '100%',
 	},
 })
 
