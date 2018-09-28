@@ -28,6 +28,7 @@ const styles = theme => ({
 		flex: '1 1 auto',
 		height: '100%',
 		overflowY: 'scroll',
+		width: '100%',
 	},
 })
 

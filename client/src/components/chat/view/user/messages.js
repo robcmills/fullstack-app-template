@@ -46,6 +46,7 @@ class DirectMessages extends Component {
 const styles = theme => ({
 	messages: {
 		flex: '1 1 auto',
+		height: '100%',
 		overflowY: 'scroll',
 		padding: theme.spacing.unit,
 	},

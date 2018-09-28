@@ -32,6 +32,7 @@ const styles = theme => ({
 		flex: '1 1 auto',
 		flexDirection: 'column',
 		height: '100%',
+		width: '100%',
 	},
 	actions: {
 		display: 'flex',

@@ -22,11 +22,14 @@ const styles = {
 		flexDirection: 'column',
 		height: '100%',
 		overflow: 'hidden',
+		width: '100%',
 	},
 	view: {
 		display: 'flex',
 		flex: '1 1 auto',
 		height: '100%',
+		overflow: 'hidden',
+		width: '100%',
 	}
 }
 

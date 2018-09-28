@@ -25,12 +25,15 @@ const styles = theme => ({
 		flex: '1 1 auto',
 		flexDirection: 'column',
 		height: '100%',
+		overflow: 'hidden',
+		width: '100%',
 	},
 	children: {
 		display: 'flex',
 		flex: '1 1 auto',
 		flexDirection: 'column',
 		height: '100%',
+		width: '100%',
 	},
 })
 

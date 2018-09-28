@@ -34,12 +34,14 @@ const styles = theme => ({
 		flex: '1 1 auto',
 		flexDirection: 'column',
 		height: '100%',
+		width: '100%',
 	},
 	actions: {
 		display: 'flex',
 		flex: '1 1 auto',
 		justifyContent: 'flex-end',
 		padding: `0 ${theme.spacing.unit}px`,
+		width: '100%',
 	},
 })
 

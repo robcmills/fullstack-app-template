@@ -122,10 +122,10 @@ class Login extends Component {
 
 const styles = {
 	login: {
-		'align-items': 'center',
-		'justify-content': 'center',
+		alignItems: 'center',
 		bottom: 0,
 		display: 'flex',
+		justifyContent: 'center',
 		left: 0,
 		padding: '2em',
 		position: 'absolute',
@@ -136,7 +136,7 @@ const styles = {
 		width: 420,
 	},
 	actions: {
-		'justify-content': 'center',
+		justifyContent: 'center',
 		display: 'flex',
 	},
 }
