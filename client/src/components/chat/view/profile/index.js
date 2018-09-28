@@ -1,20 +1,25 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import { compose, withProps } from 'recompose'
 import { withStyles } from '@material-ui/core/styles'
 import Avatar from '@material-ui/core/Avatar'
 import AccountCircle from '@material-ui/icons/AccountCircle'
-import ChatBubbleIcon from '@material-ui/icons/ChatBubble'
 import Typography from '@material-ui/core/Typography'
-import Button from '@material-ui/core/Button'
 
 import setPictureSize from 'utils/set-picture-size'
 import Card from 'components/shared/card'
 import Bold from 'components/shared/bold'
 import Spacer from 'components/shared/spacer'
+
+import EditButton from './edit-button'
+import ChatButton from './chat-button'
+
 import sweetConnect from 'redux/sweet-connect'
 import { fetchUser } from 'redux/action-creators'
-import { isFetchingUserSelector, userSelector, userByIdSelector } from 'redux/selectors'
+import {
+	isFetchingUserSelector,
+	userSelector,
+	userByIdSelector,
+} from 'redux/selectors'
 
 class Profile extends Component {
 	componentDidMount() {
@@ -30,6 +35,7 @@ class Profile extends Component {
 			)
 		}
 		const { profile: { name, picture }, username } = user
+		const isMe = user.id === me.id
 		return (
 			<div className={classes.profile}>
 				<Card className={classes.card}>
@@ -49,21 +55,7 @@ class Profile extends Component {
 					<Typography noWrap>
 						<Bold>Name:</Bold>&nbsp;{name || 'undefined'}
 					</Typography>
-					{user.id !== me.id &&
-						<div>
-							<Spacer /><Spacer /><Spacer />
-							<Button
-								color="secondary"
-								component={Link}
-								size="small"
-								to={`/chat/users/${user.id}`}
-								variant="outlined"
-							>
-								<ChatBubbleIcon className={classes.actionIcon} />&nbsp;
-								Chat
-							</Button>
-						</div>
-					}
+					{isMe ? <EditButton /> : <ChatButton userId={user.id} />}
 				</Card>
 			</div>
 		)
