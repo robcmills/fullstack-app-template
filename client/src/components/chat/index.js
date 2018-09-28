@@ -16,6 +16,9 @@ const Chat = ({ classes }) =>
 const styles = {
 	chat: {
 		display: 'flex',
+		flex: '1 1 auto',
+		flexDirection: 'column',
+		overflow: 'hidden',
 	},
 }
 

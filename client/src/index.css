@@ -1,7 +1,10 @@
-body {
+#root {
 	background: #f2f2f2;
-	height: 100%;
-	margin: 0;
-	padding: 0;
+	bottom: 0;
+	display: flex;
 	font-family: sans-serif;
+	left: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
 }

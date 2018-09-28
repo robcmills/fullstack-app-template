@@ -24,15 +24,15 @@ const styles = theme => ({
 	view: {
 		display: 'flex',
 		flex: '1 1 auto',
-		height: '100vh',
-		overflowX: 'hidden',
-		'flex-direction': 'column',
+		flexDirection: 'column',
 	},
-	toolbar: theme.mixins.toolbar,
+	toolbar: {
+		flex: '0 0 56px',
+	},
 	children: {
 		display: 'flex',
 		flex: '1 1 auto',
-		'flex-direction': 'column',
+		flexDirection: 'column',
 	},
 })
 
