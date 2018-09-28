@@ -33,6 +33,9 @@ const MenuBar = ({ classes }) =>
 const styles = theme => ({
 	appBar: {
 		boxShadow: 'none',
+		[theme.breakpoints.up('md')]: {
+			padding: `0 ${theme.spacing.unit * 2}px`,
+		},
 	},
 	toolBar: {
 		padding: 0,

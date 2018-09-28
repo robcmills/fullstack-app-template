@@ -9,7 +9,7 @@ import titleSelector from './title-selector'
 
 const Title = ({ classes, title }) =>
 	<Typography
-		className={classes.flex}
+		className={classes.title}
 		color="inherit"
 		noWrap
 		title={title}
@@ -19,8 +19,9 @@ const Title = ({ classes, title }) =>
 	</Typography>
 
 const styles = theme => ({
-	flex: {
+	title: {
 		flexGrow: 1,
+		paddingLeft: theme.spacing.unit,
 	},
 })
 
