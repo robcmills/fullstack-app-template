@@ -72,20 +72,26 @@ class Profile extends Component {
 
 const styles = theme => ({
 	profile: {
+		alignItems: 'flex-start',
 		display: 'flex',
+		flex: '1 1 auto',
+		flexDirection: 'column',
+		height: '100%',
+		overflowY: 'scroll',
 		padding: theme.spacing.unit * 2,
-		[theme.breakpoints.down('sm')]: {
-			justifyContent: 'center',
+		[theme.breakpoints.only('sm')]: {
+			alignItems: 'center',
+		},
+		[theme.breakpoints.down('xs')]: {
+			alignItems: 'stretch',
 		},
 	},
 	card: {
 		alignItems: 'center',
 		display: 'flex',
+		flex: '0 0 auto',
 		flexDirection: 'column',
 		padding: theme.spacing.unit * 2,
-		[theme.breakpoints.down('xs')]: {
-			flex: '1 1 auto',
-		},
 	},
 	avatar: {
 		height: 128,
