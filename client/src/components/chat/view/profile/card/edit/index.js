@@ -14,7 +14,7 @@ const VARCHAR_MAX_LENGTH = 250
 const errors = {
 	MAX_AVATAR_SIZE_EXCEEDED:
 		`Avatar img is too large. The max dimension is ${MAX_AVATAR_SIZE}px`,
-	AVATAR_LOAD_ERROR: 'Error occurred trying to load image',
+	AVATAR_LOAD_ERROR: 'Could not load image',
 	NO_USERNAME_OR_NAME: 'At least one of "Username" or "Name" must not be empty',
 	VARCHAR_MAX_EXCEEDED: `Value must not be more than ${VARCHAR_MAX_LENGTH} characters`
 }

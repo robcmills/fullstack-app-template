@@ -8,7 +8,7 @@ const EditField = ({ classes, error, name, onChange, value }) =>
 			error={!!error}
 			fullWidth
 			id={name}
-			label={error ? error : name}
+			label={name + (error ? ` error: ${error}` : '')}
 			onChange={onChange}
 			placeholder="undefined"
 			value={value || ''}
