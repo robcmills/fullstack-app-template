@@ -11,10 +11,17 @@ class EditCard extends Component {
 		super(props)
 		const { profile: { name, picture }, username } = props.user
 		this.state = {
-			username,
+			errors: {},
 			name,
 			picture,
+			username,
 		}
+	}
+
+	handleChange = name => event => {
+		this.setState({
+			[name]: event.target.value,
+		})
 	}
 
 	render() {
@@ -23,9 +30,21 @@ class EditCard extends Component {
 		return (
 			<Card className={classes.card}>
 				<DisplayAvatar alt={username || name} src={picture} />
-				<Field name="Avatar src" value={this.state.picture} />
-				<Field name="Username" value={this.state.username} />
-				<Field name="Name" value={this.state.name} />
+				<Field
+					name="Avatar src"
+					onChange={this.handleChange('picture')}
+					value={this.state.picture}
+				/>
+				<Field
+					name="Username"
+					onChange={this.handleChange('username')}
+					value={this.state.username}
+				/>
+				<Field
+					name="Name"
+					onChange={this.handleChange('name')}
+					value={this.state.name}
+				/>
 				<Actions handleCancel={handleCancel} />
 			</Card>
 		)
