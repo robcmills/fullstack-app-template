@@ -32,11 +32,8 @@ const styles = theme => ({
 		height: '100%',
 		overflowY: 'scroll',
 		padding: theme.spacing.unit * 2,
-		[theme.breakpoints.only('sm')]: {
-			alignItems: 'center',
-		},
-		[theme.breakpoints.down('xs')]: {
-			alignItems: 'stretch',
+		[theme.breakpoints.down('sm')]: {
+			justifyContent: 'center',
 		},
 	},
 })

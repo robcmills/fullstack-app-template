@@ -2,14 +2,14 @@ import React from 'react'
 import TextField from '@material-ui/core/TextField'
 import { withStyles } from '@material-ui/core/styles'
 
-const EditName = ({ classes, value }) =>
+const EditField = ({ classes, name, value }) =>
 	<div className={classes.edit}>
 		<TextField
 			fullWidth
-			id="name"
-			label="Name"
+			id={name}
+			label={name}
 			placeholder="undefined"
-			value={value}
+			value={value || ''}
 			InputLabelProps={{ shrink: true }}
 		/>
 	</div>
@@ -20,4 +20,4 @@ const styles = theme => ({
 	},
 })
 
-export default withStyles(styles)(EditName)
+export default withStyles(styles)(EditField)

@@ -2,9 +2,8 @@ import React, { Component } from 'react'
 import { withStyles } from '@material-ui/core/styles'
 
 import Card from 'components/shared/card'
-import Avatar from './avatar'
-import Username from './username'
-import Name from './name'
+import DisplayAvatar from '../display/avatar'
+import Field from './field'
 import Actions from './actions'
 
 class EditCard extends Component {
@@ -23,9 +22,10 @@ class EditCard extends Component {
 		const { profile: { name, picture }, username } = user
 		return (
 			<Card className={classes.card}>
-				<Avatar alt={username || name} src={picture} />
-				<Username value={username} />
-				<Name value={name} />
+				<DisplayAvatar alt={username || name} src={picture} />
+				<Field name="Avatar src" value={this.state.picture} />
+				<Field name="Username" value={this.state.username} />
+				<Field name="Name" value={this.state.name} />
 				<Actions handleCancel={handleCancel} />
 			</Card>
 		)
