@@ -11,6 +11,10 @@ class ProfileCard extends Component {
 		isEditing: false,
 	}
 
+	handleCancel = () => {
+		this.setState({ isEditing: false })
+	}
+
 	handleEditClick = () => {
 		this.setState({ isEditing: true })
 	}
@@ -20,12 +24,12 @@ class ProfileCard extends Component {
 		const isMe = user.id === me.id
 
 		return this.state.isEditing ?
-			<Edit user={user} /> :
-			<Display
-				handleEditClick={isMe ? this.handleEditClick : undefined}
-				isMe={isMe}
-				user={user}
-			/>
+		 	<Edit handleCancel={this.handleCancel} user={user} /> :
+		 	<Display
+		 		handleEditClick={isMe ? this.handleEditClick : undefined}
+		 		isMe={isMe}
+		 		user={user}
+		 	/>
 	}
 }
 
