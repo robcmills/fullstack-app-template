@@ -10,10 +10,13 @@ import Actions from './actions'
 import capitalize from 'utils/capitalize'
 
 const MAX_AVATAR_SIZE = 512
+const VARCHAR_MAX_LENGTH = 250
 const errors = {
 	MAX_AVATAR_SIZE_EXCEEDED:
 		`Avatar img is too large. The max dimension is ${MAX_AVATAR_SIZE}px`,
 	AVATAR_LOAD_ERROR: 'Error occurred trying to load image',
+	NO_USERNAME_OR_NAME: 'At least one of "Username" or "Name" must not be empty',
+	VARCHAR_MAX_EXCEEDED: `Value must not be more than ${VARCHAR_MAX_LENGTH} characters`
 }
 
 class EditCard extends Component {
@@ -34,9 +37,7 @@ class EditCard extends Component {
 		const value = event.target.value
 		const validator = this[`validate${capitalize(name)}`]
 		validator && validator(value)
-		this.setState({
-			[name]: value,
-		})
+		this.setState({ [name]: value })
 	}
 
 	validatePicture = src => {
@@ -70,6 +71,36 @@ class EditCard extends Component {
 		img.src = src
 	}
 
+	validateUsername = value => {
+		if (value.length > VARCHAR_MAX_LENGTH) {
+			this.setState({ errors: { username: errors.VARCHAR_MAX_EXCEEDED } })
+			return
+		}
+		if (!value && !this.state.name) {
+			this.setState({ errors: { username: errors.NO_USERNAME_OR_NAME } })
+			return
+		}
+		this.setState({ errors: { username: '' }})
+		if (this.state.errors.name === errors.NO_USERNAME_OR_NAME) {
+			this.setState({ errors: { name: '' }})
+		}
+	}
+
+	validateName = value => {
+		if (value.length > VARCHAR_MAX_LENGTH) {
+			this.setState({ errors: { name: errors.VARCHAR_MAX_EXCEEDED } })
+			return
+		}
+		if (!value && !this.state.username) {
+			this.setState({ errors: { name: errors.NO_USERNAME_OR_NAME } })
+			return
+		}
+		this.setState({ errors: { name: '' }})
+		if (this.state.errors.username === errors.NO_USERNAME_OR_NAME) {
+			this.setState({ errors: { username: '' }})
+		}
+	}
+
 	isSubmitDisabled = () => {
 		const isValid = compose(
 			isEmpty,
@@ -94,11 +125,13 @@ class EditCard extends Component {
 					value={this.state.picture}
 				/>
 				<Field
+					error={this.state.errors.username}
 					name="Username"
 					onChange={this.handleChange('username')}
 					value={this.state.username}
 				/>
 				<Field
+					error={this.state.errors.name}
 					name="Name"
 					onChange={this.handleChange('name')}
 					value={this.state.name}
