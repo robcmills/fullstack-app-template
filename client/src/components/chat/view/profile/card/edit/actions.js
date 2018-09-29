@@ -3,7 +3,7 @@ import Button from '@material-ui/core/Button'
 import CloseIcon from '@material-ui/icons/Close'
 import { withStyles } from '@material-ui/core/styles'
 
-const EditActions = ({ classes, handleCancel }) =>
+const EditActions = ({ classes, handleCancel, isSubmitDisabled }) =>
 	<div className={classes.actions}>
 		<Button
 			classes={{ focusVisible: classes.outlinedFocus }}
@@ -18,6 +18,7 @@ const EditActions = ({ classes, handleCancel }) =>
 			classes={{ focusVisible: classes.containedFocus }}
 			color="secondary"
 			className={classes.save}
+			disabled={isSubmitDisabled}
 			size="small"
 			variant="contained"
 		>

@@ -2,12 +2,13 @@ import React from 'react'
 import TextField from '@material-ui/core/TextField'
 import { withStyles } from '@material-ui/core/styles'
 
-const EditField = ({ classes, name, onChange, value }) =>
+const EditField = ({ classes, error, name, onChange, value }) =>
 	<div className={classes.edit}>
 		<TextField
+			error={!!error}
 			fullWidth
 			id={name}
-			label={name}
+			label={error ? error : name}
 			onChange={onChange}
 			placeholder="undefined"
 			value={value || ''}
