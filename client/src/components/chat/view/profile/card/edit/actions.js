@@ -6,6 +6,7 @@ import { withStyles } from '@material-ui/core/styles'
 const EditActions = ({ classes, handleCancel }) =>
 	<div className={classes.actions}>
 		<Button
+			classes={{ focusVisible: classes.outlinedFocus }}
 			color="secondary"
 			onClick={handleCancel}
 			size="small"
@@ -14,6 +15,7 @@ const EditActions = ({ classes, handleCancel }) =>
 			<CloseIcon className={classes.icon} />&nbsp;Cancel
 		</Button>
 		<Button
+			classes={{ focusVisible: classes.containedFocus }}
 			color="secondary"
 			className={classes.save}
 			size="small"
@@ -26,6 +28,13 @@ const EditActions = ({ classes, handleCancel }) =>
 const styles = theme => ({
 	actions: {
 		marginTop: theme.spacing.unit * 4,
+	},
+	outlinedFocus: {
+		background: theme.palette.primary.light,
+	},
+	containedFocus: {
+		boxShadow: 'none',
+		background: theme.palette.primary.dark,
 	},
 	icon: {
 		display: 'flex',
