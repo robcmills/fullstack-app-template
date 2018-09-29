@@ -24,6 +24,9 @@ const EditActions = ({ classes, handleCancel }) =>
 	</div>
 
 const styles = theme => ({
+	actions: {
+		marginTop: theme.spacing.unit * 4,
+	},
 	icon: {
 		display: 'flex',
 		height: theme.spacing.unit * 2,

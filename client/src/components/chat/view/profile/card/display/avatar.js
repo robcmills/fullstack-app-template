@@ -16,7 +16,6 @@ const UserAvatar = ({ alt, classes, src }) => src ?
 const styles = theme => ({
 	avatar: {
 		height: 128,
-		marginBottom: theme.spacing.unit * 3,
 		width: 128,
 	},
 })

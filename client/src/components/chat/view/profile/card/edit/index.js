@@ -3,6 +3,8 @@ import { withStyles } from '@material-ui/core/styles'
 
 import Card from 'components/shared/card'
 import Avatar from './avatar'
+import Username from './username'
+import Name from './name'
 import Actions from './actions'
 
 class EditCard extends Component {
@@ -22,6 +24,8 @@ class EditCard extends Component {
 		return (
 			<Card className={classes.card}>
 				<Avatar alt={username || name} src={picture} />
+				<Username value={username} />
+				<Name value={name} />
 				<Actions handleCancel={handleCancel} />
 			</Card>
 		)

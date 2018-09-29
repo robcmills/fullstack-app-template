@@ -15,7 +15,9 @@ const EditAvatar = ({ alt, classes, src }) =>
 			fullWidth
 			id="avatar"
 			label="Avatar src"
+			placeholder="undefined"
 			value={src}
+			InputLabelProps={{ shrink: true }}
 		/>
 	</div>
 

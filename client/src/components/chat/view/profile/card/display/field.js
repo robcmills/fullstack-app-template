@@ -11,7 +11,7 @@ const Field = ({ classes, name, value }) =>
 
 const styles = theme => ({
 	field: {
-		marginBottom: theme.spacing.unit,
+		marginTop: theme.spacing.unit * 2,
 	},
 })
 
