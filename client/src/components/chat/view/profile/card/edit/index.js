@@ -121,9 +121,8 @@ class EditCard extends Component {
 			userId: this.props.user.id,
 		}).then(result => {
 			if (result instanceof Error) {
+				// TODO: Surface this error to user
 				console.error('update error', result)
-			} else {
-				console.log('update success', result)
 			}
 			this.props.handleCancel()
 		})

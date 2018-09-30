@@ -1,9 +1,11 @@
 import { matchPath } from 'react-router-dom'
 import { createSelector } from 'reselect'
+import isEqualIds from 'utils/is-equal-ids'
 
 import {
 	channelsByIdSelector,
 	pathnameSelector,
+	userSelector,
 	usersByIdSelector,
 } from 'redux/selectors'
 
@@ -23,7 +25,7 @@ const getChannelsTitle = ({ channelsById, pathname }) => {
 	return '#' + channel.name
 }
 
-const getUsersTitle = ({ usersById, pathname }) => {
+const getUsersTitle = ({ me, usersById, pathname }) => {
 	if (matchPath(pathname, { path: '/chat/users', exact: true })) {
 		return 'Users'
 	}
@@ -32,7 +34,7 @@ const getUsersTitle = ({ usersById, pathname }) => {
 		return ''
 	}
 	const userId = match.params.id
-	const user = usersById[userId]
+	const user = isEqualIds(userId, me.id) ? me : usersById[userId]
 	if (userId && !user) {
 		return ''
 	}
@@ -47,13 +49,14 @@ const getUsersTitle = ({ usersById, pathname }) => {
 const titleSelector = createSelector(
 	channelsByIdSelector,
 	usersByIdSelector,
+	userSelector,
 	pathnameSelector,
-	(channelsById, usersById, pathname) => {
+	(channelsById, usersById, me, pathname) => {
 		if (matchPath(pathname, { path: '/chat/channels' })) {
 			return getChannelsTitle({ channelsById, pathname })
 		}
 		if (matchPath(pathname, { path: '/chat/users' })) {
-			return getUsersTitle({ usersById, pathname })
+			return getUsersTitle({ me, usersById, pathname })
 		}
 		return 'Chat'
 	}

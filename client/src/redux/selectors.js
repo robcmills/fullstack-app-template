@@ -1,5 +1,6 @@
 import { values } from 'ramda'
 import { createSelector } from 'reselect'
+import isEqualIds from 'utils/is-equal-ids'
 
 export const channelsSelector = state => values(state.channelsById)
 export const channelsByIdSelector = state => state.channelsById
@@ -30,5 +31,5 @@ export const userByIdSelector = createSelector(
 	userIdFromPropsSelector,
 	userSelector,
 	usersByIdSelector,
-	(userId, me, usersById) => userId === me.id ? me : usersById[userId]
+	(userId, me, usersById) => isEqualIds(userId, me.id) ? me : usersById[userId]
 )

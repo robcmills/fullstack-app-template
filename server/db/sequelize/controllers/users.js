@@ -83,3 +83,17 @@ module.exports.register = asyncHandler(async (req, res) => {
 		return res.status(200).json(newUser)
 	})
 })
+
+module.exports.updateById = asyncHandler(async (req, res) => {
+	const user = await User.findById(req.params.user_id)
+	if (!user) {
+		return res.sendStatus(404)
+	}
+	return res.json(await user.update({
+		username: req.body.username,
+		name: req.body.name,
+		picture: req.body.picture
+	}, {
+		fields: ['username', 'name', 'picture']
+	}))
+})
