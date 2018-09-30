@@ -3,11 +3,18 @@ import Button from '@material-ui/core/Button'
 import CloseIcon from '@material-ui/icons/Close'
 import { withStyles } from '@material-ui/core/styles'
 
-const EditActions = ({ classes, handleCancel, isSubmitDisabled }) =>
+const EditActions = ({
+	classes,
+	handleCancel,
+	handleSubmit,
+	isSubmitDisabled,
+	isUpdating,
+}) =>
 	<div className={classes.actions}>
 		<Button
 			classes={{ focusVisible: classes.outlinedFocus }}
 			color="secondary"
+			disabled={isUpdating}
 			onClick={handleCancel}
 			size="small"
 			variant="outlined"
@@ -19,10 +26,11 @@ const EditActions = ({ classes, handleCancel, isSubmitDisabled }) =>
 			color="secondary"
 			className={classes.save}
 			disabled={isSubmitDisabled}
+			onClick={handleSubmit}
 			size="small"
 			variant="contained"
 		>
-			Save
+			{isUpdating ? 'Saving...' : 'Save'}
 		</Button>
 	</div>
 

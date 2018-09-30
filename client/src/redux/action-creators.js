@@ -109,6 +109,21 @@ export const sendDirectMessage = payload => {
 	})
 }
 
+export const updateUserProfile = payload =>
+	requestAction({
+		body: payload,
+		method: 'POST',
+		payload: {
+			username: payload.username,
+			profile: {
+				name: payload.name,
+				picture: payload.picture,
+			},
+		},
+		type: 'UPDATE_USER_PROFILE',
+		url: `/api/users/${payload.userId}`,
+	})
+
 export const toggleDrawer = () => {
 	store.dispatch({ type: 'TOGGLE_DRAWER' })
 }

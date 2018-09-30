@@ -8,6 +8,7 @@ import DisplayAvatar from '../display/avatar'
 import Field from './field'
 import Actions from './actions'
 import capitalize from 'utils/capitalize'
+import { updateUserProfile } from 'redux/action-creators'
 
 const MAX_AVATAR_SIZE = 512
 const VARCHAR_MAX_LENGTH = 250
@@ -26,6 +27,7 @@ class EditCard extends Component {
 		this.state = {
 			errors: {},
 			isLoading: false,
+			isUpdating: false,
 			isValidating: false,
 			name,
 			picture,
@@ -107,7 +109,24 @@ class EditCard extends Component {
 			reject(isEmpty),
 			values
 		)(this.state.errors)
-		return this.state.isValidating || !isValid
+		return this.state.isValidating || this.state.isUpdating || !isValid
+	}
+
+	handleSubmit = () => {
+		this.setState({ isUpdating: true })
+		updateUserProfile({
+			picture: this.state.picture,
+			name: this.state.name,
+			username: this.state.username,
+			userId: this.props.user.id,
+		}).then(result => {
+			if (result instanceof Error) {
+				console.error('update error', result)
+			} else {
+				console.log('update success', result)
+			}
+			this.props.handleCancel()
+		})
 	}
 
 	render() {
@@ -138,7 +157,9 @@ class EditCard extends Component {
 				/>
 				<Actions
 					handleCancel={handleCancel}
+					handleSubmit={this.handleSubmit}
 					isSubmitDisabled={this.isSubmitDisabled()}
+					isUpdating={this.state.isUpdating}
 				/>
 			</Card>
 		)

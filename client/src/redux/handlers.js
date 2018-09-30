@@ -217,4 +217,12 @@ export default {
 		...state,
 		registerError: false,
 	}),
+
+	UPDATE_USER_PROFILE_REQUEST: (state, payload) => ({
+		...state,
+		user: {
+			...state.user,
+			...payload,
+		},
+	}),
 }
